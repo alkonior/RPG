@@ -1,4 +1,4 @@
 #include "pch.h"
 #include "BaseObjects.h"
 
-Texture::Texture(char c, unsigned long index, unsigned long type):sym(c),colorset(index), type(type){}
+Texture::Texture(char c, unsigned long index):sym(c),colorset(index){}

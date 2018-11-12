@@ -5,10 +5,9 @@ struct Point {
 };
 
 struct Texture {
-	Texture(char, unsigned long, unsigned long);
+	Texture(char, unsigned long);
 	chtype sym;
 	chtype colorset;
-	chtype type;
 };
 
 class IEntity;

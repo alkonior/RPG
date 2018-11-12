@@ -2,17 +2,12 @@
 #include "Game.h"
 
 
-Game::Game(size_t width, size_t height):Engine(width,height), Gui(Engine)
+Game::Game(size_t width, size_t height):Engine(width,height), Gui(Engine, width, height)
 {
 }
 
 void Game::start()
 {
-	initscr();
-	start_color();
-	keypad(stdscr, TRUE);
-	noecho();
-	curs_set(0);
 	loop();
 }
 
@@ -22,10 +17,9 @@ void Game::loop()
 	Gui.Draw();
 	while (true)
 	{
-		int ch = getch();
+		char ch = getch();
 		if (ch != 'q')
-		{
-			erase();
+		{			
 			Gui.Send(ch);
 			Gui.Draw();
 		}
