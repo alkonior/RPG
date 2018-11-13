@@ -1,15 +1,20 @@
 #pragma once
-#include "Map.h"
+#include "Model.h"
+
+#define BaseShiftX 5
+#define BaseShiftY 5
 
 class GUI
 {
-	size_t w;
-	size_t h;
-	Map& Engine;
+	Point shift;
+	size_t _w;
+	size_t _h;
+	Model& Engine;
 public:
-	GUI(Map&);
+	GUI(Model&);
+	void init(size_t, size_t);
+	bool Comand(size_t);
 	void Draw();
-	void Send(int);
 	~GUI();
 };
 

@@ -1,14 +1,6 @@
 #pragma once
+#include "Textures.h"
 
-struct Point {
-	size_t x, y;
-};
-
-struct Texture {
-	Texture(char, unsigned long);
-	chtype sym;
-	chtype colorset;
-};
 
 class IEntity;
 class IPerson;
@@ -36,6 +28,7 @@ class Apteca;
 
 class IEntity
 {
+	explicit IEntity(Texture,Point);
 	size_t hp;
 	Texture t;
 	Point cord;
@@ -65,8 +58,9 @@ public:
 	};*/
 };
 
-class IPerson : IEntity
+class IPerson : public IEntity
 {
+	IPerson(Texture,Point);
 	//size_t hp;
 	size_t mana;
 	size_t dmg;
@@ -88,8 +82,9 @@ class INotPerson :public IEntity
 };
 
 
-class Hero :public IEntity
+class Hero :public IPerson
 {
+	Hero(Point);
 	/*
 	void _colide(I_Entity* in) override;
 
@@ -160,6 +155,7 @@ class Princess :public IEntity
 
 class Wall :public INotPerson
 {
+	Wall(Point);
 	/*void _colide(I_Entity& in) override;
 	void _colide(Hero&) override;
 	void _colide(Monster&) override;

@@ -16,25 +16,40 @@
     <Filter Include="Исходные файлы\Coliders">
       <UniqueIdentifier>{5a2d6669-3f4e-4308-84af-5e4d5a87b663}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\GUI">
+      <UniqueIdentifier>{2ce6fc86-6e3f-428e-bdc9-236e3ff0d68c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Textures">
+      <UniqueIdentifier>{0c66e097-0f7f-46f2-b964-55021386f1a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Engine">
+      <UniqueIdentifier>{4feabdce-b750-49ba-a2f9-ac6c3758ab1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseObjects.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\curses.h">
       <Filter>Исходные файлы\Coliders</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Controler.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObjects.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Файлы заголовков\Textures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -50,10 +65,16 @@
     <ClCompile Include="Game.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="GUI.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="GUI.cpp">
+    <ClCompile Include="Controler.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

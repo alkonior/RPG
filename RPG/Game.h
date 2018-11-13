@@ -1,13 +1,15 @@
 #pragma once
-#include "Map.h"
+#include "Model.h"
 #include "GUI.h"
+#include "Controler.h"
 
 class Game
 {
-	Map Engine;
+	Model Engine;
 	GUI Gui;
+	CONTROLER Controler;
 public:
-	Game(size_t width,size_t height);
+	Game(size_t);
 	void start();
 	void loop();
 	~Game();

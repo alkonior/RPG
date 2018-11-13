@@ -2,8 +2,14 @@
 #include "Game.h"
 
 
-Game::Game(size_t width, size_t height):Engine(width,height), Gui(Engine, width, height)
+Game::Game(size_t seed):Engine(seed),Gui(Engine),Controler(Gui, Engine)
 {
+	initscr();
+	start_color();
+	keypad(stdscr, TRUE);
+	noecho();
+	curs_set(0);
+	Gui.init(stdscr->_maxx, stdscr->_maxy);
 }
 
 void Game::start()
@@ -13,14 +19,14 @@ void Game::start()
 
 void Game::loop()
 {
-	erase();
-	Gui.Draw();
+
 	while (true)
 	{
-		char ch = getch();
-		if (ch != 'q')
+		size_t ch = getch();
+
+		if (ch != 27)
 		{			
-			Gui.Send(ch);
+			Controler.Send(ch);
 			Gui.Draw();
 		}
 		else
