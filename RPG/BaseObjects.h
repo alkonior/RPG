@@ -28,11 +28,10 @@ class Apteca;
 
 class IEntity
 {
-	explicit IEntity(Texture,Point);
-	size_t hp;
-	Texture t;
-	Point cord;
-	void virtual move() = 0;
+	size_t _hp;
+	const Texture* _t;
+	Point _cord;
+	//void virtual move() = 0;
 
 	/*
 	void virtual _colide(I_Entity*) = 0;
@@ -51,6 +50,8 @@ class IEntity
 	void virtual _colide(Apteca*) = 0;
 	*/
 public:
+	explicit IEntity(Point,const Texture*);
+	const Texture* getTexture();
 	/*void colide(I_Entity* in)
 	{
 		if (in != nullptr)
@@ -60,30 +61,32 @@ public:
 
 class IPerson : public IEntity
 {
-	IPerson(Texture,Point);
-	//size_t hp;
-	size_t mana;
-	size_t dmg;
-	size_t speed;
-	size_t armor;
-	//char sym;
-	//Point cord;
-
+	//size_t _hp;
+	size_t _mana;
+	size_t _dmg;
+	size_t _speed;
+	size_t _armor;
+	//Point _cord;
+public:
+	IPerson(Point, const Texture*);
 };
 
 class INotPerson :public IEntity
 {
-	//size_t hp;
-	//char sym;
-	//Point cord;
+	//size_t _hp;
+	//Point _cord;
 	size_t damage;
 	size_t speed;
 	size_t direction;
+public:
+	INotPerson(Point, const Texture*);
 };
 
 
 class Hero :public IPerson
 {
+
+public:
 	Hero(Point);
 	/*
 	void _colide(I_Entity* in) override;
@@ -98,7 +101,6 @@ class Hero :public IPerson
 	void _colide(FireBall*) override;
 	void _colide(Arrow*) override;
 	void _colide(Apteca*) override;*/
-
 };
 
 class Monster :public IEntity

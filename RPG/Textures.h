@@ -1,6 +1,7 @@
 #pragma once
 #include "curses.h"
 
+#define DEFAULT_CS 0
 #define FLOOR_CS 1
 #define WALL_CS 2
 #define HERO_CS 3
@@ -10,6 +11,7 @@ class Point
 public:
 	size_t x;
 	size_t y;
+	Point();
 	Point(size_t, size_t);
 	Point(const Point&) = default;
 	Point operator-() const;
@@ -22,16 +24,17 @@ class Texture
 	char sym;
 	chtype colorset;
 public:
-	Texture(const T_Hero&);
+	Texture();
 	Texture(char, unsigned long);
-	void Draw(Point);
+	void Draw(Point) const;
 	Texture(Texture&) = default;
 };
 
 namespace Textures {
-	Texture T_Wall();
-	Texture T_Floor();
-	Texture T_Hero();
+	const Texture T_Zero(' ', DEFAULT_CS);
+	const Texture T_Wall('W', WALL_CS);
+	const Texture T_Floor(' ', FLOOR_CS);
+	const Texture T_Hero('H', HERO_CS);
 };
 
 void initCS();

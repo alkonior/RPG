@@ -1,8 +1,8 @@
 #pragma once
 #include "Model.h"
 
-#define BaseShiftX 5
-#define BaseShiftY 5
+#define BaseShiftX 0
+#define BaseShiftY 0
 
 class GUI
 {

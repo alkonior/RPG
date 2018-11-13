@@ -17,7 +17,15 @@ bool GUI::Comand(size_t)
 
 void GUI::Draw()
 {
-	Engine.GetWorld();
+	
+	vector<vector<const Texture*>> in = Engine.GetWorld(shift,Point(_w,_h));
+	for (size_t i = 0; i < 20; i++)
+	{
+		for (size_t j = 0; j < 20; j++)
+		{
+			in[i][j]->Draw(Point(j, i));
+		}
+	}
 }
 
 GUI::~GUI()

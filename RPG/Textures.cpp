@@ -1,13 +1,16 @@
 #include "pch.h"
 #include "Textures.h"
 #include "curses.h"
+#include "LIMITS.H"
+
+Point::Point(){}
 
 Point::Point(size_t x, size_t y):x(x),y(y){}
 
 
 Point Point::operator-() const
 {
-	return Point(-x,-y);
+	return Point(UINT_MAX - x, UINT_MAX - y);
 }
 
 Point Point::operator+(const Point& in)
@@ -20,15 +23,11 @@ Point Point::operator-(const Point& in)
 	return Point(*this+(-(in)));
 }
 
-Texture::Texture(const T_Hero& in)
-{
-	sym = in.sym;
-	colorset = in.colorset;
-}
+Texture::Texture(){}
 
 Texture::Texture(char c, unsigned long index) :sym(c), colorset(index) {}
 
-void Texture::Draw(Point in)
+void Texture::Draw(Point in) const
 {
 	attron(COLOR_PAIR(colorset));
 	mvaddch(in.x, in.y, sym);
@@ -37,20 +36,10 @@ void Texture::Draw(Point in)
 
 void initCS()
 {
+	init_pair(DEFAULT_CS, COLOR_BLACK, COLOR_BLACK);
 	init_pair(FLOOR_CS, COLOR_WHITE, COLOR_WHITE);
 	init_pair(WALL_CS, COLOR_BLACK, COLOR_BLACK);
 	init_pair(HERO_CS, COLOR_RED, COLOR_WHITE);
+
 }
 
-Texture Textures::T_Wall()
-{
-	return Texture('W', WALL_CS);
-}
-Texture Textures::T_Floor()
-{
-	return Texture(' ', FLOOR_CS);
-}
-Texture Textures::T_Hero()
-{
-	return Texture('H', HERO_CS);
-}

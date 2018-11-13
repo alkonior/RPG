@@ -16,11 +16,11 @@ class Model
 	size_t w;
 	size_t i = 0;
 	vector<vector<shared_ptr<IEntity>>> World;
-	shared_ptr <Hero> Hero;
+	shared_ptr <Hero> hero;
 public:
 	Model(size_t);
 	void Comand(int);
-	vector<vector<Texture>> GetWorld(Point,Point);
+	vector<vector<const Texture*>> GetWorld(Point,Point);
 	~Model();
 };
 

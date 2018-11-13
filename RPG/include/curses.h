@@ -186,7 +186,7 @@ typedef struct
 
 /* For the ncurses-compatible functions only, BUTTON4_PRESSED and 
    BUTTON5_PRESSED are returned for mouse scroll wheel up and down; 
-   otherwise PDCurses doesn't support buttons 4 and 5 */
+   otherwise PDCurses doesn'_t support buttons 4 and 5 */
 
 #define BUTTON4_RELEASED        0x00008000L
 #define BUTTON4_PRESSED         0x00010000L
@@ -512,7 +512,7 @@ bits), 8 bits for other attributes, and 16 bits for character data.
 #define ACS_LANTERN   ACS_PICK('i', '*')
 #define ACS_BLOCK     ACS_PICK('0', '#')
 
-/* That goes double for these -- undocumented SysV symbols. Don't use
+/* That goes double for these -- undocumented SysV symbols. Don'_t use
    them. */
 
 #define ACS_S3        ACS_PICK('p', '-')
