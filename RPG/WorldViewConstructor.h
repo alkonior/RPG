@@ -1,6 +1,5 @@
 #pragma once
 #include "Model.h"
-#include "vector"
 
 #define WWC WorldViewConstructor
 
@@ -14,9 +13,10 @@ using std::vector;
 class WorldViewConstructor
 {
 	const Model& Engine;
+	Point worldShift;
 public:
 	WorldViewConstructor(Model&);
-	vector<vector<const Texture*>> GetInfo(Point, Point) const;
+	vector<vector<const Texture*>> GetWorldInfo(size_t, size_t)const;
 };
 
 

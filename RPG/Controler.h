@@ -1,9 +1,11 @@
 #pragma once
 #include"GUI.h"
-#include"Model.h"
+#include"WorldViewConstructor.h"
+
 namespace RPG {
 using GUINSP::GUI;
 using ENGINE::Model;
+using ENGINE::WorldViewConstructor;
 
 class CONTROLER
 {

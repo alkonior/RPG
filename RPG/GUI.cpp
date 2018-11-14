@@ -17,6 +17,9 @@ void GUI::init(size_t w, size_t h)
 	_w = w;
 	_h = h;
 	initCS();
+	mvaddch(w, h, 'h');
+	refresh();
+	WP.init(Point(1, 2), Point(30, 24));
 }
 
 bool GUI::Comand(size_t)
@@ -26,7 +29,7 @@ bool GUI::Comand(size_t)
 
 void GUI::Draw()
 {
-	
+	WP.Draw();
 }
 
 GUI::~GUI()

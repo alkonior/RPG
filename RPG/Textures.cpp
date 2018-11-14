@@ -29,16 +29,16 @@ Texture::Texture(){}
 
 Texture::Texture(char c, unsigned long index) :sym(c), colorset(index) {}
 
-void Texture::Draw(Point in) const
+void Texture::Draw(Point in, WINDOW* W) const
 {
-	attron(COLOR_PAIR(colorset));
-	mvaddch(in.x, in.y, sym);
-	attroff(COLOR_PAIR(colorset));
+	wattron(W,COLOR_PAIR(colorset));
+	mvwaddch(W, in.x, in.y, sym);
+	wattroff(W,COLOR_PAIR(colorset));
 }
 
 void RPG::TEXTURES::initCS()
 {
-	init_pair(DEFAULT_CS, COLOR_BLACK, COLOR_BLACK);
+	init_pair(DEFAULT_CS, COLOR_RED, COLOR_RED);
 	init_pair(FLOOR_CS, COLOR_WHITE, COLOR_WHITE);
 	init_pair(WALL_CS, COLOR_BLACK, COLOR_BLACK);
 	init_pair(HERO_CS, COLOR_RED, COLOR_WHITE);

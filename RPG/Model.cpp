@@ -6,6 +6,11 @@ using namespace ENGINE;
 using namespace Entities;
 
 
+bool RPG::ENGINE::Model::existPoint(const Point& in) const
+{
+	return in.x<w && in.y<h;
+}
+
 Model::Model(size_t seed)
 {
 	switch (seed)

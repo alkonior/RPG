@@ -4,7 +4,7 @@
 namespace RPG{
 namespace ENGINE {
 class WorldViewConstructor;
-}// Kostil
+}// Kostil/// Ultra kostil
 namespace Entities {
 
 using TEXTURES::Texture;

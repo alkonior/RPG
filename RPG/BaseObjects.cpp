@@ -1,14 +1,15 @@
 #include "pch.h"
 #include "BaseObjects.h"
 using namespace RPG;
+using namespace TEXTURES;
 using namespace Entities;
 
-Hero::Hero(Point p):IPerson(p,&TEXTURES::T_Hero)
+Hero::Hero(Point p):IPerson(p,&TEXTURES_ARAAY::T_Hero)
 {
 	
 }
 
-Wall::Wall(Point p):INotPerson(p, &TEXTURES::T_Wall)
+Wall::Wall(Point p):INotPerson(p, &TEXTURES_ARAAY::T_Wall)
 {
 }
 

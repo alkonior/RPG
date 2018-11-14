@@ -4,10 +4,10 @@
 namespace RPG{
 namespace TEXTURES{
 
-#define DEFAULT_CS 0
-#define FLOOR_CS 1
-#define WALL_CS 2
-#define HERO_CS 3
+#define DEFAULT_CS 1
+#define FLOOR_CS 2
+#define WALL_CS 3
+#define HERO_CS 4
 
 class Point
 {
@@ -29,16 +29,17 @@ class Texture
 public:
 	Texture();
 	Texture(char, unsigned long);
-	void Draw(Point) const;
+	void Draw(Point,WINDOW*) const;
 	Texture(Texture&) = default;
 };
 
-
+namespace TEXTURES_ARAAY
+{
 const Texture T_Zero(' ', DEFAULT_CS);
 const Texture T_Wall('W', WALL_CS);
 const Texture T_Floor(' ', FLOOR_CS);
 const Texture T_Hero('H', HERO_CS);
-
+}
 void initCS();
 
 

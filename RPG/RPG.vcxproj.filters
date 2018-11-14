@@ -64,10 +64,10 @@
       <Filter>Файлы заголовков\GUI</Filter>
     </ClInclude>
     <ClInclude Include="WorldViewConstructor.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Engine</Filter>
     </ClInclude>
     <ClInclude Include="MainInfoPanel.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
