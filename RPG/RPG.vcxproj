@@ -92,6 +92,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -99,6 +100,9 @@
       <AdditionalLibraryDirectories>C:\Users\user\source\repos\RPG\RPG\PDCurces;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(ProjectDir)lib\pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -154,20 +158,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BarPanel.h" />
     <ClInclude Include="BaseObjects.h" />
     <ClInclude Include="Controler.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="include\curses.h" />
+    <ClInclude Include="include\panel.h" />
+    <ClInclude Include="InfoPanel.h" />
+    <ClInclude Include="MainInfoPanel.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="WorldPanel.h" />
+    <ClInclude Include="WorldViewConstructor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BarPanel.cpp" />
     <ClCompile Include="BaseObjects.cpp" />
     <ClCompile Include="Controler.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="InfoPanel.cpp" />
+    <ClCompile Include="MainInfoPanel.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -177,6 +190,12 @@
     </ClCompile>
     <ClCompile Include="RPG.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="WorldPanel.cpp" />
+    <ClCompile Include="WorldViewConstructor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\CodeMap1.dgml" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

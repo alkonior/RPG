@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "Model.h"
 
+using namespace RPG;
+using namespace ENGINE;
+using namespace Entities;
+
+
 Model::Model(size_t seed)
 {
 	switch (seed)
@@ -23,23 +28,6 @@ Model::Model(size_t seed)
 void Model::Comand(int in)
 {
 }
-
-vector<vector<const Texture*>>  Model::GetWorld(Point lu, Point rd)
-{
-	size_t w = rd.x - lu.x;
-	size_t h = rd.y - lu.y;
-	vector<vector<const Texture*>> out(World.size(), vector<const Texture*>(20));
-	for (size_t i = 0; i + lu.y < World.size(); i++)
-	{
-		for (size_t j = 0; j + lu.x < World[i].size(); j++)
-		{
-			if (i + lu.y < h && j + lu.x < w)
-				out[i][j] = (World[i + lu.y][j + lu.x] ? World[i + lu.y][j + lu.x]->getTexture() : &Textures::T_Zero);
-		}
-	}
-	return out;
-}
-
 
 Model::~Model()
 {

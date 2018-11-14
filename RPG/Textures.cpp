@@ -2,6 +2,8 @@
 #include "Textures.h"
 #include "curses.h"
 #include "LIMITS.H"
+using namespace RPG;
+using namespace TEXTURES;
 
 Point::Point(){}
 
@@ -34,12 +36,10 @@ void Texture::Draw(Point in) const
 	attroff(COLOR_PAIR(colorset));
 }
 
-void initCS()
+void RPG::TEXTURES::initCS()
 {
 	init_pair(DEFAULT_CS, COLOR_BLACK, COLOR_BLACK);
 	init_pair(FLOOR_CS, COLOR_WHITE, COLOR_WHITE);
 	init_pair(WALL_CS, COLOR_BLACK, COLOR_BLACK);
 	init_pair(HERO_CS, COLOR_RED, COLOR_WHITE);
-
 }
-

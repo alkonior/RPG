@@ -33,9 +33,6 @@
     <ClInclude Include="Game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\curses.h">
-      <Filter>Исходные файлы\Coliders</Filter>
-    </ClInclude>
     <ClInclude Include="GUI.h">
       <Filter>Файлы заголовков\GUI</Filter>
     </ClInclude>
@@ -50,6 +47,27 @@
     </ClInclude>
     <ClInclude Include="Textures.h">
       <Filter>Файлы заголовков\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\curses.h">
+      <Filter>Исходные файлы\Coliders</Filter>
+    </ClInclude>
+    <ClInclude Include="include\panel.h">
+      <Filter>Исходные файлы\Coliders</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPanel.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BarPanel.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldPanel.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldViewConstructor.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MainInfoPanel.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,5 +95,26 @@
     <ClCompile Include="Model.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="InfoPanel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldPanel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="BarPanel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldViewConstructor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MainInfoPanel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\CodeMap1.dgml">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

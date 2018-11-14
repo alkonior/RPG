@@ -1,8 +1,11 @@
 #include "pch.h"
 #include "Game.h"
 
+using namespace RPG;
+using namespace ENGINE;
+using namespace GUINSP;
 
-Game::Game(size_t seed):Engine(seed),Gui(Engine),Controler(Gui, Engine)
+Game::Game(size_t seed):Engine(seed), Gui(Engine), Controler(Gui, Engine)
 {
 	initscr();
 	start_color();

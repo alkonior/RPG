@@ -2,6 +2,7 @@
 #include "Model.h"
 #include "GUI.h"
 #include "Controler.h"
+namespace RPG{
 
 class Game
 {
@@ -15,3 +16,4 @@ public:
 	~Game();
 };
 
+}

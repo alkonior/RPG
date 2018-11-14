@@ -1,7 +1,16 @@
 #include "pch.h"
 #include "GUI.h"
+using namespace RPG;
+using namespace GUINSP;
+using namespace ENGINE;
+using TEXTURES::initCS;
 
-GUI::GUI(Model& E):Engine(E),shift(BaseShiftX,BaseShiftY){}
+GUI::GUI(Model& E):
+	DataSource(E),
+	shift(BaseShiftX,BaseShiftY), 
+	WP(DataSource),
+	MIP(DataSource),
+	BP(DataSource){}
 
 void GUI::init(size_t w, size_t h)
 {
@@ -18,14 +27,6 @@ bool GUI::Comand(size_t)
 void GUI::Draw()
 {
 	
-	vector<vector<const Texture*>> in = Engine.GetWorld(shift,Point(_w,_h));
-	for (size_t i = 0; i < 20; i++)
-	{
-		for (size_t j = 0; j < 20; j++)
-		{
-			in[i][j]->Draw(Point(j, i));
-		}
-	}
 }
 
 GUI::~GUI()

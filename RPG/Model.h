@@ -4,6 +4,9 @@
 #include <stack>
 #include <memory>
 
+namespace RPG{
+namespace ENGINE {
+
 using std::vector;
 using std::shared_ptr;
 using std::make_shared;
@@ -15,12 +18,16 @@ class Model
 	size_t h;
 	size_t w;
 	size_t i = 0;
-	vector<vector<shared_ptr<IEntity>>> World;
-	shared_ptr <Hero> hero;
+	vector<vector<shared_ptr<RPG::Entities::IEntity>>> World;
+	shared_ptr <RPG::Entities::Hero> hero;
 public:
 	Model(size_t);
 	void Comand(int);
-	vector<vector<const Texture*>> GetWorld(Point,Point);
 	~Model();
+
+
+	friend WorldViewConstructor;
 };
 
+}//ENGINE
+}//RPG

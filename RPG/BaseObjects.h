@@ -1,6 +1,14 @@
 #pragma once
 #include "Textures.h"
 
+namespace RPG{
+namespace ENGINE {
+class WorldViewConstructor;
+}// Kostil
+namespace Entities {
+
+using TEXTURES::Texture;
+using TEXTURES::Point;
 
 class IEntity;
 class IPerson;
@@ -50,7 +58,7 @@ class IEntity
 	void virtual _colide(Apteca*) = 0;
 	*/
 public:
-	explicit IEntity(Point,const Texture*);
+	explicit IEntity(Point, const Texture*);
 	const Texture* getTexture();
 	/*void colide(I_Entity* in)
 	{
@@ -144,7 +152,7 @@ class Dragon :public Monster
 	//void _colide(Apteca*);
 };
 
-class Princess :public IEntity
+class Princess : public IPerson
 {
 	/*void _colide(I_Entity& in) override;
 	void _colide(Hero&) override;
@@ -199,4 +207,5 @@ class Apteca :public INotPerson
 	void _colide(Princess&) override;
 	void _colide(Wall&) override;*/
 };
-
+}//namespase Entities
+}//namespace RPG
