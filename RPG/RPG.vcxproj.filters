@@ -112,9 +112,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\CodeMap1.dgml">
+    <None Include="..\CodeMap.dgml">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

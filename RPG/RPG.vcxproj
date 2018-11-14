@@ -194,8 +194,7 @@
     <ClCompile Include="WorldViewConstructor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\CodeMap1.dgml" />
-    <None Include="ClassDiagram.cd" />
+    <None Include="..\CodeMap.dgml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
