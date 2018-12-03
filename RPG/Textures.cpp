@@ -36,6 +36,11 @@ void Texture::Draw(Point in, WINDOW* W) const
 	wattroff(W,COLOR_PAIR(colorset));
 }
 
+Point RPG::TEXTURES::operator+(const Point& l_in, Point r_in)
+{
+	return Point(l_in.x + r_in.x, l_in.y + r_in.y);
+}
+
 void RPG::TEXTURES::initCS()
 {
 	init_pair(DEFAULT_CS, COLOR_RED, COLOR_RED);

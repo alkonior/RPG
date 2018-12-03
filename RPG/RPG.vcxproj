@@ -75,6 +75,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Алексей\source\repos\RPG\RPG\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Алексей\source\repos\RPG\RPG\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -113,10 +115,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -170,6 +174,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="WorldControler.h" />
     <ClInclude Include="WorldPanel.h" />
     <ClInclude Include="WorldViewConstructor.h" />
   </ItemGroup>
@@ -190,6 +195,8 @@
     </ClCompile>
     <ClCompile Include="RPG.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="WCComandsList.cpp" />
+    <ClCompile Include="WorldControler.cpp" />
     <ClCompile Include="WorldPanel.cpp" />
     <ClCompile Include="WorldViewConstructor.cpp" />
   </ItemGroup>

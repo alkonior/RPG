@@ -25,6 +25,9 @@
     <Filter Include="Файлы заголовков\Engine">
       <UniqueIdentifier>{4feabdce-b750-49ba-a2f9-ac6c3758ab1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Controler">
+      <UniqueIdentifier>{f31509b3-a655-4eb5-8967-2591bfeda4e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -34,9 +37,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="GUI.h">
-      <Filter>Файлы заголовков\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Controler.h">
       <Filter>Файлы заголовков\GUI</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
@@ -69,46 +69,58 @@
     <ClInclude Include="MainInfoPanel.h">
       <Filter>Файлы заголовков\GUI</Filter>
     </ClInclude>
+    <ClInclude Include="Controler.h">
+      <Filter>Файлы заголовков\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldControler.h">
+      <Filter>Файлы заголовков\Controler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="RPG.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="BarPanel.cpp">
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="BaseObjects.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="Controler.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="Textures.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Game.cpp">
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="InfoPanel.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldPanel.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="BarPanel.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldViewConstructor.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="MainInfoPanel.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="RPG.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="WCComandsList.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldControler.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldPanel.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldViewConstructor.cpp">
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

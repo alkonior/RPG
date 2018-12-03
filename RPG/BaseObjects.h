@@ -2,9 +2,7 @@
 #include "Textures.h"
 
 namespace RPG{
-namespace ENGINE {
-class WorldViewConstructor;
-}// Kostil/// Ultra kostil
+
 namespace Entities {
 
 using TEXTURES::Texture;

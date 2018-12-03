@@ -6,10 +6,6 @@ using namespace ENGINE;
 using namespace Entities;
 
 
-bool RPG::ENGINE::Model::existPoint(const Point& in) const
-{
-	return in.x<w && in.y<h;
-}
 
 Model::Model(size_t seed)
 {
@@ -21,8 +17,8 @@ Model::Model(size_t seed)
 		w = 20;
 		h = 20;
 		World.resize(h, vector<shared_ptr<IEntity>>(w, shared_ptr<IEntity>()));
-		hero = make_shared<Hero>(Point(1,1));
-		World[1][1] = hero;
+		hero = make_shared<Hero>(Point(1,5));
+		World[1][5] = hero;
 
 	}
 	default:

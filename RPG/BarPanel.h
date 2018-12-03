@@ -2,13 +2,13 @@
 #include "WorldViewConstructor.h"
 namespace RPG {
 namespace GUINSP {
-using ENGINE::WWC;
+using ENGINE::WVC;
 
 class BarPanel
 {
-	const WWC& Data;
+	const WVC& Data;
 public:
-	BarPanel(WWC&);
+	BarPanel(WVC&);
 	void Draw();
 };
 

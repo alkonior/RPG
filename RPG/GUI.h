@@ -7,24 +7,40 @@
 #include <stack>
 #include "WorldViewConstructor.h"
 
+
+
+#ifndef BaseLeftShiftX
+#define BaseLeftShiftX 2
+#endif // !BaseLeftShiftX
+
+#ifndef BaseUpShiftY
+#define BaseUpShiftY 1
+#endif // !BaseUpShiftY
+
+#ifndef BaseRightShiftX 
+#define BaseRightShiftX  15
+#endif // !BaseRightShiftX 
+
+#ifndef BaseDownShiftY
+#define BaseDownShiftY 7
+#endif // !BaseDownShiftY
+
 namespace RPG{
 namespace GUINSP{
 using ENGINE::Model;
-using std::stack;
+using std::vector;
 using std::shared_ptr;
 using TEXTURES::Texture;
 using TEXTURES::Point;
 
-#define BaseShiftX 0
-#define BaseShiftY 0
-
 class GUI
 {
-	Point shift;
+	Point _lu_shift;
+	Point _rd_shift;
 	size_t _w;
 	size_t _h;
-	WWC DataSource;
-	stack<shared_ptr<InfoPanel>> PanelsStack;
+	WVC DataSource;
+	vector<shared_ptr<InfoPanel>> PanelsStack;
 	WorldPanel WP;
 	MainInfoPanel MIP;
 	BarPanel BP;

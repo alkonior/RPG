@@ -1,22 +1,24 @@
 #pragma once
 #include"GUI.h"
 #include"WorldViewConstructor.h"
+#include"WorldControler.h"
 
 namespace RPG {
 using GUINSP::GUI;
 using ENGINE::Model;
-using ENGINE::WorldViewConstructor;
+using ENGINE::WorldControler;
 
-class CONTROLER
+class Controler
 {
 	
 	GUI& Gui;
 	Model& Engine;
+	WorldControler WC;
 
 public:
-	CONTROLER(GUI&, Model&);
+	Controler(GUI&, Model&);
 	void Send(size_t);
-	~CONTROLER();
+	~Controler();
 };
 
 } //RPG

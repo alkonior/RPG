@@ -4,16 +4,20 @@ using namespace RPG;
 using namespace GUINSP;
 using namespace ENGINE;
 
-CONTROLER::CONTROLER(GUI& G, Model& E) :Gui(G), Engine(E){}
+Controler::Controler(GUI& G, Model& E):
+	Gui(G),
+	Engine(E),
+	WC(Engine)
+{}
 
-void CONTROLER::Send(size_t in)
+void Controler::Send(size_t in)
 {
 	if (!Gui.Comand(in))
 	{
-		Engine.Comand(in);
+		WC.GetComand(in);
 	}
 }
 
-CONTROLER::~CONTROLER()
+Controler::~Controler()
 {
 }

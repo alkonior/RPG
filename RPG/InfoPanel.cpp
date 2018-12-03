@@ -2,7 +2,7 @@
 #include "InfoPanel.h"
 
 
-RPG::GUINSP::InfoPanel::InfoPanel(WWC& W):Data(W){}
+RPG::GUINSP::InfoPanel::InfoPanel(WVC& W):Data(W){}
 
 void RPG::GUINSP::InfoPanel::Draw()
 {

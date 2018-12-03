@@ -9,7 +9,7 @@ class Game
 {
 	Model Engine;
 	GUI Gui;
-	CONTROLER Controler;
+	Controler Controler;
 public:
 	Game(size_t);
 	void start();

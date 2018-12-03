@@ -3,13 +3,13 @@
 
 namespace RPG {
 namespace GUINSP {
-using ENGINE::WWC;
+using ENGINE::WVC;
 
 class InfoPanel
 {
-	const WWC& Data;
+	const WVC& Data;
 public:
-	InfoPanel(WWC&);
+	InfoPanel(WVC&);
 	void Draw();
 };
 }//GUINSP

@@ -12,7 +12,9 @@ Game::Game(size_t seed):Engine(seed), Gui(Engine), Controler(Gui, Engine)
 	keypad(stdscr, TRUE);
 	noecho();
 	curs_set(0);
-	Gui.init(stdscr->_maxx, stdscr->_maxy);
+	int my= LINES, mx= COLS;
+
+	Gui.init(mx, my);
 }
 
 void Game::start()
@@ -22,7 +24,7 @@ void Game::start()
 
 void Game::loop()
 {
-
+	Gui.Draw();
 	while (true)
 	{
 		size_t ch = getch();
@@ -37,7 +39,6 @@ void Game::loop()
 			break;
 		}
 	}
-
 }
 
 Game::~Game()

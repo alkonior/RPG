@@ -3,17 +3,17 @@
 
 namespace RPG {
 namespace GUINSP {
-using ENGINE::WWC;
+using ENGINE::WVC;
 using TEXTURES::Point;
 
 class WorldPanel
 {
-	const WWC& Data;
+	const WVC& Data;
 	WINDOW* Window;
 	PANEL* Panel;
 	size_t w, h;
 public:
-	WorldPanel(WWC&);
+	WorldPanel(WVC&);
 	void init(Point, Point);
 	void Draw();
 	~WorldPanel();

@@ -19,6 +19,7 @@ public:
 	Point(const Point&) = default;
 	Point operator-() const;
 	Point operator+(const Point&);
+	friend Point operator+(const Point&, Point);
 	Point operator-(const Point&);
 };
 

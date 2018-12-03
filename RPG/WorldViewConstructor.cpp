@@ -4,7 +4,15 @@ using namespace RPG;
 using namespace TEXTURES;
 using std::vector;
 
-RPG::ENGINE::WorldViewConstructor::WorldViewConstructor(Model& E):Engine(E){}
+bool RPG::ENGINE::WorldViewConstructor::existPoint(const Point in) const
+{
+	return in.x < Engine.w && in.y < Engine.h;;
+}
+
+RPG::ENGINE::WorldViewConstructor::WorldViewConstructor(Model& E):Engine(E)
+{
+
+}
 
 vector<vector<const Texture*>> RPG::ENGINE::WorldViewConstructor::GetWorldInfo(size_t w, size_t h) const
 {
@@ -13,7 +21,7 @@ vector<vector<const Texture*>> RPG::ENGINE::WorldViewConstructor::GetWorldInfo(s
 	{
 		for (size_t j = 0; j < w; j++)
 		{
-			if (Engine.existPoint(Point(worldShift) + Point(j, i)))
+			if (existPoint(worldShift + Point(j, i)))
 			{
 				out[i][j] =//≈сли не nullptr то вернуть текстуру иначе пол
 					Engine.World[i + worldShift.y][j + worldShift.x]
