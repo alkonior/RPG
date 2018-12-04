@@ -163,6 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BarPanel.h" />
+    <ClInclude Include="BaseControler.h" />
     <ClInclude Include="BaseObjects.h" />
     <ClInclude Include="Controler.h" />
     <ClInclude Include="Game.h" />
@@ -174,12 +175,14 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="WCComandslist.h" />
     <ClInclude Include="WorldControler.h" />
     <ClInclude Include="WorldPanel.h" />
     <ClInclude Include="WorldViewConstructor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BarPanel.cpp" />
+    <ClCompile Include="BaseControler.cpp" />
     <ClCompile Include="BaseObjects.cpp" />
     <ClCompile Include="Controler.cpp" />
     <ClCompile Include="Game.cpp" />

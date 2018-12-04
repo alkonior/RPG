@@ -75,6 +75,12 @@
     <ClInclude Include="WorldControler.h">
       <Filter>Файлы заголовков\Controler</Filter>
     </ClInclude>
+    <ClInclude Include="BaseControler.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="WCComandslist.h">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BarPanel.cpp">
@@ -121,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="WorldViewConstructor.cpp">
       <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseControler.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

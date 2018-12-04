@@ -3,7 +3,7 @@
 
 using namespace RPG;
 using namespace ENGINE;
-using WCCOMANDS::IComand;
+using BASECNTROLER::IComand;
 using WCCOMANDS::CForward;
 using std::vector;
 
@@ -35,11 +35,6 @@ void RPG::ENGINE::WorldControler::executeAll()
 	{
 		(*i)->accept(*this);
 	}
-}
-
-void CForward::accept(WorldControler& WC)
-{
-	WC.execute<CForward>();
 }
 
 

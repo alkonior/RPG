@@ -1,7 +1,5 @@
 #pragma once
 #include "BaseObjects.h"
-#include <stack>
-#include <memory>
 
 namespace RPG{
 namespace ENGINE{

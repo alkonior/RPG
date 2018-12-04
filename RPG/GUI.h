@@ -4,7 +4,6 @@
 #include "MainInfoPanel.h"
 #include "BarPanel.h"
 #include "WorldPanel.h"
-#include <stack>
 #include "WorldViewConstructor.h"
 
 
