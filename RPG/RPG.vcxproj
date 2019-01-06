@@ -162,12 +162,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AIList.h" />
     <ClInclude Include="BarPanel.h" />
+    <ClInclude Include="IBaseAI.h" />
     <ClInclude Include="BaseControler.h" />
     <ClInclude Include="BaseObjects.h" />
     <ClInclude Include="Controler.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
+    <ClInclude Include="HeroAI.h" />
     <ClInclude Include="include\curses.h" />
     <ClInclude Include="include\json.hpp" />
     <ClInclude Include="include\panel.h" />
@@ -184,11 +187,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BarPanel.cpp" />
+    <ClCompile Include="IBaseAI.cpp" />
     <ClCompile Include="BaseObjects.cpp" />
     <ClCompile Include="Controler.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="HeroAI.cpp" />
     <ClCompile Include="InfoPanel.cpp" />
     <ClCompile Include="MainInfoPanel.cpp" />
     <ClCompile Include="Map.cpp" />

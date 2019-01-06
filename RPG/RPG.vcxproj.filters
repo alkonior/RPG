@@ -31,6 +31,9 @@
     <Filter Include="Файлы ресурсов\Entyties">
       <UniqueIdentifier>{f3f91257-c9ef-4d09-a85e-59a55f32735c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Engine\AI">
+      <UniqueIdentifier>{96aadcde-8f2e-4820-9e10-18ceb7489f77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -90,6 +93,15 @@
     <ClInclude Include="Map.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="HeroAI.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseAI.h">
+      <Filter>Файлы заголовков\Engine\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AIList.h">
+      <Filter>Файлы заголовков\Engine\AI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BarPanel.cpp">
@@ -137,14 +149,20 @@
     <ClCompile Include="WorldViewConstructor.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Hero.cpp">
       <Filter>Файлы ресурсов\Entyties</Filter>
     </ClCompile>
     <ClCompile Include="Wall.cpp">
       <Filter>Файлы ресурсов\Entyties</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="HeroAI.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseAI.cpp">
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

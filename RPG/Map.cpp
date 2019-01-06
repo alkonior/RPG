@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Map.h"
 using namespace RPG::ENGINE;
-using namespace RPG::Entities;
+using namespace RPG::ENTITIES;
 Map::Map(size_t seed):_seed(seed),h(0),w(0) {}
 
 void RPG::ENGINE::Map::Init()

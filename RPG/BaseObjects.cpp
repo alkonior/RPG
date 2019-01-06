@@ -2,8 +2,9 @@
 #include "BaseObjects.h"
 using namespace RPG;
 using namespace TEXTURES;
-using namespace Entities;
+using namespace ENTITIES;
 
+shared_ptr<ENGINE::AI::IBaseAI> IEntity::AI;
 
 IEntity::IEntity(Point p, const Texture& t):_cord(p),_t(t)
 {

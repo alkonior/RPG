@@ -13,8 +13,8 @@ public:
 	size_t h;
 	size_t w;
 	Map(size_t);
-	vector<vector<shared_ptr<RPG::Entities::IEntity>>> World;
-	shared_ptr<RPG::Entities::Hero> hero;
+	vector<vector<shared_ptr<RPG::ENTITIES::IEntity>>> World;
+	shared_ptr<RPG::ENTITIES::Hero> hero;
 
 	void Init();
 	~Map();

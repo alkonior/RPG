@@ -2,7 +2,7 @@
 #include "BaseObjects.h"
 using namespace RPG;
 using namespace TEXTURES;
-using namespace Entities;
+using namespace ENTITIES;
 
 /*
 class Hero:public IPerson
@@ -44,13 +44,19 @@ size_t Hero::_startHp = 0;
 
 Hero::Hero(Point p):IPerson(p, TEXTURES_ARAAY::T_Hero)
 {
+	_hp = _startHp;
+	_mana = _startMana;
+	_dmg = _startDmg;
+	_speed = _startSpeed;
+	_armor = _startArmor;
 }
 
-void Hero::Init(json& description) {
-	
+void Hero::Init(json& description, shared_ptr<IBaseAI> ai) {
+
 	Hero::_startArmor = description["startArmor"];
 	Hero::_startMana = description["startMana"];
 	Hero::_startDmg = description["startDmg"];
 	Hero::_startSpeed = description["startSpeed"];
 	Hero::_startHp = description["startHp"];
+	AI = ai;
 }

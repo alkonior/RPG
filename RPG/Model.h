@@ -1,6 +1,8 @@
 #pragma once
 #include "pch.h"
 #include "BaseObjects.h"
+#include "IBaseAI.h"
+#include "AIList.h"
 #include "Map.h"
 
 namespace RPG {
@@ -10,15 +12,14 @@ namespace ENGINE {
 class WorldViewConstructor;
 class WorldControler;
 
+using AI::IBaseAI;
 
 class Model
 {
 	size_t i = 0;
 	Map World;
-
 public:
 	Model(json&);
-	void Comand(int);
 	~Model();
 	friend WorldViewConstructor;
 	friend WorldControler;

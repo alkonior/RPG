@@ -3,8 +3,13 @@
 #include <typeinfo>
 #include "WCComandslist.h"
 using namespace RPG::ENGINE::BASECNTROLER;
-
-void RPG::ENGINE::WCCOMANDS::CForward::accept(BaseControler& BC)
+using namespace RPG::ENGINE::WCCOMANDS;
+void CForward::accept(BaseControler& BC)
 {
 	(dynamic_cast<WorldControler&>(BC)).execute<CForward>();
+}
+
+void MoveMeUp::accept(BaseControler& BC)
+{
+	(dynamic_cast<WorldControler&>(BC)).execute<MoveMeUp>();
 }

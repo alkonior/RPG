@@ -2,7 +2,7 @@
 #include "BaseObjects.h"
 using namespace RPG;
 using namespace TEXTURES;
-using namespace Entities;
+using namespace ENTITIES;
 
 
 Wall::Wall(Point p):INotPerson(p, TEXTURES_ARAAY::T_Wall)

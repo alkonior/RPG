@@ -13,6 +13,14 @@ public:
 	CForward() = default;
 	void accept(BaseControler&) override;
 };
+
+class MoveMeUp:public IComand
+{
+public:
+	MoveMeUp() = default;
+	void accept(BaseControler&) override;
+};
+
 }
 }
 }

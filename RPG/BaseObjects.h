@@ -1,10 +1,11 @@
 #pragma once
 #include "Textures.h"
+#include "IBaseAI.h"
 #include <exception>
 
 namespace RPG {
 
-namespace Entities {
+namespace ENTITIES {
 
 
 class IEntity;
@@ -28,11 +29,13 @@ class FireBall;
 class Arrow;
 class Apteca;
 
-
+using ENGINE::AI::IBaseAI;
 
 
 class IEntity
 {
+protected:
+	static shared_ptr<IBaseAI> AI;
 	size_t _hp;
 	const Texture& _t;
 	Point _cord;
@@ -62,14 +65,21 @@ public:
 		if (in != nullptr)
 			in->_colide(this);
 	};*/
-	static void Init(json&)
+	static void Init(json&, shared_ptr<IBaseAI>)
 	{
 		throw new std::exception("Not inited class");
 	};
+
+	static shared_ptr<IBaseAI> getAI()
+	{
+		return AI;
+	};
+
 };
 
 class IPerson: public IEntity
 {
+protected:
 	//size_t _hp;
 	size_t _mana;
 	size_t _dmg;
@@ -119,7 +129,7 @@ public:
 	void _colide(FireBall*) override;
 	void _colide(Apteca*) override;
 	*/
-	static void Init(json&);
+	static void Init(json&, shared_ptr<IBaseAI>);
 };
 
 class Monster:public IEntity

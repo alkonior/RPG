@@ -3,20 +3,17 @@
 
 using namespace RPG;
 using namespace ENGINE;
-using namespace Entities;
+using namespace ENTITIES;
+using namespace AI;
 
 
 
 Model::Model(json& config):World((size_t)config["seed"]) 
 {
-
-    Hero::Init(config["hero"]);
+    Hero::Init(config["hero"],make_shared<HeroAI>());
 	World.Init();
 }
 
-void Model::Comand(int in)
-{
-}
 
 Model::~Model()
 {
