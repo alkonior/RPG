@@ -27,10 +27,6 @@
 namespace RPG{
 namespace GUINSP{
 using ENGINE::Model;
-using std::vector;
-using std::shared_ptr;
-using TEXTURES::Texture;
-using TEXTURES::Point;
 
 class GUI
 {

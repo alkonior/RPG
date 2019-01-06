@@ -1,0 +1,10 @@
+{
+  "seed": 1,
+  "hero": {
+    "startHp": 50,
+    "startMana": 10,
+    "startDmg": 10,
+    "startSpeed": 3,
+    "startArmor": 5
+  }
+}

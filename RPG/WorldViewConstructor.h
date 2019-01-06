@@ -1,19 +1,15 @@
 #pragma once
 #include "Model.h"
+#include "Map.h"
 
-//#define WVC WorldViewConstructor
 
 namespace RPG{
 namespace ENGINE{
 
-using TEXTURES::Texture;
-using TEXTURES::Point;
-using std::vector;
-
 
 class WorldViewConstructor
 {
-	const Model& Engine;
+	const Map& World;
 	Point worldShift;
     bool existPoint(const Point) const;
 	public:

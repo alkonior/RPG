@@ -1,5 +1,7 @@
 #pragma once
+#include "pch.h"
 #include "Model.h"
+#include "Map.h"
 #include "BaseControler.h"
 #include "WCComandslist.h"
 #include <iostream>
@@ -7,20 +9,16 @@
 
 namespace RPG{
 namespace ENGINE{
-using TEXTURES::Texture;
 using BASECNTROLER::BaseControler;
-using TEXTURES::Point;
-using std::vector;
-using std::shared_ptr;
 
 class WorldControler:public BaseControler
 {
-	Model& Engine;
+	Map& World;
 	vector<shared_ptr<BASECNTROLER::IComand>> ComandList;
 	void executeAll();
 public:
 	WorldControler(Model&);
-	void GetComand(char);
+	void GetComand(size_t);
 	template<class T>
 	void execute();
 	void _execute()override

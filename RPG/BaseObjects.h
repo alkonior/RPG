@@ -1,12 +1,11 @@
 #pragma once
 #include "Textures.h"
+#include <exception>
 
-namespace RPG{
+namespace RPG {
 
 namespace Entities {
 
-using TEXTURES::Texture;
-using TEXTURES::Point;
 
 class IEntity;
 class IPerson;
@@ -35,7 +34,7 @@ class Apteca;
 class IEntity
 {
 	size_t _hp;
-	const Texture* _t;
+	const Texture& _t;
 	Point _cord;
 	//void virtual move() = 0;
 
@@ -56,16 +55,20 @@ class IEntity
 	void virtual _colide(Apteca*) = 0;
 	*/
 public:
-	explicit IEntity(Point, const Texture*);
-	const Texture* getTexture();
+	IEntity(Point, const Texture&);
+	const Texture& getTexture();
 	/*void colide(I_Entity* in)
 	{
 		if (in != nullptr)
 			in->_colide(this);
 	};*/
+	static void Init(json&)
+	{
+		throw new std::exception("Not inited class");
+	};
 };
 
-class IPerson : public IEntity
+class IPerson: public IEntity
 {
 	//size_t _hp;
 	size_t _mana;
@@ -74,10 +77,10 @@ class IPerson : public IEntity
 	size_t _armor;
 	//Point _cord;
 public:
-	IPerson(Point, const Texture*);
+	IPerson(Point, const Texture&);
 };
 
-class INotPerson :public IEntity
+class INotPerson:public IEntity
 {
 	//size_t _hp;
 	//Point _cord;
@@ -85,18 +88,27 @@ class INotPerson :public IEntity
 	size_t speed;
 	size_t direction;
 public:
-	INotPerson(Point, const Texture*);
+	INotPerson(Point, const Texture&);
 };
 
 
-class Hero :public IPerson
+class Hero:public IPerson
 {
-
+  //size_t _hp;
+  //size_t _mana;
+  //size_t _dmg;
+  //size_t _speed;
+  //size_t _armor;
+  //Point _cord;
+	static size_t _startHp;
+	static size_t _startMana;
+	static size_t _startDmg;
+	static size_t _startSpeed;
+	static size_t _startArmor;
 public:
 	Hero(Point);
 	/*
 	void _colide(I_Entity* in) override;
-
 	void _colide(Monster*) override;
 
 	void _colide(Hero*) override {};
@@ -105,18 +117,19 @@ public:
 
 	void _colide(Wall*) override {};
 	void _colide(FireBall*) override;
-	void _colide(Arrow*) override;
-	void _colide(Apteca*) override;*/
+	void _colide(Apteca*) override;
+	*/
+	static void Init(json&);
 };
 
-class Monster :public IEntity
+class Monster:public IEntity
 {
 	//void _colide(I_Entity* in) override;
 
 	//void _colide(Monster*) override {};
 };
 
-class Zombie :public Monster
+class Zombie:public Monster
 {
 	//void _colide(I_Entity* in) override;
 
@@ -130,7 +143,7 @@ class Zombie :public Monster
 	//void _colide(Apteca*);
 };
 
-class Dragon :public Monster
+class Dragon:public Monster
 {
 	//void _colide(I_Entity* in) override;
 
@@ -150,7 +163,7 @@ class Dragon :public Monster
 	//void _colide(Apteca*);
 };
 
-class Princess : public IPerson
+class Princess: public IPerson
 {
 	/*void _colide(I_Entity& in) override;
 	void _colide(Hero&) override;
@@ -161,7 +174,7 @@ class Princess : public IPerson
 	void _colide(Wall&) override;*/
 };
 
-class Wall :public INotPerson
+class Wall:public INotPerson
 {
 	Wall(Point);
 	/*void _colide(I_Entity& in) override;
@@ -173,7 +186,7 @@ class Wall :public INotPerson
 	void _colide(Wall&) override;*/
 };
 
-class FireBall :public INotPerson
+class FireBall:public INotPerson
 {
 	/*void _colide(I_Entity& in) override;
 	void _colide(Hero&) override;
@@ -184,7 +197,7 @@ class FireBall :public INotPerson
 	void _colide(Wall&) override;*/
 };
 
-class Arrow :public INotPerson
+class Arrow:public INotPerson
 {
 	/*void _colide(I_Entity& in) override;
 	void _colide(Hero&) override;
@@ -195,7 +208,7 @@ class Arrow :public INotPerson
 	void _colide(Wall&) override;*/
 };
 
-class Apteca :public INotPerson
+class Apteca:public INotPerson
 {
 	/*void _colide(I_Entity& in) override;
 	void _colide(Hero&) override;

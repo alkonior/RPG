@@ -7,23 +7,11 @@ using namespace Entities;
 
 
 
-Model::Model(size_t seed)
+Model::Model(json& config):World((size_t)config["seed"]) 
 {
-	switch (seed)
-	{
-	case 1:
-	{ 
-		/// Тут типа нужно замутить генератор карты
-		w = 20;
-		h = 20;
-		World.resize(h, vector<shared_ptr<IEntity>>(w, shared_ptr<IEntity>()));
-		hero = make_shared<Hero>(Point(1,5));
-		World[1][5] = hero;
 
-	}
-	default:
-		break;
-	}
+    Hero::Init(config["hero"]);
+	World.Init();
 }
 
 void Model::Comand(int in)

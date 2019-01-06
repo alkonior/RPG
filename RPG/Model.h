@@ -1,29 +1,23 @@
 #pragma once
+#include "pch.h"
 #include "BaseObjects.h"
+#include "Map.h"
 
-namespace RPG{
-namespace ENGINE{
-using TEXTURES::Point;
-using std::vector;
-using std::shared_ptr;
-using std::make_shared;
-using std::stack;
-using std::pair;
+namespace RPG {
+namespace ENGINE {
 
 //Sub Classes
 class WorldViewConstructor;
 class WorldControler;
-//
+
 
 class Model
 {
-	size_t h;
-	size_t w;
 	size_t i = 0;
-	vector<vector<shared_ptr<RPG::Entities::IEntity>>> World;
-	shared_ptr <RPG::Entities::Hero> hero;
+	Map World;
+
 public:
-	Model(size_t);
+	Model(json&);
 	void Comand(int);
 	~Model();
 	friend WorldViewConstructor;

@@ -6,10 +6,10 @@ using std::vector;
 
 bool RPG::ENGINE::WorldViewConstructor::existPoint(const Point in) const
 {
-	return in.x < Engine.w && in.y < Engine.h;;
+	return in.x < World.w && in.y <World.h;;
 }
 
-RPG::ENGINE::WorldViewConstructor::WorldViewConstructor(Model& E):Engine(E)
+RPG::ENGINE::WorldViewConstructor::WorldViewConstructor(Model& E):World(E.World)
 {
 
 }
@@ -24,8 +24,8 @@ vector<vector<const Texture*>> RPG::ENGINE::WorldViewConstructor::GetWorldInfo(s
 			if (existPoint(worldShift + Point(j, i)))
 			{
 				out[i][j] =//≈сли не nullptr то вернуть текстуру иначе пол
-					Engine.World[i + worldShift.y][j + worldShift.x]
-					? Engine.World[i + worldShift.y][j + worldShift.x]->getTexture()
+					World.World[i + worldShift.y][j + worldShift.x]
+					? &World.World[i + worldShift.y][j + worldShift.x]->getTexture()
 					: &TEXTURES_ARAAY::T_Floor;
 			}
 			else

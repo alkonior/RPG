@@ -1,5 +1,4 @@
 #pragma once
-#include "curses.h"
 
 namespace RPG{
 namespace TEXTURES{

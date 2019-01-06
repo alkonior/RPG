@@ -169,9 +169,11 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="include\curses.h" />
+    <ClInclude Include="include\json.hpp" />
     <ClInclude Include="include\panel.h" />
     <ClInclude Include="InfoPanel.h" />
     <ClInclude Include="MainInfoPanel.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Textures.h" />
@@ -182,13 +184,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BarPanel.cpp" />
-    <ClCompile Include="BaseControler.cpp" />
     <ClCompile Include="BaseObjects.cpp" />
     <ClCompile Include="Controler.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="Hero.cpp" />
     <ClCompile Include="InfoPanel.cpp" />
     <ClCompile Include="MainInfoPanel.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -198,6 +201,7 @@
     </ClCompile>
     <ClCompile Include="RPG.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WCComandsList.cpp" />
     <ClCompile Include="WorldControler.cpp" />
     <ClCompile Include="WorldPanel.cpp" />
@@ -205,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\CodeMap.dgml" />
+    <None Include="config.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

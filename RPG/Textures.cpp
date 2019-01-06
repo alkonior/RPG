@@ -1,7 +1,5 @@
 #include "pch.h"
-#include "Textures.h"
-#include "curses.h"
-#include "LIMITS.H"
+
 using namespace RPG;
 using namespace TEXTURES;
 

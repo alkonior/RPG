@@ -3,7 +3,10 @@
 #include "GUI.h"
 #include "Controler.h"
 
-namespace RPG{
+namespace RPG {
+
+
+
 
 class Game
 {
@@ -11,7 +14,7 @@ class Game
 	GUI Gui;
 	Controler Controler;
 public:
-	Game(size_t);
+	Game(json&);
 	void start();
 	void loop();
 	~Game();

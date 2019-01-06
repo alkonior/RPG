@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Исходные файлы\Coliders">
-      <UniqueIdentifier>{5a2d6669-3f4e-4308-84af-5e4d5a87b663}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\GUI">
       <UniqueIdentifier>{2ce6fc86-6e3f-428e-bdc9-236e3ff0d68c}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,12 @@
     </Filter>
     <Filter Include="Файлы заголовков\Controler">
       <UniqueIdentifier>{f31509b3-a655-4eb5-8967-2591bfeda4e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Coliders">
+      <UniqueIdentifier>{5a2d6669-3f4e-4308-84af-5e4d5a87b663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\Entyties">
+      <UniqueIdentifier>{f3f91257-c9ef-4d09-a85e-59a55f32735c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,12 +50,6 @@
     </ClInclude>
     <ClInclude Include="Textures.h">
       <Filter>Файлы заголовков\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="include\curses.h">
-      <Filter>Исходные файлы\Coliders</Filter>
-    </ClInclude>
-    <ClInclude Include="include\panel.h">
-      <Filter>Исходные файлы\Coliders</Filter>
     </ClInclude>
     <ClInclude Include="InfoPanel.h">
       <Filter>Файлы заголовков\GUI</Filter>
@@ -79,7 +76,19 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="WCComandslist.h">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Файлы заголовков\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\panel.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="include\curses.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="include\json.hpp">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,13 +137,22 @@
     <ClCompile Include="WorldViewConstructor.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="BaseControler.cpp">
+    <ClCompile Include="Map.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero.cpp">
+      <Filter>Файлы ресурсов\Entyties</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Файлы ресурсов\Entyties</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\CodeMap.dgml">
       <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="config.json">
+      <Filter>Исходные файлы</Filter>
     </None>
   </ItemGroup>
 </Project>

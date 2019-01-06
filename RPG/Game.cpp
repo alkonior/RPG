@@ -5,7 +5,7 @@ using namespace RPG;
 using namespace ENGINE;
 using namespace GUINSP;
 
-Game::Game(size_t seed):Engine(seed), Gui(Engine), Controler(Gui, Engine)
+Game::Game(json& config):Engine(config), Gui(Engine), Controler(Gui, Engine)
 {
 	initscr();
 	start_color();
@@ -13,7 +13,6 @@ Game::Game(size_t seed):Engine(seed), Gui(Engine), Controler(Gui, Engine)
 	noecho();
 	curs_set(0);
 	int my= LINES, mx= COLS;
-
 	Gui.init(mx, my);
 }
 

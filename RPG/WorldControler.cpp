@@ -20,9 +20,9 @@ void WorldControler::execute<CForward>()
 }
 
 RPG::ENGINE::WorldControler::WorldControler(Model& E):
-	Engine(E){}
+	World(E.World){}
 
-void RPG::ENGINE::WorldControler::GetComand(char)
+void RPG::ENGINE::WorldControler::GetComand(size_t)
 {
 	ComandList.resize(ComandList.size()+1);
 	ComandList.back() = make_shared<CForward>();

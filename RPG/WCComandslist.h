@@ -13,7 +13,6 @@ public:
 	CForward() = default;
 	void accept(BaseControler&) override;
 };
-
 }
 }
 }
