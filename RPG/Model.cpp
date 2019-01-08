@@ -10,7 +10,8 @@ using namespace AI;
 
 Model::Model(json& config):World((size_t)config["seed"]) 
 {
-    Hero::Init(config["hero"],make_shared<HeroAI>());
+    Hero::Init(config["hero"]);
+	Zombie::Init(config["zombie"]);
 	World.Init();
 }
 

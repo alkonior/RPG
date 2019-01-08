@@ -1,5 +1,4 @@
 #pragma once
-#include "Model.h"
 #include "InfoPanel.h"
 #include "MainInfoPanel.h"
 #include "BarPanel.h"

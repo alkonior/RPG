@@ -14,8 +14,9 @@ public:
 	size_t w;
 	Map(size_t);
 	vector<vector<shared_ptr<RPG::ENTITIES::IEntity>>> World;
+	vector<shared_ptr<RPG::ENTITIES::IEntity>> Enemies;
 	shared_ptr<RPG::ENTITIES::Hero> hero;
-
+	shared_ptr<RPG::ENTITIES::IEntity>& operator[](const Point&);
 	void Init();
 	~Map();
 

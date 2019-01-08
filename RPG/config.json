@@ -4,7 +4,14 @@
     "startHp": 50,
     "startMana": 10,
     "startDmg": 10,
-    "startSpeed": 3,
+    "startSpeed": 1,
+    "startArmor": 5
+  },
+  "zombie": {
+    "startHp": 20,
+    "startMana": 0,
+    "startDmg": 10,
+    "startSpeed": 5,
     "startArmor": 5
   }
 }

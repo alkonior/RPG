@@ -2,7 +2,6 @@
 #include "pch.h"
 #include "BaseObjects.h"
 #include "IBaseAI.h"
-#include "AIList.h"
 #include "Map.h"
 
 namespace RPG {

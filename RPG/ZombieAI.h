@@ -9,11 +9,14 @@ namespace RPG {
 namespace ENGINE {
 namespace AI {
 
-class HeroAI:
+class ZombieAI:
 	public IBaseAI
 {
+private: 
+	size_t step;
 public:
-	HeroAI();
+	ZombieAI();
+	// Унаследовано через IBaseAI
 	virtual vector<shared_ptr<IComand>> getActions(const void *, const void *, size_t) override;
 };
 

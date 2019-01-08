@@ -93,13 +93,13 @@
     <ClInclude Include="Map.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="HeroAI.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="IBaseAI.h">
       <Filter>Файлы заголовков\Engine\AI</Filter>
     </ClInclude>
-    <ClInclude Include="AIList.h">
+    <ClInclude Include="HeroAI.h">
+      <Filter>Файлы заголовков\Engine\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieAI.h">
       <Filter>Файлы заголовков\Engine\AI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -158,10 +158,19 @@
     <ClCompile Include="Map.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="HeroAI.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="IBaseAI.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldControlerComands.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Файлы ресурсов\Entyties</Filter>
+    </ClCompile>
+    <ClCompile Include="HeroAI.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieAI.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>

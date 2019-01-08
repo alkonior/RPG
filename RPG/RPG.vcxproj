@@ -162,7 +162,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AIList.h" />
     <ClInclude Include="BarPanel.h" />
     <ClInclude Include="IBaseAI.h" />
     <ClInclude Include="BaseControler.h" />
@@ -184,6 +183,7 @@
     <ClInclude Include="WorldControler.h" />
     <ClInclude Include="WorldPanel.h" />
     <ClInclude Include="WorldViewConstructor.h" />
+    <ClInclude Include="ZombieAI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BarPanel.cpp" />
@@ -209,8 +209,11 @@
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WCComandsList.cpp" />
     <ClCompile Include="WorldControler.cpp" />
+    <ClCompile Include="WorldControlerComands.cpp" />
     <ClCompile Include="WorldPanel.cpp" />
     <ClCompile Include="WorldViewConstructor.cpp" />
+    <ClCompile Include="Zombie.cpp" />
+    <ClCompile Include="ZombieAI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\CodeMap.dgml" />

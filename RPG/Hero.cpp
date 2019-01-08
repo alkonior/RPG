@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BaseObjects.h"
+#include "HeroAI.h"
 using namespace RPG;
 using namespace TEXTURES;
 using namespace ENTITIES;
@@ -42,7 +43,7 @@ size_t Hero::_startDmg = 0;
 size_t Hero::_startSpeed = 0;
 size_t Hero::_startHp = 0;
 
-Hero::Hero(Point p):IPerson(p, TEXTURES_ARAAY::T_Hero)
+Hero::Hero(Point p):IPerson(p, TEXTURES_ARAAY::T_Hero, make_shared<ENGINE::AI::HeroAI>())
 {
 	_hp = _startHp;
 	_mana = _startMana;
@@ -51,12 +52,31 @@ Hero::Hero(Point p):IPerson(p, TEXTURES_ARAAY::T_Hero)
 	_armor = _startArmor;
 }
 
-void Hero::Init(json& description, shared_ptr<IBaseAI> ai) {
+void Hero::Init(json& description) {
 
 	Hero::_startArmor = description["startArmor"];
 	Hero::_startMana = description["startMana"];
 	Hero::_startDmg = description["startDmg"];
 	Hero::_startSpeed = description["startSpeed"];
 	Hero::_startHp = description["startHp"];
-	AI = ai;
+}
+
+bool RPG::ENTITIES::Hero::_colide(IEntity* in)
+{
+	return in->_colide(this);
+}
+
+bool RPG::ENTITIES::Hero::_colide(Hero* in)
+{
+	return false;
+}
+
+bool RPG::ENTITIES::Hero::_colide(Wall* in)
+{
+	return false;
+}
+
+bool RPG::ENTITIES::Hero::_colide(Zombie* z)
+{
+	return z->getDmg(_dmg);
 }

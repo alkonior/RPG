@@ -7,6 +7,7 @@ namespace TEXTURES{
 #define FLOOR_CS 2
 #define WALL_CS 3
 #define HERO_CS 4
+#define ZOMBIE_CS 5
 
 class Point
 {
@@ -18,6 +19,7 @@ public:
 	Point(const Point&) = default;
 	Point operator-() const;
 	Point operator+(const Point&);
+	void operator+=(const Point&);
 	friend Point operator+(const Point&, Point);
 	Point operator-(const Point&);
 };
@@ -39,6 +41,7 @@ const Texture T_Zero(' ', DEFAULT_CS);
 const Texture T_Wall('W', WALL_CS);
 const Texture T_Floor(' ', FLOOR_CS);
 const Texture T_Hero('H', HERO_CS);
+const Texture T_Zombie('Z', ZOMBIE_CS);
 }
 void initCS();
 

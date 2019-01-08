@@ -4,12 +4,17 @@
 #include "WCComandslist.h"
 using namespace RPG::ENGINE::BASECNTROLER;
 using namespace RPG::ENGINE::WCCOMANDS;
-void CForward::accept(BaseControler& BC)
-{
-	(dynamic_cast<WorldControler&>(BC)).execute<CForward>();
-}
+////Фабрика акцептов
+#define defNewAccept(comandName)                               \
+void comandName::accept(BaseControler& BC)                     \
+{															   \
+	(dynamic_cast<WorldControler&>(BC)).execute<comandName>(); \
+}															   \
 
-void MoveMeUp::accept(BaseControler& BC)
-{
-	(dynamic_cast<WorldControler&>(BC)).execute<MoveMeUp>();
-}
+defNewAccept(CForward);
+defNewAccept(MoveMeUp);
+defNewAccept(MoveMeDown);
+defNewAccept(MoveMeRight);
+defNewAccept(MoveMeLeft);
+
+

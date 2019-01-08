@@ -18,6 +18,12 @@ Point Point::operator+(const Point& in)
 	return Point(x+in.x, y+in.y);
 }
 
+void RPG::TEXTURES::Point::operator+=(const Point & in)
+{
+	this->y += in.y;
+	this->x += in.x;
+}
+
 Point Point::operator-(const Point& in)
 {
 	return Point(*this+(-(in)));
@@ -43,6 +49,7 @@ void RPG::TEXTURES::initCS()
 {
 	init_pair(DEFAULT_CS, COLOR_RED, COLOR_RED);
 	init_pair(FLOOR_CS, COLOR_WHITE, COLOR_WHITE);
-	init_pair(WALL_CS, COLOR_BLACK, COLOR_BLACK);
+	init_pair(WALL_CS, COLOR_BLACK||COLOR_WHITE, COLOR_BLACK||COLOR_WHITE);
 	init_pair(HERO_CS, COLOR_RED, COLOR_WHITE);
+	init_pair(ZOMBIE_CS, COLOR_GREEN, COLOR_WHITE);
 }

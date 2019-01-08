@@ -1,5 +1,13 @@
 #pragma once
 #include "BaseControler.h"
+///Фабрика команд
+#define defNewComad(comandName)           \
+class comandName:public IComand           \
+{                                         \
+public:                                   \
+	comandName() = default;               \
+	void accept(BaseControler&) override; \
+}                                         \
 
 namespace RPG {
 namespace ENGINE {
@@ -7,19 +15,11 @@ namespace WCCOMANDS {
 using BASECNTROLER::IComand;
 using BASECNTROLER::BaseControler;
 
-class CForward:public IComand
-{
-public:
-	CForward() = default;
-	void accept(BaseControler&) override;
-};
-
-class MoveMeUp:public IComand
-{
-public:
-	MoveMeUp() = default;
-	void accept(BaseControler&) override;
-};
+defNewComad(CForward);
+defNewComad(MoveMeUp);
+defNewComad(MoveMeDown);
+defNewComad(MoveMeRight);
+defNewComad(MoveMeLeft);
 
 }
 }
