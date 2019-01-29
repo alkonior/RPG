@@ -28,17 +28,23 @@
     <Filter Include="Файлы заголовков\Coliders">
       <UniqueIdentifier>{5a2d6669-3f4e-4308-84af-5e4d5a87b663}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы ресурсов\Entyties">
-      <UniqueIdentifier>{f3f91257-c9ef-4d09-a85e-59a55f32735c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Engine\AI">
       <UniqueIdentifier>{96aadcde-8f2e-4820-9e10-18ceb7489f77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Entyties">
+      <UniqueIdentifier>{f3f91257-c9ef-4d09-a85e-59a55f32735c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Entyties\AI">
+      <UniqueIdentifier>{6d9986e3-731b-452c-9875-ce0add2342bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GUI">
+      <UniqueIdentifier>{5e07b076-28d0-40e5-9c21-35e566a16da9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\BaseClasses">
+      <UniqueIdentifier>{37f0beb1-364a-43cb-9cfb-317f06e55672}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -46,9 +52,6 @@
       <Filter>Файлы заголовков\GUI</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>Файлы заголовков\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseObjects.h">
       <Filter>Файлы заголовков\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Textures.h">
@@ -75,26 +78,11 @@
     <ClInclude Include="WorldControler.h">
       <Filter>Файлы заголовков\Controler</Filter>
     </ClInclude>
-    <ClInclude Include="BaseControler.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="WCComandslist.h">
       <Filter>Файлы заголовков\Controler</Filter>
     </ClInclude>
-    <ClInclude Include="include\panel.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="include\curses.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="include\json.hpp">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="IBaseAI.h">
-      <Filter>Файлы заголовков\Engine\AI</Filter>
     </ClInclude>
     <ClInclude Include="HeroAI.h">
       <Filter>Файлы заголовков\Engine\AI</Filter>
@@ -102,84 +90,111 @@
     <ClInclude Include="ZombieAI.h">
       <Filter>Файлы заголовков\Engine\AI</Filter>
     </ClInclude>
+    <ClInclude Include="include\panel.h">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="include\json.hpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="include\curses.h">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Файлы заголовков\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseAI.h">
+      <Filter>Файлы заголовков\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseControler.h">
+      <Filter>Файлы заголовков\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BarPanel.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseObjects.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
     <ClCompile Include="Controler.cpp">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="InfoPanel.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="MainInfoPanel.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="RPG.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="Textures.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="WCComandsList.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldControler.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldPanel.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldViewConstructor.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="Hero.cpp">
-      <Filter>Файлы ресурсов\Entyties</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall.cpp">
-      <Filter>Файлы ресурсов\Entyties</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="IBaseAI.cpp">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MainInfoPanel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RPG.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="WCComandsList.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldControler.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="WorldControlerComands.cpp">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldPanel.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
-      <Filter>Файлы ресурсов\Entyties</Filter>
+      <Filter>Исходные файлы\Entyties</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Исходные файлы\Entyties</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero.cpp">
+      <Filter>Исходные файлы\Entyties</Filter>
     </ClCompile>
     <ClCompile Include="HeroAI.cpp">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Исходные файлы\Entyties\AI</Filter>
     </ClCompile>
     <ClCompile Include="ZombieAI.cpp">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Исходные файлы\Entyties\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BarPanel.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPanel.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldViewConstructor.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities.cpp">
+      <Filter>Исходные файлы\Entyties</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\CodeMap.dgml">
+    <None Include="config.json">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="config.json">
-      <Filter>Исходные файлы</Filter>
+    <None Include="..\CodeMap.dgml">
+      <Filter>Файлы ресурсов</Filter>
     </None>
   </ItemGroup>
 </Project>

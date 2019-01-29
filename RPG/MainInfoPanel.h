@@ -1,9 +1,7 @@
 #pragma once
 #include "WorldViewConstructor.h"
 
-namespace RPG {
-namespace GUINSP {
-using ENGINE::WVC;
+
 
 class MainInfoPanel
 {
@@ -12,6 +10,3 @@ public:
 	MainInfoPanel(WVC&);
 	void Draw();
 };
-
-}//GUINSP
-}//RPG

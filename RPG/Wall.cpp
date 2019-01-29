@@ -1,29 +1,13 @@
 #include "pch.h"
-#include "BaseObjects.h"
-using namespace RPG;
-using namespace TEXTURES;
-using namespace ENTITIES;
+#include "Entities.h"
 
 
-Wall::Wall(Point p):INotPerson(p, TEXTURES_ARAAY::T_Wall)
-{}
+Wall::Wall(Point p) : INotPerson(p, TEXTURES_ARAAY::T_Wall) {}
 
-bool Wall::_colide(IEntity* in)
-{
-	return in->_colide(this);
-}
+ComandList Wall::_colide(IEntity* in) { return in->_colide(this); }
 
-bool Wall::_colide(Hero* in)
-{
-	return false;
-}
+ComandList Wall::_colide(Hero* in) { return ComandList(); }
 
-bool Wall::_colide(Wall* in)
-{
-	return false;
-}
+ComandList Wall::_colide(Wall* in) { return ComandList(); }
 
-bool Wall::_colide(Zombie *)
-{
-	return false;
-}
+ComandList Wall::_colide(Zombie*) { return ComandList(); }

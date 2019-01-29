@@ -3,10 +3,6 @@
 #include "Map.h"
 
 
-namespace RPG{
-namespace ENGINE{
-
-
 class WorldViewConstructor
 {
 	const Map& World;
@@ -19,7 +15,4 @@ class WorldViewConstructor
 
 typedef WorldViewConstructor WVC;
 
-
-}//ENGINE
-}//RPG
 

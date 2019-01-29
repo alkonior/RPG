@@ -1,26 +1,22 @@
 #pragma once
-#include "BaseControler.h"
-///Фабрика команд
-#define defNewComad(comandName)           \
-class comandName:public IComand           \
-{                                         \
-public:                                   \
-	comandName() = default;               \
-	void accept(BaseControler&) override; \
-}                                         \
+#include "IBaseControler.h"
+#include "Entities.h"
 
-namespace RPG {
-namespace ENGINE {
-namespace WCCOMANDS {
-using BASECNTROLER::IComand;
-using BASECNTROLER::BaseControler;
+///Фабрика команд
+#define defNewComad(comandName)            \
+  class comandName : public IComand {      \
+   public:                                 \
+    IEntity* object;                       \
+    comandName(IEntity* p) { object = p; } \
+    void accept(BaseControler&) override;  \
+  }
 
 defNewComad(CForward);
-defNewComad(MoveMeUp);
-defNewComad(MoveMeDown);
-defNewComad(MoveMeRight);
-defNewComad(MoveMeLeft);
 
-}
-}
-}
+class MoveMe : public IComand {
+ public:
+  IEntity* object;
+  Point p;
+  MoveMe(IEntity* o, Point p):p(p) { object =o; }
+  void accept(BaseControler&) override;
+};

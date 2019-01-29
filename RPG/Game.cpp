@@ -1,11 +1,9 @@
 #include "pch.h"
 #include "Game.h"
 
-using namespace RPG;
-using namespace ENGINE;
-using namespace GUINSP;
 
-Game::Game(json& config):Engine(config), Gui(Engine), Controler(Gui, Engine)
+
+Game::Game(json& config):_Engine(config), _Gui(_Engine), _Controler(_Gui, _Engine)
 {
 	initscr();
 	start_color();
@@ -13,7 +11,7 @@ Game::Game(json& config):Engine(config), Gui(Engine), Controler(Gui, Engine)
 	noecho();
 	curs_set(0);
 	int my= LINES, mx= COLS;
-	Gui.init(mx, my);
+	_Gui.init(mx, my);
 }
 
 void Game::start()
@@ -23,15 +21,15 @@ void Game::start()
 
 void Game::loop()
 {
-	Gui.Draw();
+	_Gui.Draw();
 	while (true)
 	{
 		size_t ch = getch();
 
 		if (ch != 27)
 		{			
-			Controler.Send(ch);
-			Gui.Draw();
+			_Controler.Send(ch);
+			_Gui.Draw();
 		}
 		else
 		{

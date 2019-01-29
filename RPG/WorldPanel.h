@@ -1,10 +1,6 @@
 #pragma once
 #include "WorldViewConstructor.h"
 
-namespace RPG {
-namespace GUINSP {
-using ENGINE::WVC;
-using TEXTURES::Point;
 
 class WorldPanel
 {
@@ -18,5 +14,3 @@ public:
 	void Draw();
 	~WorldPanel();
 };
-}//GUINSP
-}//RPG

@@ -1,15 +1,13 @@
 #include "pch.h"
 #include "WorldPanel.h"
-using std::vector;
-using namespace RPG::TEXTURES;
 
 
-RPG::GUINSP::WorldPanel::WorldPanel(WVC& W): 
+WorldPanel::WorldPanel(WVC& W): 
 Data(W),
 Window(nullptr), Panel(nullptr),
 w(0), h(0){}
 
-void RPG::GUINSP::WorldPanel::init(Point lu, Point rd)
+void WorldPanel::init(Point lu, Point rd)
 {
 	w = rd.x - lu.x;
 	h = rd.y - lu.y;
@@ -22,7 +20,7 @@ void RPG::GUINSP::WorldPanel::init(Point lu, Point rd)
 	bottom_panel(Panel);
 }
 
-void RPG::GUINSP::WorldPanel::Draw()
+void WorldPanel::Draw()
 {
 	vector<vector<const Texture*>> in = Data.GetWorldInfo(w,h);
 	auto res = wresize(Window, w, h) == ERR;
@@ -38,7 +36,7 @@ void RPG::GUINSP::WorldPanel::Draw()
 	wrefresh(Window);
 }
 
-RPG::GUINSP::WorldPanel::~WorldPanel()
+WorldPanel::~WorldPanel()
 {
 	if (Window) {
 		del_panel(Panel);

@@ -1,18 +1,18 @@
 #pragma once
+
 #include "Model.h"
 #include "GUI.h"
 #include "Controler.h"
 
-namespace RPG {
 
 
 
 
 class Game
 {
-	Model Engine;
-	GUI Gui;
-	Controler Controler;
+	Model _Engine;
+	GUI _Gui;
+	Controler _Controler;
 public:
 	Game(json&);
 	void start();
@@ -20,4 +20,3 @@ public:
 	~Game();
 };
 
-}

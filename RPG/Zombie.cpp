@@ -1,10 +1,9 @@
 #include "pch.h"
-#include "BaseObjects.h"
+#include "Entities.h"
 #include "ZombieAI.h"
 
-using namespace RPG;
-using namespace TEXTURES;
-using namespace ENTITIES;
+
+
 
 size_t Zombie::_startArmor = 0;
 size_t Zombie::_startMana = 0;
@@ -12,7 +11,7 @@ size_t Zombie::_startDmg = 0;
 size_t Zombie::_startSpeed = 0;
 size_t Zombie::_startHp = 0;
 
-Zombie::Zombie(Point p):Monster(p, TEXTURES_ARAAY::T_Zombie,make_shared<ENGINE::AI::ZombieAI>())
+Zombie::Zombie(Point p):Monster(p, TEXTURES_ARAAY::T_Zombie,make_shared<ZombieAI>())
 {
 	_hp = _startHp;
 	_mana = _startMana;
@@ -30,22 +29,19 @@ void Zombie::Init(json& description)
 	_startHp = description["startHp"];
 }
 
-bool RPG::ENTITIES::Zombie::_colide(IEntity* in)
+ComandList Zombie::_colide(IEntity* in)
 {
 	return in->_colide(this);
 }
 
-bool RPG::ENTITIES::Zombie::_colide(Hero* h)
-{
-	return h->getDmg(_dmg);
+ComandList Zombie::_colide(Hero* h) {
+	  if (h->getDmg(_dmg)) {
+    return ComandList();
+  } else {
+    return ComandList();
+  }
 }
 
-bool RPG::ENTITIES::Zombie::_colide(Wall*)
-{
-	return false;
-}
+ComandList Zombie::_colide(Wall*) { return ComandList(); }
 
-bool RPG::ENTITIES::Zombie::_colide(Zombie*)
-{
-	return false;
-}
+ComandList Zombie::_colide(Zombie*) { return ComandList(); }

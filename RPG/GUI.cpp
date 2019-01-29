@@ -1,9 +1,7 @@
 #include "pch.h"
 #include "GUI.h"
-using namespace RPG;
-using namespace GUINSP;
-using namespace ENGINE;
-using TEXTURES::initCS;
+
+
 
 GUI::GUI(Model& E):
 	DataSource(E),

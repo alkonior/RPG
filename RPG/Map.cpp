@@ -1,17 +1,16 @@
 #include "pch.h"
 #include "Map.h"
-using namespace RPG::ENGINE;
-using namespace RPG::ENTITIES;
+
 Map::Map(size_t seed):_seed(seed),h(0),w(0) {}
 
-shared_ptr<RPG::ENTITIES::IEntity>& RPG::ENGINE::Map::operator[](const Point& in)
+shared_ptr<IEntity>& Map::operator[](const Point& in)
 {
 	return World[in.y][in.x];
 }
 
 
 
-void RPG::ENGINE::Map::Init()
+void Map::Init()
 {
 	switch (_seed)
 	{

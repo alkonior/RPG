@@ -95,12 +95,14 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BrowseInformation>true</BrowseInformation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\user\source\repos\RPG\RPG\PDCurces;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(ProjectDir)lib\pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>LinkVerboseCLR</ShowProgress>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -164,8 +166,8 @@
   <ItemGroup>
     <ClInclude Include="BarPanel.h" />
     <ClInclude Include="IBaseAI.h" />
-    <ClInclude Include="BaseControler.h" />
-    <ClInclude Include="BaseObjects.h" />
+    <ClInclude Include="IBaseControler.h" />
+    <ClInclude Include="Entities.h" />
     <ClInclude Include="Controler.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
@@ -178,6 +180,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="WCComandslist.h" />
     <ClInclude Include="WorldControler.h" />
@@ -188,7 +191,7 @@
   <ItemGroup>
     <ClCompile Include="BarPanel.cpp" />
     <ClCompile Include="IBaseAI.cpp" />
-    <ClCompile Include="BaseObjects.cpp" />
+    <ClCompile Include="Entities.cpp" />
     <ClCompile Include="Controler.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
@@ -204,6 +207,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="RPG.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Wall.cpp" />

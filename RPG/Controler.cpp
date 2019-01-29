@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Controler.h"
-using namespace RPG;
-using namespace GUINSP;
-using namespace ENGINE;
+
 
 Controler::Controler(GUI& G, Model& E):
 	Gui(G),

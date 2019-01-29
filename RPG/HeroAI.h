@@ -1,22 +1,20 @@
 #pragma once
-#include"pch.h"
+#include "Entities.h"
 #include "IBaseAI.h"
-#include "WCComandslist.h"
-#include "BaseObjects.h"
 #include "Map.h"
+#include "WCComandslist.h"
+#include "pch.h"
 
-namespace RPG {
-namespace ENGINE {
-namespace AI {
 
-class HeroAI:
-	public IBaseAI
-{
-public:
-	HeroAI();
-	virtual vector<shared_ptr<IComand>> getActions(const void *, const void *, size_t) override;
+
+class HeroAI : public IBaseAI {
+  Hero &hero;
+ public:
+  HeroAI(Hero&);
+
+  // Унаследовано через IBaseAI
+  ComandList getActions(const void *, const void *, size_t) const override;
+  // virtual vector<shared_ptr<IComand>> getActions(const void *, const void *,
+  // size_t) override;
 };
 
-}//AI
-}//ENGINE
-}//RPG

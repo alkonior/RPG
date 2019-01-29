@@ -1,11 +1,6 @@
 #pragma once
 #include<iostream>
 
-namespace RPG {
-namespace ENGINE {
-namespace BASECNTROLER {
-
-
 class BaseControler
 {
 public:
@@ -20,6 +15,5 @@ public:
 	virtual void accept(BaseControler&) = 0;
 };
 
-}
-}
-}
+typedef vector<shared_ptr<IComand>> ComandList;
+

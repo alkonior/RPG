@@ -1,17 +1,15 @@
 #pragma once
 #include "pch.h"
-#include "BaseObjects.h"
+#include "Entities.h"
 #include "IBaseAI.h"
 #include "Map.h"
 
-namespace RPG {
-namespace ENGINE {
+
 
 //Sub Classes
 class WorldViewConstructor;
 class WorldControler;
 
-using AI::IBaseAI;
 
 class Model
 {
@@ -23,6 +21,3 @@ public:
 	friend WorldViewConstructor;
 	friend WorldControler;
 };
-
-}//ENGINE
-}//RPG

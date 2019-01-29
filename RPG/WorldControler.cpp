@@ -1,31 +1,20 @@
 #include "pch.h"
 #include "WorldControler.h"
 
-using namespace RPG;
-using namespace ENGINE;
-using BASECNTROLER::IComand;
-using WCCOMANDS::CForward;
-using WCCOMANDS::MoveMeUp;
 
-RPG::ENGINE::WorldControler::WorldControler(Model& E):
-	World(E.World){}
+WorldControler::WorldControler(Model& E) : World(E.World) {}
 
-void RPG::ENGINE::WorldControler::GetComand(size_t comand)
-{
-	ComandList =  World.hero->getAI()->getActions(&World, World.hero.get(), comand);
-	curObject = World.hero;
-	executeAll();
-	
+void WorldControler::GetComand(size_t comand) {
+  _ComandList.push_back(
+      World.hero->getAI()->getActions(&World, World.hero.get(), comand));
+  executeAll();
 }
 
-void RPG::ENGINE::WorldControler::executeAll()
-{
-	for(auto i = ComandList.begin();i<ComandList.end();i++)
-	{
-		(*i)->accept(*this);
-	}
+void WorldControler::executeAll() {
+  for (auto i : _ComandList) {
+    for (auto j : i) {
+      (j)->accept(*this);
+    }
+  }
+  _ComandList.clear();
 }
-
-
-
-

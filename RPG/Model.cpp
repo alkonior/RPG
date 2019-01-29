@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "Model.h"
 
-using namespace RPG;
-using namespace ENGINE;
-using namespace ENTITIES;
-using namespace AI;
 
 
 

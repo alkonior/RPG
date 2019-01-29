@@ -1,20 +1,18 @@
 #include "pch.h"
 #include "WorldViewConstructor.h"
-using namespace RPG;
-using namespace TEXTURES;
-using std::vector;
 
-bool RPG::ENGINE::WorldViewConstructor::existPoint(const Point in) const
+
+bool WorldViewConstructor::existPoint(const Point in) const
 {
 	return in.x < World.w && in.y <World.h;;
 }
 
-RPG::ENGINE::WorldViewConstructor::WorldViewConstructor(Model& E):World(E.World)
+WorldViewConstructor::WorldViewConstructor(Model& E):World(E.World)
 {
 
 }
 
-vector<vector<const Texture*>> RPG::ENGINE::WorldViewConstructor::GetWorldInfo(size_t w, size_t h) const
+vector<vector<const Texture*>> WorldViewConstructor::GetWorldInfo(size_t w, size_t h) const
 {
 	vector<vector<const Texture*>> out(h, vector<const Texture*>(w));
 	for (size_t i = 0; i < h; i++)

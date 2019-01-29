@@ -3,10 +3,7 @@
 #include"WorldViewConstructor.h"
 #include"WorldControler.h"
 
-namespace RPG {
-using GUINSP::GUI;
-using ENGINE::Model;
-using ENGINE::WorldControler;
+
 
 class Controler
 {
@@ -21,4 +18,3 @@ public:
 	~Controler();
 };
 
-} //RPG

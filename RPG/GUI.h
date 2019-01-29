@@ -23,9 +23,7 @@
 #define BaseDownShiftY 7
 #endif // !BaseDownShiftY
 
-namespace RPG{
-namespace GUINSP{
-using ENGINE::Model;
+
 
 class GUI
 {
@@ -48,5 +46,3 @@ public:
 	~GUI();
 };
 
-}//GUINSP
-}//RPG

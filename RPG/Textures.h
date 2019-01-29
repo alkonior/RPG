@@ -1,7 +1,7 @@
 #pragma once
+#include"pch.h"
 
-namespace RPG{
-namespace TEXTURES{
+
 
 #define DEFAULT_CS 1
 #define FLOOR_CS 2
@@ -9,20 +9,6 @@ namespace TEXTURES{
 #define HERO_CS 4
 #define ZOMBIE_CS 5
 
-class Point
-{
-public:
-	size_t x;
-	size_t y;
-	Point();
-	Point(size_t, size_t);
-	Point(const Point&) = default;
-	Point operator-() const;
-	Point operator+(const Point&);
-	void operator+=(const Point&);
-	friend Point operator+(const Point&, Point);
-	Point operator-(const Point&);
-};
 
 class Texture
 {
@@ -45,6 +31,3 @@ const Texture T_Zombie('Z', ZOMBIE_CS);
 }
 void initCS();
 
-
-}//TEXTURES
-}//RPG

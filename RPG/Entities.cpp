@@ -1,8 +1,5 @@
 #include "pch.h"
-#include "BaseObjects.h"
-using namespace RPG;
-using namespace TEXTURES;
-using namespace ENTITIES;
+#include "Entities.h"
 
 
 IEntity::IEntity(Point p, const Texture& t, shared_ptr<IBaseAI> ai):_cord(p),_t(t),AI(ai)
