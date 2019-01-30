@@ -20,3 +20,19 @@ class MoveMe : public IComand {
   MoveMe(IEntity* o, Point p):p(p) { object =o; }
   void accept(BaseControler&) override;
 };
+
+
+class Attack_A_to_B : public IComand {
+ public:
+  IEntity* A;
+  IEntity* B;
+  Attack_A_to_B(IEntity*, IEntity*);
+  void accept(BaseControler&) override;
+};
+
+class CheckEntityHp : public IComand {
+ public:
+  Point p;
+  CheckEntityHp(Point p);
+  void accept(BaseControler&) override;
+};

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <algorithm>
 
 class Point {
  public:
@@ -10,8 +10,11 @@ class Point {
   Point(const Point&) = default;
   Point operator-() const;
   Point operator+(const Point&);
+  Point betsDir(const Point&) const;
   void operator+=(const Point&);
+  void operator=(const Point&);
   friend Point operator+(const Point&, Point);
   Point operator-(const Point&);
+  size_t distance(const Point&) const;
 };
 

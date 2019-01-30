@@ -10,6 +10,7 @@ Game::Game(json& config):_Engine(config), _Gui(_Engine), _Controler(_Gui, _Engin
 	keypad(stdscr, TRUE);
 	noecho();
 	curs_set(0);
+    timeout(100);
 	int my= LINES, mx= COLS;
 	_Gui.init(mx, my);
 }

@@ -5,16 +5,27 @@
 #include "WCComandslist.h"
 #include "pch.h"
 
-
-
 class HeroAI : public IBaseAI {
-  Hero &hero;
- public:
-  HeroAI(Hero&);
+  template <typename T, bool def = false>
+  using EnableIfIsNotRealized =
+      std::enable_if_t<(std::is_same<T, Zombie>::value == def), ComandList>;
 
-  // Унаследовано через IBaseAI
-  ComandList getActions(const void *, const void *, size_t) const override;
-  // virtual vector<shared_ptr<IComand>> getActions(const void *, const void *,
-  // size_t) override;
+  template <typename T>
+  using EnableIfIsRealized = EnableIfIsNotRealized<T, true>;
+
+  Hero &hero;
+
+ public:
+  HeroAI(Hero &);
+  ComandList getActions(const void *, size_t) override;
+
+  template <class T>
+  EnableIfIsNotRealized<T> ColideWith(Hero *, T *);
+  template <class T>
+  EnableIfIsRealized<T> ColideWith(Hero *, T *);
 };
 
+template <class T>
+HeroAI::EnableIfIsNotRealized<T> HeroAI::ColideWith(Hero *, T *) {
+  return EnableIfIsNotRealized<T>();
+}

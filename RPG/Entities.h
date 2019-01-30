@@ -21,6 +21,9 @@ class FireBall;
 class Arrow;
 class Apteca;
 
+class ZombieAI;
+class HeroAI;
+
 class IEntity {
  protected:
   shared_ptr<IBaseAI> AI;
@@ -37,10 +40,7 @@ class IEntity {
  public:
   IEntity(Point, const Texture&, shared_ptr<IBaseAI>);
   const Texture& getTexture();
-  ComandList colide(IEntity* in) {
-    if (in != nullptr) return in->_colide(this);
-    return ComandList();
-  }
+  ComandList colide(IEntity* in);
   static void Init(json&) { throw new std::exception("Not inited class"); }
 
   shared_ptr<IBaseAI>& getAI() { return AI; }
@@ -59,7 +59,7 @@ class IPerson : public IEntity {
 
  public:
   IPerson(Point, const Texture&, shared_ptr<IBaseAI>);
-  bool getDmg(size_t);
+  bool getDmg(IPerson*);
 };
 
 class INotPerson : public IEntity {
@@ -86,6 +86,7 @@ class Hero : public IPerson {
   ComandList _colide(Hero*) override;
   ComandList _colide(Wall*) override;
   ComandList _colide(Zombie*) override;
+  friend HeroAI;
 };
 
 class Monster : public IPerson {
@@ -109,6 +110,7 @@ class Zombie : public Monster {
   ComandList _colide(Hero*) override;
   ComandList _colide(Wall*) override;
   ComandList _colide(Zombie*) override;
+  friend ZombieAI;
 };
 
 class Dragon : public Monster {};

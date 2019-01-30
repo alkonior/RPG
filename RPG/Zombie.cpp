@@ -11,7 +11,7 @@ size_t Zombie::_startDmg = 0;
 size_t Zombie::_startSpeed = 0;
 size_t Zombie::_startHp = 0;
 
-Zombie::Zombie(Point p):Monster(p, TEXTURES_ARAAY::T_Zombie,make_shared<ZombieAI>())
+Zombie::Zombie(Point p):Monster(p, TEXTURES_ARAAY::T_Zombie,make_shared<ZombieAI>(*this))
 {
 	_hp = _startHp;
 	_mana = _startMana;
@@ -35,13 +35,15 @@ ComandList Zombie::_colide(IEntity* in)
 }
 
 ComandList Zombie::_colide(Hero* h) {
-	  if (h->getDmg(_dmg)) {
-    return ComandList();
-  } else {
-    return ComandList();
-  }
+    return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith<Hero>(this, h);
 }
 
-ComandList Zombie::_colide(Wall*) { return ComandList(); }
+ComandList Zombie::_colide(Wall* w) {
+  return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith<Wall>(this, w);
+}
 
-ComandList Zombie::_colide(Zombie*) { return ComandList(); }
+ComandList Zombie::_colide(Zombie* z) {
+  return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith<Zombie>(this, z);
+}
+
+
