@@ -114,6 +114,9 @@
     <ClInclude Include="pch.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
+    <ClInclude Include="DragonAI.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Controler.cpp">
@@ -186,6 +189,12 @@
       <Filter>Исходные файлы\GUI</Filter>
     </ClCompile>
     <ClCompile Include="Entities.cpp">
+      <Filter>Исходные файлы\Entyties</Filter>
+    </ClCompile>
+    <ClCompile Include="DragonAI.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Dragon.cpp">
       <Filter>Исходные файлы\Entyties</Filter>
     </ClCompile>
   </ItemGroup>

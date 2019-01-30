@@ -1,38 +1,60 @@
 #include "pch.h"
 #include "WorldControler.h"
-
+/*
 
 template <>
 void WorldControler::execute(const CForward*) {
-  std::cerr << "WorldConteroler Forward yeee";
+	std::cerr<<"WorldConteroler Forward yeee";
 }
 
 template <>
 void WorldControler::execute(const MoveMe* comand) {
-  auto cp = comand->object->getCord();
-  auto curObject = World[cp];
-  Point p = comand->p;
-  if (World[cp + p] == nullptr) {
-    World[cp] = nullptr;
-    World[cp + p] = curObject;
-    curObject->setCord(curObject->getCord() + p);
-  } else {
-    auto result = World[cp]->colide(World[cp + p].get());
-    if (!result.empty()) _ComandList.push_back(result);
-  }
+	auto cp = comand->object->getCord();
+	auto curObject = World[cp];
+	Point p = comand->p;
+	if (World[cp+p]==nullptr) {
+		World[cp] = nullptr;
+		World[cp+p] = curObject;
+		curObject->setCord(curObject->getCord()+p);
+	}
+	else {
+		auto result = World[cp]->colide(World[cp+p].get());
+		if (!result.empty()) _ComandList.push_back(result);
+	}
+}
+
+template <>
+void WorldControler::execute(const IfCanMoveMe* comand) {
+	auto cp = comand->object->getCord();
+	auto curObject = World[cp];
+	Point p = comand->p;
+	if (World[cp+p]==nullptr) {
+		World[cp] = nullptr;
+		World[cp+p] = curObject;
+		curObject->setCord(curObject->getCord()+p);
+	}
 }
 
 template <>
 void WorldControler::execute(const Attack_A_to_B* comand) {
-  IPerson* a = dynamic_cast<IPerson*>(comand->A);
-  IPerson* b = dynamic_cast<IPerson*>(comand->B);
-  if (b->getDmg(a)) {
-    _ComandList.push_back(ComandList({make_shared<CheckEntityHp>(b->getCord())}));
-  }
+	IPerson* a = (comand->A);
+	IPerson* b = (comand->B);
+	if (b->getDmg(a)) {
+		_ComandList.push_back(ComandList({ make_shared<CheckEntityHp>(b->getCord()) }));
+	}
 }
 
 template <>
 void WorldControler::execute(const CheckEntityHp* comand) {
-  Point p = comand->p;
-  World[p] = shared_ptr<IEntity>();
+	World.Delete(comand->p);
 }
+
+template <>
+void WorldControler::execute(const Shoot* comand) {
+	if (World[comand->p]==nullptr)
+	{
+		World[comand->p] =(*(comand->generator))(comand->p);
+		World.Enemies.push_back(World[comand->p]);
+	}
+}
+*/

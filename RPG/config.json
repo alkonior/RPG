@@ -13,5 +13,12 @@
     "startDmg": 10,
     "startSpeed": 5,
     "startArmor": 5
+  },
+  "dragon": {
+    "startHp": 100,
+    "startMana": 100,
+    "startDmg": 10,
+    "startSpeed": 2,
+    "startArmor": 0
   }
 }

@@ -1,10 +1,10 @@
 #pragma once
 #include<iostream>
 
-class BaseControler
+class IBaseControler
 {
 public:
-	BaseControler() = default;
+	IBaseControler() = default;
 	virtual void _execute() = 0;
 };
 
@@ -12,7 +12,7 @@ class IComand
 {
 public:
 	IComand() = default;
-	virtual void accept(BaseControler&) = 0;
+	virtual void accept(IBaseControler&) = 0;
 };
 
 typedef vector<shared_ptr<IComand>> ComandList;

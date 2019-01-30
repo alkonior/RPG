@@ -35,15 +35,20 @@ ComandList Zombie::_colide(IEntity* in)
 }
 
 ComandList Zombie::_colide(Hero* h) {
-    return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith<Hero>(this, h);
+    return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith(this, h);
 }
 
 ComandList Zombie::_colide(Wall* w) {
-  return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith<Wall>(this, w);
+  return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith(this, w);
 }
 
 ComandList Zombie::_colide(Zombie* z) {
-  return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith<Zombie>(this, z);
+  return dynamic_cast<ZombieAI*>(&(*AI))->ColideWith(this, z);
+}
+
+ComandList Zombie::_colide(Dragon * d)
+{
+	return  dynamic_cast<ZombieAI*>(&(*AI))->ColideWith(this, d);
 }
 
 

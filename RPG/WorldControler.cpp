@@ -8,9 +8,9 @@ void WorldControler::GetComand(size_t comand) {
   _ComandList.push_back(
       World.hero->getAI()->getActions(&World, comand));
   executeAll();
-  for(auto enemy : World.Enemies ){
+  for (size_t i = 0; i<World.Enemies.size();i++) {
   _ComandList.push_back(
-     enemy->getAI()->getActions(&World, comand));
+	  World.Enemies[i]->getAI()->getActions(&World, comand));
     executeAll();
   }
 }
