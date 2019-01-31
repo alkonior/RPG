@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "WorldControler.h"
-/*
+
 
 template <>
 void WorldControler::execute(const CForward*) {
@@ -40,12 +40,12 @@ void WorldControler::execute(const Attack_A_to_B* comand) {
 	IPerson* a = (comand->A);
 	IPerson* b = (comand->B);
 	if (b->getDmg(a)) {
-		_ComandList.push_back(ComandList({ make_shared<CheckEntityHp>(b->getCord()) }));
+		_ComandList.push_back(ComandList{make_shared<DeleteEntity>(b->getCord())});
 	}
 }
 
 template <>
-void WorldControler::execute(const CheckEntityHp* comand) {
+void WorldControler::execute(const DeleteEntity* comand) {
 	World.Delete(comand->p);
 }
 
@@ -57,4 +57,3 @@ void WorldControler::execute(const Shoot* comand) {
 		World.Enemies.push_back(World[comand->p]);
 	}
 }
-*/

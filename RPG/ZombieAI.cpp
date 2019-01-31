@@ -27,6 +27,6 @@ ComandList ZombieAI::getActions(const void* w, size_t) {
 template <>
 ComandList ZombieAI::ColideWith<>(Zombie* Z, Hero* H) {
   ComandList out;
-  out.push_back(make_shared<Attack_A_to_B<Zombie, Hero>>(Z, H));
+  out.push_back(make_shared<Attack_A_to_B>(Z, H));
   return out;
 }

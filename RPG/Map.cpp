@@ -13,7 +13,7 @@ void Map::Delete(Point p)
 	this->operator[](p) =shared_ptr<IEntity>();
 	for (size_t i = 0; i<Enemies.size(); i++)
 	{
-		if (Enemies[i]->getCord()==p)
+		if (Enemies[i].expired())
 		{
 			Enemies.erase(Enemies.begin()+i);
 			break;
@@ -45,10 +45,11 @@ void Map::Init()
 					}
 				}
 			}
-			Enemies.push_back(make_shared<Zombie>(Point(1, 1)));
-			(*this)[Point(1, 1)] = Enemies.back();
-			Enemies.push_back(make_shared<Dragon>(Point(5, 5)));
-			(*this)[Point(5, 5)] = Enemies.back();
+			
+			(*this)[Point(1, 1)] = make_shared<Zombie>(Point(1, 1));	
+			(*this)[Point(5, 5)] = make_shared<Dragon>(Point(5, 5));
+			Enemies.emplace_back((*this)[Point(1, 1)]);
+			Enemies.emplace_back((*this)[Point(1, 1)]);
 			break;
 		}
 	default:
