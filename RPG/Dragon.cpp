@@ -50,3 +50,13 @@ ComandList Dragon::_colide(Dragon * d)
 {
 	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, d);
 }
+
+ComandList Dragon::_colide(FireBall * f)
+{
+	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, f);
+}
+
+ComandList Dragon::_colide(Arrow * a)
+{
+	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, a);
+}

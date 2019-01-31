@@ -8,19 +8,27 @@ shared_ptr<IEntity>& Map::operator[](const Point& in)
 	return World[in.y][in.x];
 }
 
+const shared_ptr<IEntity>& Map::operator[](const Point & in) const
+{
+	return World[in.y][in.x];
+}
+
 void Map::Delete(Point p)
 {
 	this->operator[](p) =shared_ptr<IEntity>();
-	for (size_t i = 0; i<Enemies.size(); i++)
-	{
-		if (Enemies[i].expired())
-		{
-			Enemies.erase(Enemies.begin()+i);
-			break;
-		}
-	}
 }
 
+void Map::addEnemy(shared_ptr<Monster> e)
+{
+	(*this)[e->getCord()] = e;
+	Enemies.emplace_back(e);
+}
+
+void Map::addProjectile(shared_ptr<IProjectile> p)
+{
+	(*this)[p->getCord()] = p;
+	Projectiles.emplace_back(p);
+}
 
 
 void Map::Init()
@@ -32,9 +40,10 @@ void Map::Init()
 			/// Тут типа нужно замутить генератор карты
 			w = 60;
 			h = 40;
-			World.resize(h, vector<shared_ptr<IEntity>>(w, shared_ptr<IEntity>()));
-			hero = make_shared<Hero>(Point(5, 15));
-			(*this)[hero->getCord()] = hero;
+			World.resize(h, vector<shared_ptr<IEntity>>(w, shared_ptr<IEntity>()));		
+			auto h = make_shared<Hero>(Point(5, 15));
+			(*this)[Point(5, 15)] = h;
+			hero = h;
 			for (size_t i1 = 0; i1<20; i1++)
 			{
 				for (size_t i2 = 0; i2<20; i2++)
@@ -46,10 +55,8 @@ void Map::Init()
 				}
 			}
 			
-			(*this)[Point(1, 1)] = make_shared<Zombie>(Point(1, 1));	
-			(*this)[Point(5, 5)] = make_shared<Dragon>(Point(5, 5));
-			Enemies.emplace_back((*this)[Point(1, 1)]);
-			Enemies.emplace_back((*this)[Point(1, 1)]);
+			addEnemy(make_shared<Zombie>(Point(1, 1)));	
+			addEnemy(make_shared<Dragon>(Point(5,5)));	
 			break;
 		}
 	default:

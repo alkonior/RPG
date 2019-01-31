@@ -37,8 +37,17 @@ public:
 
 class DeleteEntity: public IComand {
 public:
-	Point p;
-	DeleteEntity(Point p);
+	IEntity* e;
+	DeleteEntity(IEntity* e);
+	void accept(IBaseControler&) override;
+};
+
+class Attack_Porjectile: public IComand {
+public:
+	IPerson* target;
+	IProjectile* projectile;
+	Attack_Porjectile(IPerson*,	IProjectile*);
+	Attack_Porjectile(IProjectile*,	IPerson*);
 	void accept(IBaseControler&) override;
 };
 
@@ -46,7 +55,7 @@ class Shoot: public IComand {
 public:
 	Point p;
 	Point dir;
-	shared_ptr<std::function<shared_ptr<IEntity>(Point)>> generator;
-	Shoot(Point p, Point dir, shared_ptr<std::function<shared_ptr<IEntity>(Point)>> g);
+	shared_ptr<std::function<shared_ptr<IProjectile>(Point)>> generator;
+	Shoot(Point p, Point dir, shared_ptr<std::function<shared_ptr<IProjectile>(Point)>> g);
 	void accept(IBaseControler&) override;
 };

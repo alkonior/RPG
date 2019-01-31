@@ -51,4 +51,14 @@ ComandList Zombie::_colide(Dragon * d)
 	return  dynamic_cast<ZombieAI*>(&(*AI))->ColideWith(this, d);
 }
 
+ComandList Zombie::_colide(FireBall * f)
+{
+	return  dynamic_cast<ZombieAI*>(&(*AI))->ColideWith(this, f);
+}
+
+ComandList Zombie::_colide(Arrow * a)
+{
+	return  dynamic_cast<ZombieAI*>(&(*AI))->ColideWith(this, a);
+}
+
 

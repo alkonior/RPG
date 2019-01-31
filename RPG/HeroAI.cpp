@@ -38,3 +38,14 @@ template <>
 ComandList HeroAI::ColideWith(Hero * h, Dragon *d) {
   return {make_shared<Attack_A_to_B>(h, d)};
 }
+
+template <>
+ComandList HeroAI::ColideWith<>(Hero* h, Arrow* a) {
+	return { make_shared<Attack_Porjectile>(h,a) };
+}
+template <>
+ComandList HeroAI::ColideWith<>(Hero* h, FireBall* f) {
+	return { make_shared<Attack_Porjectile>(h,f) };
+}
+
+

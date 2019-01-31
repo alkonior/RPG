@@ -13,3 +13,7 @@ ComandList Wall::_colide(Wall* in) { return ComandList(); }
 ComandList Wall::_colide(Zombie*) { return ComandList(); }
 
 ComandList Wall::_colide(Dragon *) { return ComandList(); }
+
+ComandList Wall::_colide(FireBall *){return ComandList(); }
+
+ComandList Wall::_colide(Arrow *){	return ComandList(); }

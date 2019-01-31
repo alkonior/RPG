@@ -1,7 +1,7 @@
 {
   "seed": 1,
   "hero": {
-    "startHp": 50,
+    "startHp": 500,
     "startMana": 10,
     "startDmg": 10,
     "startSpeed": 1,

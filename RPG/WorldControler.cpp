@@ -5,14 +5,16 @@
 WorldControler::WorldControler(Model& E): World(E.World) {}
 
 void WorldControler::GetComand(size_t comand) {
-	_ComandList.push_back(
-		World.hero->getAI()->getActions(&World, comand));
-	executeAll();
-	for (size_t i = 0; i<World.Enemies.size(); i++) {
-		if(!World.Enemies[i].expired())
+	if (!World.hero.expired()) {
 		_ComandList.push_back(
-			World.Enemies[i].lock()->getAI()->getActions(&World, comand));
+			World.hero.lock()->getAI()->getActions(&World, comand));
 		executeAll();
+		for (size_t i = 0; i<World.Enemies.size(); i++) {
+			if (!World.Enemies[i].expired())
+				_ComandList.push_back(
+					World.Enemies[i].lock()->getAI()->getActions(&World, comand));
+			executeAll();
+		}
 	}
 }
 

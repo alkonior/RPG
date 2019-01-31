@@ -164,8 +164,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ArrowAI.h" />
     <ClInclude Include="BarPanel.h" />
     <ClInclude Include="DragonAI.h" />
+    <ClInclude Include="FireBallAI.h" />
     <ClInclude Include="IBaseAI.h" />
     <ClInclude Include="IBaseControler.h" />
     <ClInclude Include="Entities.h" />
@@ -190,9 +192,12 @@
     <ClInclude Include="ZombieAI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArrowAI.cpp" />
     <ClCompile Include="BarPanel.cpp" />
     <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="DragonAI.cpp" />
+    <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="FireBallAI.cpp" />
     <ClCompile Include="IBaseAI.cpp" />
     <ClCompile Include="Entities.cpp" />
     <ClCompile Include="Controler.cpp" />

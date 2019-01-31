@@ -10,7 +10,8 @@ class HeroAI : public IBaseAI {
   using EnableIfIsNotRealized =
       std::enable_if_t<
 	  ((std::is_same<T, Zombie>::value)||
-	  (std::is_same<T, Dragon>::value))
+	  (std::is_same<T, Dragon>::value)||
+	  (std::is_base_of_v<IProjectile, T>))
 	  == def
 	  , ComandList>;
 
