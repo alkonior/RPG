@@ -61,13 +61,18 @@ void Hero::Init(json& description) {
 ComandList Hero::_colide(IEntity* in) { return in->_colide(this); }
 
 ComandList Hero::_colide(Hero* in){
-  return dynamic_cast<HeroAI*>(&(*AI))->ColideWith(this, in);
+  return dynamic_cast<HeroAI*>(AI.get())->ColideWith(this, in);
 }
 
 ComandList Hero::_colide(Wall* in){
-  return dynamic_cast<HeroAI*>(&(*AI))->ColideWith(this, in);
+  return dynamic_cast<HeroAI*>(AI.get())->ColideWith(this, in);
 }
 
 ComandList Hero::_colide(Zombie* z) {
-  return dynamic_cast<HeroAI*>(&(*AI))->ColideWith(this, z);
+  return dynamic_cast<HeroAI*>(AI.get())->ColideWith(this, z);
   }
+
+ComandList Hero::_colide(Dragon *d)
+{
+	return dynamic_cast<HeroAI*>(AI.get())->ColideWith(this, d);
+}

@@ -32,5 +32,9 @@ ComandList HeroAI::getActions(const void *w,
 
 template <>
 ComandList HeroAI::ColideWith(Hero * h, Zombie *z) {
-  return ComandList({make_shared<Attack_A_to_B>(h, z)});
+  return {make_shared<Attack_A_to_B>(h, z)};
+}
+template <>
+ComandList HeroAI::ColideWith(Hero * h, Dragon *d) {
+  return {make_shared<Attack_A_to_B>(h, d)};
 }

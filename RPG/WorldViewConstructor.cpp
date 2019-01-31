@@ -7,6 +7,12 @@ bool WorldViewConstructor::existPoint(const Point in) const
 	return in.x < World.w && in.y <World.h;;
 }
 
+WorldViewConstructor::HeroInfo WorldViewConstructor::getHeroInfo()
+{
+	HeroInfo out;
+	return out;
+}
+
 WorldViewConstructor::WorldViewConstructor(Model& E):World(E.World)
 {
 

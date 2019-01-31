@@ -8,6 +8,19 @@ shared_ptr<IEntity>& Map::operator[](const Point& in)
 	return World[in.y][in.x];
 }
 
+void Map::Delete(Point p)
+{
+	this->operator[](p) =shared_ptr<IEntity>();
+	for (size_t i = 0; i<Enemies.size(); i++)
+	{
+		if (Enemies[i].expired())
+		{
+			Enemies.erase(Enemies.begin()+i);
+			break;
+		}
+	}
+}
+
 
 
 void Map::Init()
@@ -17,8 +30,8 @@ void Map::Init()
 	case 1:
 		{
 			/// Тут типа нужно замутить генератор карты
-			w = 20;
-			h = 20;
+			w = 60;
+			h = 40;
 			World.resize(h, vector<shared_ptr<IEntity>>(w, shared_ptr<IEntity>()));
 			hero = make_shared<Hero>(Point(5, 15));
 			(*this)[hero->getCord()] = hero;
@@ -32,8 +45,11 @@ void Map::Init()
 					}
 				}
 			}
-			Enemies.push_back(make_shared<Zombie>(Point(1, 1)));
-			(*this)[Point(1, 1)] = Enemies.back();
+			
+			(*this)[Point(1, 1)] = make_shared<Zombie>(Point(1, 1));	
+			(*this)[Point(5, 5)] = make_shared<Dragon>(Point(5, 5));
+			Enemies.emplace_back((*this)[Point(1, 1)]);
+			Enemies.emplace_back((*this)[Point(1, 1)]);
 			break;
 		}
 	default:

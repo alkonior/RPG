@@ -3,12 +3,16 @@
 #include "IBaseAI.h"
 #include "Map.h"
 #include "WCComandslist.h"
-#include "pch.h"
+
 
 class HeroAI : public IBaseAI {
   template <typename T, bool def = false>
   using EnableIfIsNotRealized =
-      std::enable_if_t<(std::is_same<T, Zombie>::value == def), ComandList>;
+      std::enable_if_t<
+	  ((std::is_same<T, Zombie>::value)||
+	  (std::is_same<T, Dragon>::value))
+	  == def
+	  , ComandList>;
 
   template <typename T>
   using EnableIfIsRealized = EnableIfIsNotRealized<T, true>;
@@ -23,6 +27,7 @@ class HeroAI : public IBaseAI {
   EnableIfIsNotRealized<T> ColideWith(Hero *, T *);
   template <class T>
   EnableIfIsRealized<T> ColideWith(Hero *, T *);
+  ~HeroAI() override {};
 };
 
 template <class T>

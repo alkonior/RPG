@@ -23,6 +23,7 @@ class Apteca;
 
 class ZombieAI;
 class HeroAI;
+class DragonAI;
 
 class IEntity {
  protected:
@@ -36,6 +37,7 @@ class IEntity {
   virtual ComandList _colide(Hero*) = 0;
   virtual ComandList _colide(Wall*) = 0;
   virtual ComandList _colide(Zombie*) = 0;
+  virtual ComandList _colide(Dragon*) = 0;
 
  public:
   IEntity(Point, const Texture&, shared_ptr<IBaseAI>);
@@ -86,6 +88,7 @@ class Hero : public IPerson {
   ComandList _colide(Hero*) override;
   ComandList _colide(Wall*) override;
   ComandList _colide(Zombie*) override;
+  ComandList _colide(Dragon*) override;
   friend HeroAI;
 };
 
@@ -110,10 +113,33 @@ class Zombie : public Monster {
   ComandList _colide(Hero*) override;
   ComandList _colide(Wall*) override;
   ComandList _colide(Zombie*) override;
+  ComandList _colide(Dragon*) override;
+
   friend ZombieAI;
 };
 
-class Dragon : public Monster {};
+class Dragon : public Monster {
+private:
+	using ShotType = Zombie;
+	static size_t _startHp;
+	static size_t _startMana;
+	static size_t _startDmg;
+	static size_t _startSpeed;
+	static size_t _startArmor;
+
+public:
+	Dragon(Point);
+	static void Init(json&);
+
+	ComandList _colide(IEntity*) override;
+	ComandList _colide(Hero*) override;
+	ComandList _colide(Wall*) override;
+	ComandList _colide(Zombie*) override;
+	ComandList _colide(Dragon*) override;
+
+	friend DragonAI;
+
+};
 
 class Princess : public IPerson {};
 
@@ -123,6 +149,7 @@ class Wall : public INotPerson {
   ComandList _colide(Hero*) override;
   ComandList _colide(Wall*) override;
   ComandList _colide(Zombie*) override;
+  ComandList _colide(Dragon*) override;
 
   Wall(Point);
 };

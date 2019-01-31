@@ -1,5 +1,5 @@
 #pragma once
-#include"pch.h"
+#include"Point.h"
 
 
 
@@ -28,6 +28,7 @@ const Texture T_Wall('W', WALL_CS);
 const Texture T_Floor(' ', FLOOR_CS);
 const Texture T_Hero('H', HERO_CS);
 const Texture T_Zombie('Z', ZOMBIE_CS);
+const Texture T_Dragon('G', HERO_CS);
 }
 void initCS();
 

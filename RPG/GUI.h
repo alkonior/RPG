@@ -32,7 +32,6 @@ class GUI
 	size_t _w;
 	size_t _h;
 	WVC DataSource;
-	vector<shared_ptr<InfoPanel>> PanelsStack;
 	WorldPanel WP;
 	MainInfoPanel MIP;
 	BarPanel BP;

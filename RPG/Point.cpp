@@ -34,6 +34,11 @@ void Point::operator=(const Point& in) {
   y = in.y;
 }
 
+bool Point::operator==(const Point & in) const
+{
+	return (x==in.x)&&(y==in.y);
+}
+
 Point Point::operator-(const Point& in) { return Point(*this + (-(in))); }
 
 size_t Point::distance(const Point& in) const {
