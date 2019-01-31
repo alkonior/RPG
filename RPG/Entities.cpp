@@ -25,9 +25,18 @@ bool IPerson::getDmg(IPerson* enemy) {
 			return true;
 		_hp -= (dmg-_armor);
 	}
-		return false;
+		return false;	
+}
 
-	
+bool IPerson::getDmg(IProjectile* enemy) {
+  size_t dmg = enemy->_dmg;
+	if (dmg>_armor)
+	{
+		if (dmg-_armor>_hp)
+			return true;
+		_hp -= (dmg-_armor);
+	}
+		return false;	
 }
 
 INotPerson::INotPerson(Point p, const Texture& t) : IEntity(p, t,nullptr) {}

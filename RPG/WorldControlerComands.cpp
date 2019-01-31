@@ -53,13 +53,22 @@ template <>
 void WorldControler::execute(const Shoot* comand) {
 	if (World[comand->p]==nullptr)
 	{
-		World.addProjectile((*(comand->generator))(comand->p));
-		
+		World.addProjectile((*(comand->generator))(comand->p, comand->dir));	
 	}
 }
 
 template <>
 void WorldControler::execute(const Attack_Porjectile* comand) 
 {
-
+	IPerson* t = (comand->target);
+	IProjectile* p = (comand->projectile);
+	if (t->getDmg(p)) {
+		_ComandList.push_back(ComandList{ make_shared<DeleteEntity>(t) });
+	}
+	else
+	{
+		_ComandList.push_back(ComandList{ make_shared<DeleteEntity>(p)});
+		_ComandList.push_back(ComandList{ make_shared<MoveMe>(t, t->getCord().betsDir(p->getCord())) });
+	}
+	
 }

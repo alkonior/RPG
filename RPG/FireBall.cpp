@@ -2,10 +2,19 @@
 #include "Entities.h"
 #include "FireBallAI.h"
 
+size_t FireBall::_startDmg = 0;
+size_t FireBall::_startSpeed = 0;
 
+void FireBall::Init(json& description) {
+	FireBall::_startDmg = description["startDmg"];
+	FireBall::_startSpeed = description["startSpeed"];
+}
 
-FireBall::FireBall(Point p,Point dir):IProjectile(p,TEXTURES_ARAAY::T_FireBall,make_shared<FireBallAI>(*this))
+FireBall::FireBall(Point p, Point dir):IProjectile(p, TEXTURES_ARAAY::T_FireBall, make_shared<FireBallAI>(*this))
 {
+	_speed = _startSpeed;
+	_dmg = _startDmg;
+	_direction = dir;
 }
 
 ComandList FireBall::_colide(IEntity * in)

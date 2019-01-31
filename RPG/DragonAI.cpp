@@ -3,8 +3,12 @@
 #include <functional>
 
 
-DragonAI::DragonAI(Dragon& d):dragon(d),step(0), searching(false)
+
+DragonAI::DragonAI(Dragon& d):dragon(d),step(0), searching(false){}
+
+shared_ptr<IProjectile> DragonAI::generator(Point p, Point dir)
 {
+	return make_shared<Dragon::ShotType>(p, dir);
 }
 
 ComandList DragonAI::getActions(const void * w, size_t)
@@ -23,21 +27,15 @@ ComandList DragonAI::getActions(const void * w, size_t)
 		}
 		else {
 			searching=false;
-			/*
-			auto shot_func = [](Point p) -> shared_ptr<IEntity>
-			{
-				return make_shared<Dragon::ShotType>(p);
-			};
-			*/
 			vector<Point> dir{ Point(-1, 0), Point(0, -1), Point(1, 0), Point(0, 1) };
 			//out.push_back(make_shared<MoveMe>(&dragon, dragon._cord.betsDir(dir[rand()%4])));
 			int i = rand()%4;
-			/*
+			
 			out.push_back(make_shared<Shoot>(dragon.getCord()+dir[i], dir[i],
-											shared_ptr<std::function<shared_ptr<IEntity>(Point)>>(
-												new std::function<shared_ptr<IEntity>(Point)>(shot_func))
+											shared_ptr<std::function<shared_ptr<IProjectile>(Point,Point)>>(
+												new std::function<shared_ptr<IProjectile>(Point,Point)>(&generator))
 											 ));
-	*/}
+		}
 	}
 
 	return out;

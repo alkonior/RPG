@@ -9,6 +9,7 @@
 
 class DragonAI:public IBaseAI
 {
+	static shared_ptr<IProjectile> generator(Point p, Point dir);
 	template <typename T, bool def = false>
 	using EnableIfIsNotRealized =
 		std::enable_if_t<(((std::is_same<T, Hero>::value)||
@@ -20,6 +21,7 @@ class DragonAI:public IBaseAI
 	Point lastSee;
 	Dragon &dragon;
 	bool searching;
+
 public:
 	DragonAI(Dragon& );
 	ComandList getActions(const void *, size_t) override;

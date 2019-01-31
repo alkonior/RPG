@@ -7,6 +7,7 @@
 class IEntity;
 class IPerson;
 class INotPerson;
+class IProjectile;
 
 class Hero;
 
@@ -67,6 +68,7 @@ protected:
 public:
 	IPerson(Point, const Texture&, shared_ptr<IBaseAI>);
 	bool getDmg(IPerson*);
+	bool getDmg(IProjectile*);
 };
 
 class INotPerson: public IEntity {
@@ -170,11 +172,13 @@ public:
 
 class IProjectile:public IEntity
 {
+protected:
 	Point _direction;
 	size_t _speed;
 	size_t _dmg;
 public:
 	IProjectile(Point, const Texture&, shared_ptr<IBaseAI>);
+	friend IPerson;
 };
 
 class FireBall: public IProjectile {
@@ -182,6 +186,7 @@ class FireBall: public IProjectile {
 	static size_t _startDmg;
 	static size_t _startSpeed;
 public:
+	static void Init(json&);
 	FireBall(Point p, Point dir);
   /*void _colide(I_Entity& in) override;
   void _colide(Hero&) override;

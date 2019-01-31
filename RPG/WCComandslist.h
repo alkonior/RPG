@@ -55,7 +55,7 @@ class Shoot: public IComand {
 public:
 	Point p;
 	Point dir;
-	shared_ptr<std::function<shared_ptr<IProjectile>(Point)>> generator;
-	Shoot(Point p, Point dir, shared_ptr<std::function<shared_ptr<IProjectile>(Point)>> g);
+	shared_ptr<std::function<shared_ptr<IProjectile>(Point,Point)>> generator;
+	Shoot(Point p, Point dir, shared_ptr<std::function<shared_ptr<IProjectile>(Point,Point)>> g);
 	void accept(IBaseControler&) override;
 };

@@ -11,14 +11,18 @@
     "startHp": 20,
     "startMana": 0,
     "startDmg": 10,
-    "startSpeed": 5,
+    "startSpeed": 8,
     "startArmor": 5
   },
   "dragon": {
     "startHp": 100,
     "startMana": 100,
     "startDmg": 10,
-    "startSpeed": 2,
+    "startSpeed": 4,
     "startArmor": 0
+  },
+  "fireball": {
+    "startDmg": 20,
+    "startSpeed": 3
   }
 }

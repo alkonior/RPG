@@ -29,7 +29,7 @@ const Texture T_Floor(' ', FLOOR_CS);
 const Texture T_Hero('H', HERO_CS);
 const Texture T_Zombie('Z', ZOMBIE_CS);
 const Texture T_Dragon('G', HERO_CS);
-const Texture T_Fireball('G', HERO_CS);
+const Texture T_FireBall('F', DEFAULT_CS);
 }
 void initCS();
 
