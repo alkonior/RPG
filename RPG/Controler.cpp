@@ -2,18 +2,18 @@
 #include "Controler.h"
 
 
-Controler::Controler(GUI& G, Model& E):
-	Gui(G),
-	Engine(E),
-	WC(Engine)
+Controler::Controler(shared_ptr<GUI>g):_Gui(g)
 {}
 
 void Controler::Send(size_t in)
 {
-	if (!Gui.Comand(in))
+
+	auto res = _Gui->getComand(in);
+	if (res)
 	{
-		WC.GetComand(in);
+		_Gui->setScene(res);
 	}
+	_Gui->Draw();
 }
 
 Controler::~Controler()

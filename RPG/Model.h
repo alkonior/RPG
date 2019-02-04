@@ -2,22 +2,22 @@
 #include "pch.h"
 #include "Entities.h"
 #include "IBaseAI.h"
+#include "WorldViewConstructor.h"
+#include "WorldControler.h"
 #include "Map.h"
 
-
-
-//Sub Classes
-class WorldViewConstructor;
-class WorldControler;
 
 
 class Model
 {
 	size_t i = 0;
-	Map World;
+	shared_ptr<Map> _World;
+	WorldControler _WC;
+	WVC _WVC;
+
 public:
 	Model(json&);
+	size_t getComand(size_t );
+	const WVC& getData()const;
 	~Model();
-	friend WorldViewConstructor;
-	friend WorldControler;
 };

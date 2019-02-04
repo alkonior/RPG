@@ -1,13 +1,11 @@
 #pragma once
-#include "Model.h"
 #include "Map.h"
 
 
 class WorldViewConstructor
 {
-
-	const Map& World;
-	Point worldShift;
+	const  shared_ptr<Map> World;
+	mutable Point worldShift;
     bool existPoint(const Point) const;
 	public:
 		struct HeroInfo {
@@ -16,9 +14,10 @@ class WorldViewConstructor
 			size_t Mp;
 		};
 		HeroInfo getHeroInfo();
-	WorldViewConstructor(Model&);
 
-	vector<vector<const Texture*>> GetWorldInfo(size_t, size_t)const;
+	vector<vector<const Texture*>> GetMapInfo(size_t, size_t)const;
+
+	WorldViewConstructor(const shared_ptr<Map>);
 };
 
 typedef WorldViewConstructor WVC;

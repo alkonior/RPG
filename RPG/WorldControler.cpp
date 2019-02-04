@@ -2,26 +2,32 @@
 #include "WorldControler.h"
 
 
-WorldControler::WorldControler(Model& E): World(E.World) {}
+WorldControler::WorldControler(shared_ptr<Map> m): World(m) {}
 
 void WorldControler::GetComand(size_t comand) {
-	if (!World.hero.expired()) {
+	if (!World->hero.expired()) {
 		_ComandList.push_back(
-			World.hero.lock()->getAI()->getActions(&World, comand));
+			World->hero.lock()->getAI()->getActions(World.get(), comand));
 		executeAll();
-		for (size_t i = 0; i<World.Projectiles.size(); i++) {
-			if (!World.Projectiles[i].expired())
+		for (size_t i = 0; i<World->Projectiles.size(); i++) {
+			if (!World->Projectiles[i].expired())
 			{
-				auto test = World.Projectiles[i].lock()->getAI();
+				auto test = World->Projectiles[i].lock()->getAI();
 				_ComandList.push_back(
-					World.Projectiles[i].lock()->getAI()->getActions(&World, comand));
+					World->Projectiles[i].lock()->getAI()->getActions(World.get(), comand));
 			}
-			executeAll();
+			else
+			{
+				World->Projectiles.erase(World->Projectiles.cbegin()+i);
+				i--;
+			}
+			
 		}
-		for (size_t i = 0; i<World.Enemies.size(); i++) {
-			if (!World.Enemies[i].expired())
+		executeAll();
+		for (size_t i = 0; i<World->Enemies.size(); i++) {
+			if (!World->Enemies[i].expired())
 				_ComandList.push_back(
-					World.Enemies[i].lock()->getAI()->getActions(&World, comand));
+					World->Enemies[i].lock()->getAI()->getActions(World.get(), comand));
 			executeAll();
 		}
 	}

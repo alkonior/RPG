@@ -1,19 +1,12 @@
 #pragma once
 #include"GUI.h"
-#include"WorldViewConstructor.h"
-#include"WorldControler.h"
-
-
 
 class Controler
 {
 	
-	GUI& Gui;
-	Model& Engine;
-	WorldControler WC;
-
+	shared_ptr<GUI> _Gui;
 public:
-	Controler(GUI&, Model&);
+	Controler(shared_ptr<GUI>);
 	void Send(size_t);
 	~Controler();
 };

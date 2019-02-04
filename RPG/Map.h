@@ -7,12 +7,12 @@ class Map {
 private:
 
 	size_t _seed;
-
+		vector<vector<shared_ptr<IEntity>>> World;
 public:
-	size_t h;
-	size_t w;
+	size_t height;
+	size_t width;
 	Map(size_t);
-	vector<vector<shared_ptr<IEntity>>> World;
+
 	vector<weak_ptr<IMonster>> Enemies;
 	vector<weak_ptr<IProjectile>> Projectiles;
 	weak_ptr<Hero> hero;

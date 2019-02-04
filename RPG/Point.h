@@ -15,7 +15,7 @@ class Point {
   void operator=(const Point&);
   bool operator==(const Point & in) const;
   friend Point operator+(const Point&, Point);
-  Point operator-(const Point&);
+  Point operator-(const Point&)const;
   size_t distance(const Point&) const;
 };
 

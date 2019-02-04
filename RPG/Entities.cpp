@@ -46,3 +46,17 @@ IMonster::IMonster(Point p, const Texture& t) : IPerson(p, t) {}
 IProjectile::IProjectile(Point p, const Texture & t) : IEntity(p, t)
 {
 }
+
+Point IProjectile::getDir() const
+{
+	return _direction;
+}
+size_t IProjectile::getSpeed() const
+{
+	return _speed;
+}
+
+
+inline IEntity::~IEntity()
+{
+}

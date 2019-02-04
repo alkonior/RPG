@@ -166,6 +166,8 @@
   <ItemGroup>
     <ClInclude Include="BarPanel.h" />
     <ClInclude Include="DragonAI.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="IBaseScene.h" />
     <ClInclude Include="ProjectileAI.h" />
     <ClInclude Include="IBaseAI.h" />
     <ClInclude Include="IBaseControler.h" />
@@ -183,6 +185,8 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="ScenesList.h" />
+    <ClInclude Include="SkeletonAI.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="WCComandslist.h" />
     <ClInclude Include="WorldControler.h" />
@@ -195,6 +199,8 @@
     <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="DragonAI.cpp" />
     <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="IBaseScene.cpp" />
     <ClCompile Include="ProjectileAI.cpp" />
     <ClCompile Include="IBaseAI.cpp" />
     <ClCompile Include="Entities.cpp" />
@@ -216,6 +222,8 @@
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RPG.cpp" />
     <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
+    <ClCompile Include="SkeletonAI.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WCComandsList.cpp" />

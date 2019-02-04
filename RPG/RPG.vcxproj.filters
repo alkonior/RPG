@@ -43,6 +43,9 @@
     <Filter Include="Файлы заголовков\BaseClasses">
       <UniqueIdentifier>{37f0beb1-364a-43cb-9cfb-317f06e55672}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\GUI\Scenes">
+      <UniqueIdentifier>{8217ee35-ff22-43d0-a76c-baf83f5c27f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -81,9 +84,6 @@
     <ClInclude Include="WCComandslist.h">
       <Filter>Файлы заголовков\Controler</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="HeroAI.h">
       <Filter>Файлы заголовков\Engine\AI</Filter>
     </ClInclude>
@@ -119,6 +119,21 @@
     </ClInclude>
     <ClInclude Include="ProjectileAI.h">
       <Filter>Файлы заголовков\Engine\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseScene.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenesList.h">
+      <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Файлы заголовков\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonAI.h">
+      <Filter>Файлы заголовков\Engine\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Файлы заголовков\GUI\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +223,18 @@
     </ClCompile>
     <ClCompile Include="Arrow.cpp">
       <Filter>Исходные файлы\Entyties</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Исходные файлы\Entyties</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonAI.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseScene.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

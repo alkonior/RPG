@@ -12,7 +12,7 @@
 
 defNewAccept(CForward);
 defNewAccept(MoveMe);
-defNewAccept(IfCanMoveMe);
+defNewAccept(PushMe);
 defNewAccept(Attack_A_to_B);
 defNewAccept(Attack_Porjectile);
 defNewAccept(DeleteEntity);
@@ -22,7 +22,7 @@ Attack_A_to_B::Attack_A_to_B(IPerson* a, IPerson* b):A(a), B(b) {}
 
 DeleteEntity::DeleteEntity(IEntity* p) : e(p) {}
 
-IfCanMoveMe::IfCanMoveMe(IEntity * o, Point p) : p(p), object(o) {}
+PushMe::PushMe(IEntity * o, Point p) : p(p), object(o) {}
 
 MoveMe::MoveMe(IEntity * o, Point p) : p(p), object(o) {}
 

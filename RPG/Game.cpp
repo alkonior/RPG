@@ -3,18 +3,15 @@
 
 
 
-Game::Game(json& config):_Engine(config), _Gui(_Engine), _Controler(_Gui, _Engine)
+Game::Game(json& config):_Gui(make_shared<GUI>(LINES,COLS)), _Controler(_Gui)
 {
-	initscr();
 	start_color();
 	keypad(stdscr, TRUE);
 	noecho();
 	curs_set(0);
-
     timeout(100);
-
-	int my= LINES, mx= COLS;
-	_Gui.init(mx, my);
+    cbreak();
+	_Gui->init(config);
 }
 
 void Game::start()
@@ -24,7 +21,6 @@ void Game::start()
 
 void Game::loop()
 {
-	_Gui.Draw();
 	while (true)
 	{
 		size_t ch = getch();
@@ -32,7 +28,7 @@ void Game::loop()
 		if (ch != 27)
 		{			
 			_Controler.Send(ch);
-			_Gui.Draw();
+			flushinp();
 		}
 		else
 		{

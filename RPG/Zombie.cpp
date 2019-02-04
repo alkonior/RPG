@@ -61,6 +61,21 @@ ComandList Zombie::_colide(Arrow * a)
 	return   _AI->ColideWith(this, a);
 }
 
+ComandList Zombie::_colide(Skeleton * s)
+{
+	return _AI->ColideWith(this, s);
+}
+
+ComandList Zombie::_colide(Apteca * a)
+{
+	return _AI->ColideWith(this, a);
+}
+
+ComandList Zombie::_colide(Princess * p)
+{
+	return _AI->ColideWith(this, p);
+}
+
 shared_ptr<IBaseAI> Zombie::getAI()
 {
 	return _AI;

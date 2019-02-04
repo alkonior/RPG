@@ -19,11 +19,11 @@ public:
 	void accept(IBaseControler&) override;
 };
 
-class IfCanMoveMe: public IComand {
+class PushMe: public IComand {
 public:
 	IEntity* object;
 	Point p;
-	IfCanMoveMe(IEntity* o, Point p);
+	PushMe(IEntity* o, Point p);
 	void accept(IBaseControler&) override;
 };
 
@@ -53,9 +53,10 @@ public:
 
 class Shoot: public IComand {
 public:
+	using finc_t = std::function<shared_ptr<IProjectile>(Point, Point)>;
 	Point p;
 	Point dir;
-	shared_ptr<std::function<shared_ptr<IProjectile>(Point,Point)>> generator;
-	Shoot(Point p, Point dir, shared_ptr<std::function<shared_ptr<IProjectile>(Point,Point)>> g);
+	shared_ptr<finc_t> generator;
+	Shoot(Point p, Point dir, shared_ptr<finc_t> g);
 	void accept(IBaseControler&) override;
 };

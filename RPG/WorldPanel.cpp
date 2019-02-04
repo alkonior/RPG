@@ -2,9 +2,8 @@
 #include "WorldPanel.h"
 
 
-WorldPanel::WorldPanel(WVC& W): 
-Data(W),
-Window(nullptr), Panel(nullptr),
+WorldPanel::WorldPanel(): 
+Window(nullptr),
 w(0), h(0){}
 
 void WorldPanel::init(Point lu, Point rd)
@@ -16,22 +15,19 @@ void WorldPanel::init(Point lu, Point rd)
 	{
 		Window = subwin(stdscr, --h, --w, lu.y, lu.x);
 	}
-	Panel = new_panel(Window);
-	bottom_panel(Panel);
 }
 
-void WorldPanel::Draw()
+void WorldPanel::Draw(const WVC& Data) const
 {
-	vector<vector<const Texture*>> in = Data.GetWorldInfo(w,h);
+	vector<vector<const Texture*>> in = Data.GetMapInfo(w,h);
 	auto res = wresize(Window, w, h) == ERR;
-	for (size_t i = 0; i < h; i++)
+	for (size_t i = 0; i<h; i++)
 	{
-		for (size_t j = 0; j < w; j++)
+		for (size_t j = 0; j<w; j++)
 		{
 			in[i][j]->Draw(Point(i, j), Window);
 		}
 	}
-	update_panels();
 	doupdate();
 	wrefresh(Window);
 }
@@ -39,7 +35,6 @@ void WorldPanel::Draw()
 WorldPanel::~WorldPanel()
 {
 	if (Window) {
-		del_panel(Panel);
 		delwin(Window);
 	}
 }

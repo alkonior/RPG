@@ -2,36 +2,52 @@
 #include "Entities.h"
 #include "IBaseAI.h"
 #include "Map.h"
+#include <map>
+#include <functional>
 #include "WCComandslist.h"
 
 
-class HeroAI : public IBaseAI {
-  template <typename T, bool def = false>
-  using EnableIfIsNotRealized =
-      std::enable_if_t<
-	  ((std::is_same<T, Zombie>::value)||
-	  (std::is_same<T, Dragon>::value)||
-	  (std::is_base_of_v<IProjectile, T>))
-	  == def
-	  , ComandList>;
+class HeroAI: public IBaseAI {
 
-  template <typename T>
-  using EnableIfIsRealized = EnableIfIsNotRealized<T, true>;
+	static shared_ptr<IProjectile> generator(Point p, Point dir);
 
-  Hero &hero;
+	template <typename T>
+	using EnableIfNothing =
+		std::enable_if_t<(!std::is_same_v<Princess, T>&&
+						  std::is_base_of_v<INotPerson, T>||std::is_same_v<Hero,T>), ComandList>;
 
- public:
-  HeroAI(Hero &);
-  ComandList getActions(const void *, size_t) override;
+	template <typename T>
+	using EnableIfProjectile =
+		std::enable_if_t<(std::is_base_of_v<IProjectile, T>), ComandList>;
 
-  template <class T>
-  EnableIfIsNotRealized<T> ColideWith(Hero *, T *);
-  template <class T>
-  EnableIfIsRealized<T> ColideWith(Hero *, T *);
-  ~HeroAI() override {};
+
+	template <typename T>
+	using EnableIfMonster =
+		std::enable_if_t<(std::is_base_of_v<IMonster, T>), ComandList>;
+
+	template <typename T>
+	using EnableIfPrincess =
+		std::enable_if_t<(std::is_same_v<Princess, T>), ComandList>;
+
+	Hero* hero;
+
+public:
+	HeroAI(Hero*);
+	ComandList getActions(const void *, size_t) override;
+
+	template <class T>
+	EnableIfNothing<T> ColideWith(Hero*, T*) { return {}; };
+
+	template <class T>
+	EnableIfMonster<T> ColideWith(Hero* h, T* t) { return { make_shared<Attack_A_to_B>(h, t) }; }
+
+	template <class T>
+	EnableIfProjectile<T> ColideWith(Hero* h, T* t) { return { make_shared<Attack_Porjectile>(h,t) }; }
+
+	ComandList ColideWith(Hero* h, Princess* p);
+
+
+	~HeroAI() override {};
 };
 
-template <class T>
-HeroAI::EnableIfIsNotRealized<T> HeroAI::ColideWith(Hero *, T *) {
-  return EnableIfIsNotRealized<T>();
-}
+

@@ -24,32 +24,52 @@ ComandList Arrow::_colide(IEntity* in)
 	return in->_colide(this);
 }
 
-ComandList Arrow::_colide(Hero *)
+ComandList Arrow::_colide(Hero* h)
 {
-	return ComandList();
+	return _AI->ColideWith(this, h);
 }
 
-ComandList Arrow::_colide(Wall *)
+ComandList Arrow::_colide(Wall* w)
 {
-	return ComandList();
+	return _AI->ColideWith(this, w);
 }
 
-ComandList Arrow::_colide(Zombie *)
+ComandList Arrow::_colide(Zombie* z)
 {
-	return ComandList();
+	return _AI->ColideWith(this, z);
 }
 
-ComandList Arrow::_colide(Dragon *)
+ComandList Arrow::_colide(Dragon* d)
 {
-	return ComandList();
+	return _AI->ColideWith(this, d);
 }
 
-ComandList Arrow::_colide(FireBall *)
+ComandList Arrow::_colide(FireBall* f)
 {
-	return ComandList();
+	return _AI->ColideWith(this, f);
 }
 
-ComandList Arrow::_colide(Arrow *)
+ComandList Arrow::_colide(Arrow* a)
 {
-	return ComandList();
+	return _AI->ColideWith(this, a);
+}
+
+ComandList Arrow::_colide(Skeleton* s)
+{
+	return _AI->ColideWith(this, s);
+}
+
+ComandList Arrow::_colide(Apteca* a)
+{
+	return _AI->ColideWith(this, a);
+}
+
+ComandList Arrow::_colide(Princess *p)
+{
+	return _AI->ColideWith(this, p);
+}
+
+shared_ptr<IBaseAI> Arrow::getAI()
+{
+	return _AI;
 }

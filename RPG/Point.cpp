@@ -39,7 +39,7 @@ bool Point::operator==(const Point & in) const
 	return (x==in.x)&&(y==in.y);
 }
 
-Point Point::operator-(const Point& in) { return Point(*this + (-(in))); }
+Point Point::operator-(const Point& in)const { return Point(*this + (-(in))); }
 
 size_t Point::distance(const Point& in) const {
   return std::max<size_t>(x, in.x) - std::min<size_t>(x, in.x) +

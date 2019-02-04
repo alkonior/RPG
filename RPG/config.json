@@ -4,7 +4,7 @@
     "startHp": 500,
     "startMana": 10,
     "startDmg": 10,
-    "startSpeed": 1,
+    "startSpeed": 2,
     "startArmor": 5
   },
   "zombie": {
@@ -18,11 +18,18 @@
     "startHp": 100,
     "startMana": 100,
     "startDmg": 10,
-    "startSpeed": 4,
+    "startSpeed": 3,
     "startArmor": 0
   },
   "fireball": {
     "startDmg": 20,
     "startSpeed": 3
+  },
+  "arrow": {
+    "startDmg": 20,
+    "startSpeed": 1
+  },
+  "apteca": {
+    "heal": 20
   }
 }

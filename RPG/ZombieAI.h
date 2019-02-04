@@ -7,12 +7,17 @@
 
 class ZombieAI : public IBaseAI {
  private: 
-  template <typename T, bool def = false>
-  using EnableIfIsNotRealized =
-      std::enable_if_t<(((std::is_same<T, Hero>::value)||
-	  (std::is_base_of_v<IProjectile, T>))== def), ComandList>;
-  template <typename T>
-  using EnableIfIsRealized = EnableIfIsNotRealized<T, true>;
+	 template <typename T>
+	 using EnableIfNothing =
+		 std::enable_if_t<(std::is_base_of_v<IMonster, T>||std::is_base_of_v<INotPerson, T>), ComandList>;
+
+	 template <typename T>
+	 using EnableIfProjectile =
+		 std::enable_if_t<(std::is_base_of_v<IProjectile, T>), ComandList>;
+
+	 template <typename T>
+	 using EnableIfHero =
+		 std::enable_if_t<(std::is_same_v<Hero, T>), ComandList>;
 
 
 
@@ -26,13 +31,13 @@ class ZombieAI : public IBaseAI {
   // Унаследовано через IBaseAI
   ComandList getActions(const void *, size_t) override;
 
-  template <class T>
-  EnableIfIsNotRealized<T> ColideWith(Zombie *, T *);
-  template <class T>
-  EnableIfIsRealized<T> ColideWith(Zombie *, T *);
-};
 
-template <class T>
-ZombieAI::EnableIfIsNotRealized<T> ZombieAI::ColideWith(Zombie *, T *) {
-  return EnableIfIsNotRealized<T>();
-}
+  template <class T>
+  EnableIfNothing<T> ColideWith(Zombie *, T *) { return {}; }
+
+  template <class T>
+  EnableIfProjectile<T> ColideWith(Zombie *z, T * t) { return { make_shared<Attack_Porjectile>(z,t) }; }
+
+  template <class T>
+  EnableIfHero<T> ColideWith(Zombie *, T *);
+};

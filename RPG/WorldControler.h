@@ -3,18 +3,17 @@
 #include <iostream>
 #include "IBaseControler.h"
 #include "Map.h"
-#include "Model.h"
 #include "WCComandslist.h"
 #include "pch.h"
 
 class WorldControler : public IBaseControler {
 
-  Map& World;
+  shared_ptr<Map> World;
   vector<ComandList> _ComandList;
   void executeAll();
 
  public:
-  WorldControler(Model&);
+  WorldControler(shared_ptr<Map>);
   void GetComand(size_t);
 
   template <class T>

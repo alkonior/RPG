@@ -8,6 +8,7 @@
 #define WALL_CS 3
 #define HERO_CS 4
 #define ZOMBIE_CS 5
+#define SKELETON_CS 6
 
 
 class Texture
@@ -28,7 +29,8 @@ const Texture T_Wall('W', WALL_CS);
 const Texture T_Floor(' ', FLOOR_CS);
 const Texture T_Hero('H', HERO_CS);
 const Texture T_Zombie('Z', ZOMBIE_CS);
-const Texture T_Dragon('G', HERO_CS);
+const Texture T_Dragon('D', HERO_CS);
+const Texture T_Skeleton('S', SKELETON_CS);
 const Texture T_FireBall('F', DEFAULT_CS);
 }
 void initCS();

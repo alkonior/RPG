@@ -10,27 +10,27 @@ void WorldControler::execute(const CForward*) {
 template <>
 void WorldControler::execute(const MoveMe* comand) {
 	auto cp = comand->object->getCord();
-	auto curObject = World[cp];
+	auto curObject = (*World)[cp];
 	Point p = comand->p;
-	if (World[cp+p]==nullptr) {
-		World[cp] = nullptr;
-		World[cp+p] = curObject;
+	if ((*World)[cp+p]==nullptr) {
+		(*World)[cp] = nullptr;
+		(*World)[cp+p] = curObject;
 		curObject->setCord(curObject->getCord()+p);
 	}
 	else {
-		auto result = World[cp]->colide(World[cp+p].get());
+		auto result = (*World)[cp]->colide((*World)[cp+p].get());
 		if (!result.empty()) _ComandList.push_back(result);
 	}
 }
 
 template <>
-void WorldControler::execute(const IfCanMoveMe* comand) {
+void WorldControler::execute(const PushMe* comand) {
 	auto cp = comand->object->getCord();
-	auto curObject = World[cp];
+	auto curObject = (*World)[cp];
 	Point p = comand->p;
-	if (World[cp+p]==nullptr) {
-		World[cp] = nullptr;
-		World[cp+p] = curObject;
+	if ((*World)[cp+p]==nullptr) {
+		(*World)[cp] = nullptr;
+		(*World)[cp+p] = curObject;
 		curObject->setCord(curObject->getCord()+p);
 	}
 }
@@ -46,14 +46,14 @@ void WorldControler::execute(const Attack_A_to_B* comand) {
 
 template <>
 void WorldControler::execute(const DeleteEntity* comand) {
-	World.Delete(comand->e->getCord());
+	World->Delete(comand->e->getCord());
 }
 
 template <>
 void WorldControler::execute(const Shoot* comand) {
-	if (World[comand->p]==nullptr)
+	if ((*World)[comand->p]==nullptr)
 	{
-		World.addProjectile((*(comand->generator))(comand->p, comand->dir));	
+		World->addProjectile((*(comand->generator))(comand->p, comand->dir));	
 	}
 }
 

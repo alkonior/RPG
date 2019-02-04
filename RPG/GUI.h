@@ -1,46 +1,21 @@
 #pragma once
-#include "InfoPanel.h"
-#include "MainInfoPanel.h"
-#include "BarPanel.h"
-#include "WorldPanel.h"
-#include "WorldViewConstructor.h"
+#include "IBaseScene.h"
+#include "ScenesList.h"
 
-
-
-#ifndef BaseLeftShiftX
-#define BaseLeftShiftX 2
-#endif // !BaseLeftShiftX
-
-#ifndef BaseUpShiftY
-#define BaseUpShiftY 1
-#endif // !BaseUpShiftY
-
-#ifndef BaseRightShiftX 
-#define BaseRightShiftX  15
-#endif // !BaseRightShiftX 
-
-#ifndef BaseDownShiftY
-#define BaseDownShiftY 7
-#endif // !BaseDownShiftY
 
 
 
 class GUI
 {
-	Point _lu_shift;
-	Point _rd_shift;
 	size_t _w;
 	size_t _h;
-	WVC DataSource;
-	WorldPanel WP;
-	MainInfoPanel MIP;
-	BarPanel BP;
-
-
+	vector<shared_ptr<IBaseScene>> _Scenes;
+	size_t curScene;
 public:
-	GUI(Model&);
-	void init(size_t, size_t);
-	bool Comand(size_t);
+	GUI(size_t, size_t);
+	void init(json&);
+	size_t getComand(size_t);
+	void setScene(size_t);
 	void Draw();
 	~GUI();
 };

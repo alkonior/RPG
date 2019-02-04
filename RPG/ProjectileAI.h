@@ -9,10 +9,11 @@ private:
 	using imune_person = T;
 
 	template <typename T>
-	using EnableIfDefault =
-		std::enable_if_t<(!(
-		(std::is_base_of_v<IProjectile, T>)||
-        (std::is_base_of_v<IPerson, T>))||std::is_same_v<T, imune_person>
+	using EnableIfNothing =
+		std::enable_if_t<(
+			!((std::is_base_of_v<IProjectile, T>)||(std::is_base_of_v<IPerson, T>))
+			||std::is_same_v<T, imune_person>
+			||std::is_base_of_v<INotPerson, T>
 						  )
 		, ComandList>;
 
@@ -42,7 +43,7 @@ public:
 	}
 
 	template <class T>
-	EnableIfDefault<T> ColideWith(IProjectile* f, T *)
+	EnableIfNothing<T> ColideWith(IProjectile* f, T *)
 	{
 		return { make_shared<DeleteEntity>(f) };
 	}
@@ -57,7 +58,12 @@ public:
 };
 
 template<class T>
-inline ComandList ProjectileAI<T>::getActions(const void *, size_t)
+ComandList ProjectileAI<T>::getActions(const void *, size_t)
 {
+	if (step++>=projectile->getSpeed())
+	{
+		step = 0;
+		return {make_shared<MoveMe>(projectile,projectile->getDir())};
+	}
 	return ComandList();
 }

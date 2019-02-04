@@ -32,13 +32,3 @@ ComandList ZombieAI::ColideWith<>(Zombie* Z, Hero* H) {
 	return { make_shared<Attack_A_to_B>(Z, H) };
 }
 
-template <>
-ComandList ZombieAI::ColideWith<>(Zombie* Z, Arrow* A) {
-	return { make_shared<Attack_Porjectile>(Z,A) };
-}
-template <>
-ComandList ZombieAI::ColideWith<>(Zombie* Z, FireBall* H) {
-	return { make_shared<Attack_Porjectile>(Z,H) };
-}
-
-

@@ -24,9 +24,10 @@ class Arrow;
 class Apteca;
 
 class ZombieAI;
+class SkeletonAI;
 class HeroAI;
 class DragonAI;
-class ArrowAI;
+
 template<class T>
 class ProjectileAI;
 
@@ -38,10 +39,13 @@ public:
 	virtual ComandList _colide(Zombie*) = 0;
 	virtual ComandList _colide(Dragon*) = 0;
 	virtual ComandList _colide(FireBall*) = 0;
+	virtual ComandList _colide(Skeleton*) = 0;
+	virtual ComandList _colide(Apteca*) = 0;
 	virtual ComandList _colide(Arrow*) = 0;
+	virtual ComandList _colide(Princess*) = 0;
 };
 
-class IEntity:public IColiders {
+class IEntity:public IColiders{
 protected:
 
 	const Texture& _t;
@@ -52,10 +56,9 @@ public:
 	const Texture& getTexture();
 	ComandList colide(IEntity* in);
 	static void Init(json&) { throw new std::exception("Not inited class"); }
-
 	virtual shared_ptr<IBaseAI> getAI() = 0;
-
-	const Point getCord() { return _cord; }
+	const Point getCord() const { return _cord; }
+	virtual ~IEntity();
 	void setCord(Point p) { _cord = p; }
 };
 
@@ -83,6 +86,7 @@ public:
 
 class Hero: public IPerson {
 private:
+	using ShotType = Arrow;
 	static size_t _startHp;
 	static size_t _startMana;
 	static size_t _startDmg;
@@ -92,7 +96,8 @@ private:
 public:
 	Hero(Point);
 	static void Init(json&);
-	// Унаследовано через IPerson
+
+
 	ComandList _colide(IEntity*) override;
 	ComandList _colide(Hero*) override;
 	ComandList _colide(Wall*) override;
@@ -100,6 +105,10 @@ public:
 	ComandList _colide(Dragon*) override;
 	ComandList _colide(FireBall*) override;
 	ComandList _colide(Arrow*) override;
+	ComandList _colide(Skeleton*) override;
+	ComandList _colide(Apteca*) override;
+	ComandList _colide(Princess*) override;
+
 	friend HeroAI;
 
 	// Унаследовано через IPerson
@@ -123,6 +132,7 @@ public:
 	Zombie(Point);
 	static void Init(json&);
 
+
 	ComandList _colide(IEntity*) override;
 	ComandList _colide(Hero*) override;
 	ComandList _colide(Wall*) override;
@@ -130,6 +140,9 @@ public:
 	ComandList _colide(Dragon*) override;
 	ComandList _colide(FireBall*) override;
 	ComandList _colide(Arrow*) override;
+	ComandList _colide(Skeleton*) override;
+	ComandList _colide(Apteca*) override;
+	ComandList _colide(Princess*) override;
 
 	shared_ptr<IBaseAI> getAI() override;
 	friend ZombieAI;
@@ -148,6 +161,7 @@ public:
 	Dragon(Point);
 	static void Init(json&);
 
+
 	ComandList _colide(IEntity*) override;
 	ComandList _colide(Hero*) override;
 	ComandList _colide(Wall*) override;
@@ -155,16 +169,21 @@ public:
 	ComandList _colide(Dragon*) override;
 	ComandList _colide(FireBall*) override;
 	ComandList _colide(Arrow*) override;
+	ComandList _colide(Skeleton*) override;
+	ComandList _colide(Apteca*) override;
+	ComandList _colide(Princess*) override;
+
 	shared_ptr<IBaseAI> getAI() override;
 	friend DragonAI;
 
 };
 
-class Princess: public IPerson {
+class Princess: public INotPerson {
 };
 
 class Wall: public INotPerson {
 public:
+
 	ComandList _colide(IEntity*) override;
 	ComandList _colide(Hero*) override;
 	ComandList _colide(Wall*) override;
@@ -172,6 +191,10 @@ public:
 	ComandList _colide(Dragon*) override;
 	ComandList _colide(FireBall*) override;
 	ComandList _colide(Arrow*) override;
+	ComandList _colide(Skeleton*) override;
+	ComandList _colide(Apteca*) override;
+	ComandList _colide(Princess*) override;
+
 	shared_ptr<IBaseAI> getAI() override;
 	Wall(Point);
 };
@@ -184,6 +207,8 @@ protected:
 	size_t _dmg;
 public:
 	IProjectile(Point, const Texture&);
+	Point getDir() const;
+	size_t getSpeed()const ;
 	friend IPerson;
 };
 
@@ -196,13 +221,17 @@ public:
 	static void Init(json&);
 	FireBall(Point p, Point dir);
 
-	ComandList _colide(IEntity *) override;
-	ComandList _colide(Hero *) override;
-	ComandList _colide(Wall *) override;
-	ComandList _colide(Zombie *) override;
-	ComandList _colide(Dragon *) override;
-	ComandList _colide(FireBall *) override;
-	ComandList _colide(Arrow *) override;
+
+	ComandList _colide(IEntity*) override;
+	ComandList _colide(Hero*) override;
+	ComandList _colide(Wall*) override;
+	ComandList _colide(Zombie*) override;
+	ComandList _colide(Dragon*) override;
+	ComandList _colide(FireBall*) override;
+	ComandList _colide(Arrow*) override;
+	ComandList _colide(Skeleton*) override;
+	ComandList _colide(Princess*) override;
+	ComandList _colide(Apteca*) override;
 
 	shared_ptr<IBaseAI> getAI() override;
 
@@ -217,15 +246,23 @@ public:
 	static void Init(json&);
 	Arrow(Point p, Point dir);
 
-	ComandList _colide(IEntity *) override;
-	ComandList _colide(Hero *) override;
-	ComandList _colide(Wall *) override;
-	ComandList _colide(Zombie *) override;
-	ComandList _colide(Dragon *) override;
-	ComandList _colide(FireBall *) override;
-	ComandList _colide(Arrow *) override;
+
+	ComandList _colide(IEntity*) override;
+	ComandList _colide(Hero*) override;
+	ComandList _colide(Wall*) override;
+	ComandList _colide(Zombie*) override;
+	ComandList _colide(Dragon*) override;
+	ComandList _colide(FireBall*) override;
+	ComandList _colide(Arrow*) override;
+	ComandList _colide(Skeleton*) override;
+	ComandList _colide(Apteca*) override;
+	ComandList _colide(Princess*) override;
 
 	
+
+	// Унаследовано через IProjectile
+	virtual shared_ptr<IBaseAI> getAI() override;
+
 };
 
 class Apteca: public INotPerson {
@@ -236,4 +273,33 @@ class Apteca: public INotPerson {
   void _colide(Dragon&) override;
   void _colide(Princess&) override;
   void _colide(Wall&) override;*/
+};
+
+class Skeleton: public IMonster {
+private:
+	using ShotType = Arrow;
+	static size_t _startHp;
+	static size_t _startMana;
+	static size_t _startDmg;
+	static size_t _startSpeed;
+	static size_t _startArmor;
+	shared_ptr<SkeletonAI> _AI;
+public:
+	Skeleton(Point);
+	static void Init(json&);
+
+
+	ComandList _colide(IEntity*) override;
+	ComandList _colide(Hero*) override;
+	ComandList _colide(Wall*) override;
+	ComandList _colide(Zombie*) override;
+	ComandList _colide(Dragon*) override;
+	ComandList _colide(FireBall*) override;
+	ComandList _colide(Arrow*) override;
+	ComandList _colide(Skeleton*) override;
+	ComandList _colide(Apteca*) override;
+	ComandList _colide(Princess*) override;
+
+	shared_ptr<IBaseAI> getAI() override;
+	friend DragonAI;
 };

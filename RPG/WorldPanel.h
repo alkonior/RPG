@@ -4,13 +4,11 @@
 
 class WorldPanel
 {
-	const WVC& Data;
 	WINDOW* Window;
-	PANEL* Panel;
 	size_t w, h;
 public:
-	WorldPanel(WVC&);
+	WorldPanel();
 	void init(Point, Point);
-	void Draw();
+	void Draw(const WVC& Data) const;
 	~WorldPanel();
 };

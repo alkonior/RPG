@@ -3,32 +3,28 @@
 
 
 
-GUI::GUI(Model& E):
-	DataSource(E),
-	WP(DataSource),
-	MIP(DataSource),
-	BP(DataSource){}
+GUI::GUI(size_t w, size_t h):_w(w),_h(h), _Scenes(){};
 
-void GUI::init(size_t w, size_t h)
+void GUI::init(json& config)
 {
-	_w = w;
-	_h = h;
-	_lu_shift=Point(BaseLeftShiftX, BaseUpShiftY),
-	_rd_shift=Point(stdscr->_maxx - BaseRightShiftX, stdscr->_maxy - BaseDownShiftY),
 	initCS();
-	refresh();
-	WP.init(_lu_shift, _rd_shift);
+	curScene = 0;
+	_Scenes.push_back(make_shared<GameScene>(config,_w,_h));
 }
 
-bool GUI::Comand(size_t)
+size_t GUI::getComand(size_t c)
 {
-	return false;
+	return _Scenes[curScene]->getComand(c);
+}
+
+void GUI::setScene(size_t s)
+{
+	curScene = s;
 }
 
 void GUI::Draw()
 {
-	WP.Draw();
-	mvaddch(_w-1, _h-1, '1');
+	_Scenes[curScene]->Draw();
 }
 
 GUI::~GUI()

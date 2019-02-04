@@ -13,8 +13,6 @@ void InfoPanel::init(Point lu, Point rd)
 	{
 		Window = subwin(stdscr, --h, --w, lu.y, lu.x);
 	}
-	Panel = new_panel(Window);
-	bottom_panel(Panel);
 }
 
 void InfoPanel::Draw()

@@ -8,7 +8,7 @@ size_t Dragon::_startDmg = 0;
 size_t Dragon::_startSpeed = 0;
 size_t Dragon::_startHp = 0;
 
-Dragon::Dragon(Point p):IMonster(p, TEXTURES_ARAAY::T_Dragon),_AI(make_shared<DragonAI>(*this))
+Dragon::Dragon(Point p):IMonster(p, TEXTURES_ARAAY::T_Dragon),_AI(make_shared<DragonAI>(this))
 {
 	_hp = _startHp;
 	_mana = _startMana;
@@ -59,6 +59,21 @@ ComandList Dragon::_colide(FireBall * f)
 ComandList Dragon::_colide(Arrow * a)
 {
 	return  _AI->ColideWith(this, a);
+}
+
+ComandList Dragon::_colide(Skeleton * s)
+{
+	return _AI->ColideWith(this, s);
+}
+
+ComandList Dragon::_colide(Apteca * a)
+{
+	return _AI->ColideWith(this, a);
+}
+
+ComandList Dragon::_colide(Princess* p)
+{
+	return _AI->ColideWith(this, p);
 }
 
 shared_ptr<IBaseAI> Dragon::getAI()
