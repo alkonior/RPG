@@ -9,6 +9,8 @@
 
 class HeroAI: public IBaseAI {
 
+	std::map<char, shared_ptr<IComand>> Comands;
+
 	static shared_ptr<IProjectile> generator(Point p, Point dir);
 
 	template <typename T>

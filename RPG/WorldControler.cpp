@@ -16,20 +16,24 @@ void WorldControler::GetComand(size_t comand) {
 				_ComandList.push_back(
 					World->Projectiles[i].lock()->getAI()->getActions(World.get(), comand));
 			}
-			else
-			{
-				World->Projectiles.erase(World->Projectiles.cbegin()+i);
-				i--;
-			}
+			
 			
 		}
 		executeAll();
 		for (size_t i = 0; i<World->Enemies.size(); i++) {
 			if (!World->Enemies[i].expired())
+			{
 				_ComandList.push_back(
 					World->Enemies[i].lock()->getAI()->getActions(World.get(), comand));
-			executeAll();
+			}
+			else
+			{
+				World->Enemies.erase(World->Enemies.cbegin()+i);
+				i--;
+			}
+			
 		}
+		executeAll();
 	}
 }
 

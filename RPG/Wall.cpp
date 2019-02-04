@@ -22,7 +22,7 @@ ComandList Wall::_colide(Skeleton *) { return ComandList(); }
 
 ComandList Wall::_colide(Apteca *) { return ComandList(); }
 
-ComandList Wall::_colide(Princess *){ return ComandList(); }
+ComandList Wall::_colide(Princess *) { return ComandList(); }
 
 shared_ptr<IBaseAI> Wall::getAI()
 {

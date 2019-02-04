@@ -301,5 +301,6 @@ public:
 	ComandList _colide(Princess*) override;
 
 	shared_ptr<IBaseAI> getAI() override;
-	friend DragonAI;
+	
+	friend SkeletonAI;
 };

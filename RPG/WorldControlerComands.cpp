@@ -51,9 +51,9 @@ void WorldControler::execute(const DeleteEntity* comand) {
 
 template <>
 void WorldControler::execute(const Shoot* comand) {
-	if ((*World)[comand->p]==nullptr)
+	if ((*World)[comand->e->getCord()+comand->dir]==nullptr)
 	{
-		World->addProjectile((*(comand->generator))(comand->p, comand->dir));	
+		World->addProjectile((*(comand->generator))(comand->e->getCord()+comand->dir, comand->dir));
 	}
 }
 

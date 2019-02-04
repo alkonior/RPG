@@ -143,9 +143,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="IBaseAI.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="MainInfoPanel.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -227,14 +224,17 @@
     <ClCompile Include="Skeleton.cpp">
       <Filter>Исходные файлы\Entyties</Filter>
     </ClCompile>
-    <ClCompile Include="SkeletonAI.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="IBaseScene.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonAI.cpp">
+      <Filter>Исходные файлы\Entyties\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseAI.cpp">
+      <Filter>Исходные файлы\Entyties\AI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

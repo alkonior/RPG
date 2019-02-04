@@ -2,7 +2,7 @@
 #include "SkeletonAI.h"
 
 
-SkeletonAI::SkeletonAI(Skeleton*)
+SkeletonAI::SkeletonAI(Skeleton* s):skeleton(s)
 {
 }
 
@@ -11,7 +11,3 @@ ComandList SkeletonAI::getActions(const void *, size_t)
 	return ComandList();
 }
 
-
-SkeletonAI::~SkeletonAI()
-{
-}
