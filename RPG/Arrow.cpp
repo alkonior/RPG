@@ -12,7 +12,7 @@ void Arrow::Init(json& description) {
 	Arrow::_startSpeed = description["startSpeed"];
 }
 
-Arrow::Arrow(Point p, Point dir):IProjectile(p, TEXTURES_ARAAY::T_FireBall), _AI(make_shared<ProjectileAI<Skeleton>>(this))
+Arrow::Arrow(Point p, Point dir):IProjectile(p, TEXTURES_ARAAY::T_Arrow), _AI(make_shared<ProjectileAI<Skeleton>>(this))
 {
 	_speed = _startSpeed;
 	_dmg = _startDmg;

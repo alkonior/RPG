@@ -2,7 +2,7 @@
   "seed": 1,
   "hero": {
     "startHp": 500,
-    "startMana": 10,
+    "startMana": 100,
     "startDmg": 10,
     "startSpeed": 2,
     "startArmor": 5

@@ -97,6 +97,10 @@ public:
 	Hero(Point);
 	static void Init(json&);
 
+	size_t getHp();
+	size_t getMp();
+	size_t getMaxMp();
+	size_t getMaxHp();
 
 	ComandList _colide(IEntity*) override;
 	ComandList _colide(Hero*) override;

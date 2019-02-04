@@ -7,10 +7,10 @@ bool WorldViewConstructor::existPoint(const Point in) const
 	return in.x < World->width && in.y < World->height;;
 }
 
-WorldViewConstructor::HeroInfo WorldViewConstructor::getHeroInfo()
+WorldViewConstructor::HeroInfo WorldViewConstructor::getHeroInfo() const
 {
-	HeroInfo out;
-	return out;
+	return {World->hero.lock()->getHp(),World->hero.lock()->getMp(),
+		World->hero.lock()->getMaxHp(),World->hero.lock()->getMaxMp() };
 }
 
 WorldViewConstructor::WorldViewConstructor(const shared_ptr<Map> w):World(w),worldShift(0,0){}
@@ -38,4 +38,9 @@ vector<vector<const Texture*>> WorldViewConstructor::GetMapInfo(size_t w, size_t
 		}
 	}
 	return out;
+}
+
+WorldViewConstructor::HeroInfo::HeroInfo(size_t h, size_t m, size_t mh, size_t mm):Hp(h),Mp(m),
+MaxHp(mh),MaxMp(mm)
+{
 }

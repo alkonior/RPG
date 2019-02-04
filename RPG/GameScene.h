@@ -9,7 +9,7 @@ class GameScene:
 {
 	Model _Engine;
 	WorldPanel _WP;
-	//InfoPanel MIP;
+	InfoPanel _MIP;
 	//BarPanel BP;
 public:
 	GameScene(json& description, size_t, size_t);

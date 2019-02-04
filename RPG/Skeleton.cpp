@@ -26,54 +26,54 @@ void Skeleton::Init(json& description)
 	_startHp = description["startHp"];
 }
 
-ComandList Skeleton::_colide(IEntity *)
+ComandList Skeleton::_colide(IEntity* in)
 {
-	return ComandList();
+	return in->_colide(this);
 }
 
-ComandList Skeleton::_colide(Hero *)
+ComandList Skeleton::_colide(Hero* h)
 {
-	return ComandList();
+	return _AI->ColideWith(this, h);
 }
 
-ComandList Skeleton::_colide(Wall *)
+ComandList Skeleton::_colide(Wall* w)
 {
-	return ComandList();
+	return _AI->ColideWith(this, w);
 }
 
-ComandList Skeleton::_colide(Zombie *)
+ComandList Skeleton::_colide(Zombie* z)
 {
-	return ComandList();
+	return _AI->ColideWith(this, z);
 }
 
-ComandList Skeleton::_colide(Dragon *)
+ComandList Skeleton::_colide(Dragon* d)
 {
-	return ComandList();
+	return _AI->ColideWith(this, d);
 }
 
-ComandList Skeleton::_colide(FireBall *)
+ComandList Skeleton::_colide(FireBall* f)
 {
-	return ComandList();
+	return _AI->ColideWith(this, f);
 }
 
-ComandList Skeleton::_colide(Arrow *)
+ComandList Skeleton::_colide(Arrow* a)
 {
-	return ComandList();
+	return _AI->ColideWith(this, a);
 }
 
-ComandList Skeleton::_colide(Skeleton *)
+ComandList Skeleton::_colide(Skeleton* s)
 {
-	return ComandList();
+	return _AI->ColideWith(this, s);
 }
 
-ComandList Skeleton::_colide(Apteca *)
+ComandList Skeleton::_colide(Apteca* a)
 {
-	return ComandList();
+	return _AI->ColideWith(this, a);
 }
 
-ComandList Skeleton::_colide(Princess *)
+ComandList Skeleton::_colide(Princess* p)
 {
-	return ComandList();
+	return _AI->ColideWith(this, p);
 }
 
 shared_ptr<IBaseAI> Skeleton::getAI()

@@ -9,6 +9,8 @@
 #define HERO_CS 4
 #define ZOMBIE_CS 5
 #define SKELETON_CS 6
+#define APTECA_CS 7
+#define ARROW_CS 8
 
 
 class Texture
@@ -31,7 +33,9 @@ const Texture T_Hero('H', HERO_CS);
 const Texture T_Zombie('Z', ZOMBIE_CS);
 const Texture T_Dragon('D', HERO_CS);
 const Texture T_Skeleton('S', SKELETON_CS);
-const Texture T_FireBall('F', DEFAULT_CS);
+const Texture T_FireBall('*', APTECA_CS);
+const Texture T_Apteca('+', APTECA_CS);
+const Texture T_Arrow('*', ARROW_CS);
 }
 void initCS();
 

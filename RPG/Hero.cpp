@@ -26,6 +26,26 @@ void Hero::Init(json& description) {
 	Hero::_startHp = description["startHp"];
 }
 
+size_t Hero::getHp()
+{
+	return _hp;
+}
+
+size_t Hero::getMp()
+{
+	return _mana;
+}
+
+size_t Hero::getMaxMp()
+{
+	return _startMana;
+}
+
+size_t Hero::getMaxHp()
+{
+	return _startHp;
+}
+
 ComandList Hero::_colide(IEntity* in) { return in->_colide(this); }
 
 ComandList Hero::_colide(Hero* in) {

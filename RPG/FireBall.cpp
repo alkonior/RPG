@@ -52,19 +52,19 @@ ComandList FireBall::_colide(Arrow* a)
 	return _AI->ColideWith(this, a);
 }
 
-ComandList FireBall::_colide(Skeleton *)
+ComandList FireBall::_colide(Skeleton* s)
 {
-	return ComandList();
+	return _AI->ColideWith(this, s);
 }
 
-ComandList FireBall::_colide(Princess *)
+ComandList FireBall::_colide(Princess* p)
 {
-	return ComandList();
+	return _AI->ColideWith(this, p);
 }
 
-ComandList FireBall::_colide(Apteca *)
+ComandList FireBall::_colide(Apteca* a)
 {
-	return ComandList();
+	return _AI->ColideWith(this, a);
 }
 
 shared_ptr<IBaseAI> FireBall::getAI()
