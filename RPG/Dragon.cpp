@@ -8,7 +8,7 @@ size_t Dragon::_startDmg = 0;
 size_t Dragon::_startSpeed = 0;
 size_t Dragon::_startHp = 0;
 
-Dragon::Dragon(Point p):Monster(p, TEXTURES_ARAAY::T_Dragon, make_shared<DragonAI>(*this))
+Dragon::Dragon(Point p):IMonster(p, TEXTURES_ARAAY::T_Dragon),_AI(make_shared<DragonAI>(*this))
 {
 	_hp = _startHp;
 	_mana = _startMana;
@@ -33,30 +33,35 @@ ComandList Dragon::_colide(IEntity * in)
 
 ComandList Dragon::_colide(Hero * h)
 {
-	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, h);
+	return _AI->ColideWith(this, h);
 }
 
 ComandList Dragon::_colide(Wall * w)
 {
-	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, w);
+	return  _AI->ColideWith(this, w);
 }
 
 ComandList Dragon::_colide(Zombie * z)
 {
-	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, z);
+	return  _AI->ColideWith(this, z);
 }
 
 ComandList Dragon::_colide(Dragon * d)
 {
-	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, d);
+	return  _AI->ColideWith(this, d);
 }
 
 ComandList Dragon::_colide(FireBall * f)
 {
-	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, f);
+	return  _AI->ColideWith(this, f);
 }
 
 ComandList Dragon::_colide(Arrow * a)
 {
-	return dynamic_cast<DragonAI*>(&(*AI))->ColideWith(this, a);
+	return  _AI->ColideWith(this, a);
+}
+
+shared_ptr<IBaseAI> Dragon::getAI()
+{
+	return _AI;
 }

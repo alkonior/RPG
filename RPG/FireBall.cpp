@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Entities.h"
-#include "FireBallAI.h"
+#include "ProjectileAI.h"
 
 size_t FireBall::_startDmg = 0;
 size_t FireBall::_startSpeed = 0;
@@ -10,7 +10,7 @@ void FireBall::Init(json& description) {
 	FireBall::_startSpeed = description["startSpeed"];
 }
 
-FireBall::FireBall(Point p, Point dir):IProjectile(p, TEXTURES_ARAAY::T_FireBall, make_shared<FireBallAI>(*this))
+FireBall::FireBall(Point p, Point dir):IProjectile(p, TEXTURES_ARAAY::T_FireBall),_AI(make_shared<ProjectileAI<Dragon>>(this))
 {
 	_speed = _startSpeed;
 	_dmg = _startDmg;
@@ -24,30 +24,35 @@ ComandList FireBall::_colide(IEntity * in)
 
 ComandList FireBall::_colide(Hero* h)
 {
-	return dynamic_cast<FireBallAI*>(AI.get())->ColideWith(this, h);
+	return _AI->ColideWith(this, h);
 }
 
 ComandList FireBall::_colide(Wall* w)
 {
-	return dynamic_cast<FireBallAI*>(AI.get())->ColideWith(this, w);
+	return _AI->ColideWith(this, w);
 }
 
 ComandList FireBall::_colide(Zombie* z)
 {
-	return dynamic_cast<FireBallAI*>(AI.get())->ColideWith(this, z);
+	return _AI->ColideWith(this, z);
 }
 
 ComandList FireBall::_colide(Dragon* d)
 {
-	return dynamic_cast<FireBallAI*>(AI.get())->ColideWith(this, d);
+	return _AI->ColideWith(this, d);
 }
 
 ComandList FireBall::_colide(FireBall* f)
 {
-	return dynamic_cast<FireBallAI*>(AI.get())->ColideWith(this, f);
+	return _AI->ColideWith(this, f);
 }
 
 ComandList FireBall::_colide(Arrow* a)
 {
-	return dynamic_cast<FireBallAI*>(AI.get())->ColideWith(this, a);
+	return _AI->ColideWith(this, a);
+}
+
+shared_ptr<IBaseAI> FireBall::getAI()
+{
+	return _AI;
 }

@@ -8,10 +8,10 @@ class IEntity;
 class IPerson;
 class INotPerson;
 class IProjectile;
+class IMonster;
 
 class Hero;
 
-class Monster;
 class Zombie;
 class Skeleton;
 class Dragon;
@@ -27,15 +27,10 @@ class ZombieAI;
 class HeroAI;
 class DragonAI;
 class ArrowAI;
-class FireBallAI;
+template<class T>
+class ProjectileAI;
 
-class IEntity {
-protected:
-	shared_ptr<IBaseAI> AI;
-
-	const Texture& _t;
-	Point _cord;
-
+class IColiders {
 public:
 	virtual ComandList _colide(IEntity*) = 0;
 	virtual ComandList _colide(Hero*) = 0;
@@ -44,14 +39,21 @@ public:
 	virtual ComandList _colide(Dragon*) = 0;
 	virtual ComandList _colide(FireBall*) = 0;
 	virtual ComandList _colide(Arrow*) = 0;
+};
+
+class IEntity:public IColiders {
+protected:
+
+	const Texture& _t;
+	Point _cord;
 
 public:
-	IEntity(Point, const Texture&, shared_ptr<IBaseAI>);
+	IEntity(Point, const Texture&);
 	const Texture& getTexture();
 	ComandList colide(IEntity* in);
 	static void Init(json&) { throw new std::exception("Not inited class"); }
 
-	shared_ptr<IBaseAI>& getAI() { return AI; }
+	virtual shared_ptr<IBaseAI> getAI() = 0;
 
 	const Point getCord() { return _cord; }
 	void setCord(Point p) { _cord = p; }
@@ -66,7 +68,7 @@ protected:
 	size_t _armor;
 
 public:
-	IPerson(Point, const Texture&, shared_ptr<IBaseAI>);
+	IPerson(Point, const Texture&);
 	bool getDmg(IPerson*);
 	bool getDmg(IProjectile*);
 };
@@ -86,7 +88,7 @@ private:
 	static size_t _startDmg;
 	static size_t _startSpeed;
 	static size_t _startArmor;
-
+	shared_ptr<HeroAI> _AI;
 public:
 	Hero(Point);
 	static void Init(json&);
@@ -99,21 +101,24 @@ public:
 	ComandList _colide(FireBall*) override;
 	ComandList _colide(Arrow*) override;
 	friend HeroAI;
+
+	// Унаследовано через IPerson
+	shared_ptr<IBaseAI> getAI() override;
 };
 
-class Monster: public IPerson {
+class IMonster: public IPerson {
 public:
-	Monster(Point, const Texture&, shared_ptr<IBaseAI>);
+	IMonster(Point, const Texture&);
 };
 
-class Zombie: public Monster {
+class Zombie: public IMonster {
 private:
 	static size_t _startHp;
 	static size_t _startMana;
 	static size_t _startDmg;
 	static size_t _startSpeed;
 	static size_t _startArmor;
-
+	shared_ptr<ZombieAI> _AI;
 public:
 	Zombie(Point);
 	static void Init(json&);
@@ -126,10 +131,11 @@ public:
 	ComandList _colide(FireBall*) override;
 	ComandList _colide(Arrow*) override;
 
+	shared_ptr<IBaseAI> getAI() override;
 	friend ZombieAI;
 };
 
-class Dragon: public Monster {
+class Dragon: public IMonster {
 private:
 	using ShotType = FireBall;
 	static size_t _startHp;
@@ -137,7 +143,7 @@ private:
 	static size_t _startDmg;
 	static size_t _startSpeed;
 	static size_t _startArmor;
-
+	shared_ptr<DragonAI> _AI;
 public:
 	Dragon(Point);
 	static void Init(json&);
@@ -149,7 +155,7 @@ public:
 	ComandList _colide(Dragon*) override;
 	ComandList _colide(FireBall*) override;
 	ComandList _colide(Arrow*) override;
-
+	shared_ptr<IBaseAI> getAI() override;
 	friend DragonAI;
 
 };
@@ -166,7 +172,7 @@ public:
 	ComandList _colide(Dragon*) override;
 	ComandList _colide(FireBall*) override;
 	ComandList _colide(Arrow*) override;
-
+	shared_ptr<IBaseAI> getAI() override;
 	Wall(Point);
 };
 
@@ -177,7 +183,7 @@ protected:
 	size_t _speed;
 	size_t _dmg;
 public:
-	IProjectile(Point, const Texture&, shared_ptr<IBaseAI>);
+	IProjectile(Point, const Texture&);
 	friend IPerson;
 };
 
@@ -185,19 +191,11 @@ class FireBall: public IProjectile {
 	
 	static size_t _startDmg;
 	static size_t _startSpeed;
+	shared_ptr<ProjectileAI<Dragon>> _AI;
 public:
 	static void Init(json&);
 	FireBall(Point p, Point dir);
-  /*void _colide(I_Entity& in) override;
-  void _colide(Hero&) override;
-  void _colide(Monster&) override;
-  void _colide(Zombie&) override;
-  void _colide(Dragon&) override;
-  void _colide(Princess&) override;
-  void _colide(Wall&) override;*/
-	friend FireBallAI;
 
-	// Унаследовано через IProjectile
 	ComandList _colide(IEntity *) override;
 	ComandList _colide(Hero *) override;
 	ComandList _colide(Wall *) override;
@@ -205,20 +203,28 @@ public:
 	ComandList _colide(Dragon *) override;
 	ComandList _colide(FireBall *) override;
 	ComandList _colide(Arrow *) override;
+
+	shared_ptr<IBaseAI> getAI() override;
+
+	friend ProjectileAI<Dragon>;
 };
 
 class Arrow: public IProjectile {
+	static size_t _startDmg;
+	static size_t _startSpeed;
+	shared_ptr<ProjectileAI<Skeleton>> _AI;
+public:
+	static void Init(json&);
+	Arrow(Point p, Point dir);
 
-	size_t direction;
+	ComandList _colide(IEntity *) override;
+	ComandList _colide(Hero *) override;
+	ComandList _colide(Wall *) override;
+	ComandList _colide(Zombie *) override;
+	ComandList _colide(Dragon *) override;
+	ComandList _colide(FireBall *) override;
+	ComandList _colide(Arrow *) override;
 
-
-	/*void _colide(I_Entity& in) override;
-	void _colide(Hero&) override;
-	void _colide(Monster&) override;
-	void _colide(Zombie&) override;
-	void _colide(Dragon&) override;
-	void _colide(Princess&) override;
-	void _colide(Wall&) override;*/
 	
 };
 

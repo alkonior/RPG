@@ -42,7 +42,7 @@ size_t Hero::_startSpeed = 0;
 size_t Hero::_startHp = 0;
 
 Hero::Hero(Point p)
-	: IPerson(p, TEXTURES_ARAAY::T_Hero, make_shared<HeroAI>(*this)) {
+	: IPerson(p, TEXTURES_ARAAY::T_Hero),_AI(make_shared<HeroAI>(*this)) {
 	_hp = _startHp;
 	_mana = _startMana;
 	_dmg = _startDmg;
@@ -61,28 +61,33 @@ void Hero::Init(json& description) {
 ComandList Hero::_colide(IEntity* in) { return in->_colide(this); }
 
 ComandList Hero::_colide(Hero* in) {
-	return dynamic_cast<HeroAI*>(AI.get())->ColideWith(this, in);
+	return  _AI->ColideWith(this, in);
 }
 
 ComandList Hero::_colide(Wall* in) {
-	return dynamic_cast<HeroAI*>(AI.get())->ColideWith(this, in);
+	return  _AI->ColideWith(this, in);
 }
 
 ComandList Hero::_colide(Zombie* z) {
-	return dynamic_cast<HeroAI*>(AI.get())->ColideWith(this, z);
+	return  _AI->ColideWith(this, z);
 }
 
 ComandList Hero::_colide(Dragon *d)
 {
-	return dynamic_cast<HeroAI*>(AI.get())->ColideWith(this, d);
+	return  _AI->ColideWith(this, d);
 }
 
 ComandList Hero::_colide(FireBall * f)
 {
-	return  dynamic_cast<HeroAI*>(&(*AI))->ColideWith(this, f);
+	return   _AI->ColideWith(this, f);
 }
 
 ComandList Hero::_colide(Arrow *a)
 {
-	return  dynamic_cast<HeroAI*>(&(*AI))->ColideWith(this, a);
+	return   _AI->ColideWith(this, a);
+}
+
+shared_ptr<IBaseAI> Hero::getAI()
+{
+	return _AI;
 }

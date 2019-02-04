@@ -18,7 +18,7 @@ void Map::Delete(Point p)
 	this->operator[](p) =shared_ptr<IEntity>();
 }
 
-void Map::addEnemy(shared_ptr<Monster> e)
+void Map::addEnemy(shared_ptr<IMonster> e)
 {
 	(*this)[e->getCord()] = e;
 	Enemies.emplace_back(e);

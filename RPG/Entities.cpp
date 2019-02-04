@@ -3,7 +3,7 @@
 
 
 
-IEntity::IEntity(Point p, const Texture& t, shared_ptr<IBaseAI> ai):_cord(p),_t(t),AI(ai)
+IEntity::IEntity(Point p, const Texture& t):_cord(p),_t(t)
 {}
 
 const Texture& IEntity::getTexture()
@@ -15,7 +15,7 @@ const Texture& IEntity::getTexture()
   if (in != nullptr) return in->_colide(this);
   return ComandList();
 }
-IPerson::IPerson(Point p, const Texture& t, shared_ptr<IBaseAI> ai):IEntity(p,t,ai){}
+IPerson::IPerson(Point p, const Texture& t):IEntity(p,t){}
 
 bool IPerson::getDmg(IPerson* enemy) {
   size_t dmg = enemy->_dmg;
@@ -39,10 +39,10 @@ bool IPerson::getDmg(IProjectile* enemy) {
 		return false;	
 }
 
-INotPerson::INotPerson(Point p, const Texture& t) : IEntity(p, t,nullptr) {}
+INotPerson::INotPerson(Point p, const Texture& t) : IEntity(p, t) {}
 
-Monster::Monster(Point p, const Texture& t, shared_ptr<IBaseAI> ai) : IPerson(p, t, ai) {}
+IMonster::IMonster(Point p, const Texture& t) : IPerson(p, t) {}
 
-IProjectile::IProjectile(Point p, const Texture & t, shared_ptr<IBaseAI> ai) : IEntity(p, t, ai)
+IProjectile::IProjectile(Point p, const Texture & t) : IEntity(p, t)
 {
 }

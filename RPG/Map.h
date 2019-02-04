@@ -13,12 +13,12 @@ public:
 	size_t w;
 	Map(size_t);
 	vector<vector<shared_ptr<IEntity>>> World;
-	vector<weak_ptr<Monster>> Enemies;
+	vector<weak_ptr<IMonster>> Enemies;
 	vector<weak_ptr<IProjectile>> Projectiles;
 	weak_ptr<Hero> hero;
 	shared_ptr<IEntity>& operator[](const Point&);
 	const shared_ptr<IEntity>& operator[](const Point&)const;
-	void addEnemy(shared_ptr<Monster>);
+	void addEnemy(shared_ptr<IMonster>);
 	void addProjectile(shared_ptr<IProjectile>);
 	void Delete(Point p);
 	void Init();

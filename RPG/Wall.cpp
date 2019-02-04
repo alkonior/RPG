@@ -17,3 +17,8 @@ ComandList Wall::_colide(Dragon *) { return ComandList(); }
 ComandList Wall::_colide(FireBall *){return ComandList(); }
 
 ComandList Wall::_colide(Arrow *){	return ComandList(); }
+
+shared_ptr<IBaseAI> Wall::getAI()
+{
+	return nullptr;
+}

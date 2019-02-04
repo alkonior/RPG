@@ -117,10 +117,7 @@
     <ClInclude Include="DragonAI.h">
       <Filter>Файлы заголовков\Engine\AI</Filter>
     </ClInclude>
-    <ClInclude Include="ArrowAI.h">
-      <Filter>Файлы заголовков\Engine\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="FireBallAI.h">
+    <ClInclude Include="ProjectileAI.h">
       <Filter>Файлы заголовков\Engine\AI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -203,14 +200,14 @@
     <ClCompile Include="WorldViewConstructor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="FireBallAI.cpp">
-      <Filter>Исходные файлы\Entyties\AI</Filter>
-    </ClCompile>
     <ClCompile Include="DragonAI.cpp">
       <Filter>Исходные файлы\Entyties\AI</Filter>
     </ClCompile>
-    <ClCompile Include="ArrowAI.cpp">
+    <ClCompile Include="ProjectileAI.cpp">
       <Filter>Исходные файлы\Entyties\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Arrow.cpp">
+      <Filter>Исходные файлы\Entyties</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

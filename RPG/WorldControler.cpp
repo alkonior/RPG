@@ -11,8 +11,11 @@ void WorldControler::GetComand(size_t comand) {
 		executeAll();
 		for (size_t i = 0; i<World.Projectiles.size(); i++) {
 			if (!World.Projectiles[i].expired())
+			{
+				auto test = World.Projectiles[i].lock()->getAI();
 				_ComandList.push_back(
 					World.Projectiles[i].lock()->getAI()->getActions(&World, comand));
+			}
 			executeAll();
 		}
 		for (size_t i = 0; i<World.Enemies.size(); i++) {
