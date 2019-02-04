@@ -39,6 +39,16 @@ bool IPerson::getDmg(IProjectile* enemy) {
 		return false;	
 }
 
+bool IPerson::canShoot(size_t i)
+{
+	if (_mana>i)
+	{
+		_mana -= i;
+		return true;
+	}
+	return false;
+}
+
 INotPerson::INotPerson(Point p, const Texture& t) : IEntity(p, t) {}
 
 IMonster::IMonster(Point p, const Texture& t) : IPerson(p, t) {}

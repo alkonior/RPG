@@ -6,16 +6,19 @@
 
 size_t Arrow::_startDmg = 0;
 size_t Arrow::_startSpeed = 0;
+size_t Arrow::_manaCost = 10000;
 
 void Arrow::Init(json& description) {
 	Arrow::_startDmg = description["startDmg"];
 	Arrow::_startSpeed = description["startSpeed"];
+	Arrow::_manaCost = description["startManaCost"];
 }
 
 Arrow::Arrow(Point p, Point dir):IProjectile(p, TEXTURES_ARAAY::T_Arrow), _AI(make_shared<ProjectileAI<Skeleton>>(this))
 {
 	_speed = _startSpeed;
 	_dmg = _startDmg;
+	_manaCost = _manaCost;
 	_direction = dir;
 }
 

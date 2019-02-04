@@ -54,9 +54,10 @@ public:
 class Shoot: public IComand {
 public:
 	using finc_t = std::function<shared_ptr<IProjectile>(Point, Point)>;
-	IEntity* e;
+	IPerson* e;
+	size_t manaCost;
 	Point dir;
 	shared_ptr<finc_t> generator;
-	Shoot(IEntity* e, Point dir, shared_ptr<finc_t> g);
+	Shoot(IPerson* e, Point dir, shared_ptr<finc_t> g,size_t);
 	void accept(IBaseControler&) override;
 };

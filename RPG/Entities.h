@@ -74,6 +74,7 @@ public:
 	IPerson(Point, const Texture&);
 	bool getDmg(IPerson*);
 	bool getDmg(IProjectile*);
+	bool canShoot(size_t);
 };
 
 class INotPerson: public IEntity {
@@ -209,6 +210,7 @@ protected:
 	Point _direction;
 	size_t _speed;
 	size_t _dmg;
+
 public:
 	IProjectile(Point, const Texture&);
 	Point getDir() const;
@@ -222,6 +224,7 @@ class FireBall: public IProjectile {
 	static size_t _startSpeed;
 	shared_ptr<ProjectileAI<Dragon>> _AI;
 public:
+	static size_t _manaCost;
 	static void Init(json&);
 	FireBall(Point p, Point dir);
 
@@ -245,8 +248,10 @@ public:
 class Arrow: public IProjectile {
 	static size_t _startDmg;
 	static size_t _startSpeed;
+	
 	shared_ptr<ProjectileAI<Skeleton>> _AI;
 public:
+	static size_t _manaCost;
 	static void Init(json&);
 	Arrow(Point p, Point dir);
 

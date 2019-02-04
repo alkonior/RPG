@@ -53,6 +53,7 @@ template <>
 void WorldControler::execute(const Shoot* comand) {
 	if ((*World)[comand->e->getCord()+comand->dir]==nullptr)
 	{
+		if (comand->e->canShoot(comand->manaCost))
 		World->addProjectile((*(comand->generator))(comand->e->getCord()+comand->dir, comand->dir));
 	}
 }

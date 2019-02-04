@@ -31,7 +31,7 @@ ComandList DragonAI::getActions(const void * w, size_t)
 			//out.push_back(make_shared<MoveMe>(&dragon, dragon._cord.betsDir(dir[rand()%4])));
 			int i = rand()%4;
 
-			out.push_back(make_shared<Shoot>(dragon, dir[i], shared_ptr<Shoot::finc_t>( new Shoot::finc_t(&generator))));
+			out.push_back(make_shared<Shoot>(dragon, dir[i], shared_ptr<Shoot::finc_t>( new Shoot::finc_t(&generator)), Dragon::ShotType::_manaCost));
 		}
 	}
 

@@ -23,11 +23,13 @@
   },
   "fireball": {
     "startDmg": 20,
-    "startSpeed": 3
+    "startSpeed": 3,
+    "startManaCost": 10
   },
   "arrow": {
-    "startDmg": 20,
-    "startSpeed": 1
+    "startDmg": 15,
+    "startSpeed": 1,
+    "startManaCost": 5
   },
   "apteca": {
     "heal": 20

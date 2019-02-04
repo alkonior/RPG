@@ -26,8 +26,8 @@ PushMe::PushMe(IEntity * o, Point p) : p(p), object(o) {}
 
 MoveMe::MoveMe(IEntity * o, Point p) : p(p), object(o) {}
 
-Shoot::Shoot(IEntity* e, Point dir, shared_ptr<std::function<shared_ptr<IProjectile>(Point,Point)>> g) :
-	e(e), dir(dir), generator(g) {};
+Shoot::Shoot(IPerson* e, Point dir, shared_ptr<std::function<shared_ptr<IProjectile>(Point,Point)>> g,size_t m) :
+	e(e), dir(dir), generator(g),manaCost(m) {};
 
 CForward::CForward(IEntity* o):object(o) {}
 
