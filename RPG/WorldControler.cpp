@@ -6,9 +6,7 @@ WorldControler::WorldControler(shared_ptr<Map> m): World(m) {}
 
 void WorldControler::GetComand(size_t comand) {
 	if (!World->hero.expired()) {
-		_ComandList.push_back(
-			World->hero.lock()->getAI()->getActions(World.get(), comand));
-		executeAll();
+
 		for (size_t i = 0; i<World->Projectiles.size(); i++) {
 			if (!World->Projectiles[i].expired())
 			{
@@ -33,6 +31,9 @@ void WorldControler::GetComand(size_t comand) {
 			}
 			executeAll();
 		}
+		_ComandList.push_back(
+			World->hero.lock()->getAI()->getActions(World.get(), comand));
+		executeAll();
 		
 	}
 }

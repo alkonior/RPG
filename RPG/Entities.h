@@ -108,10 +108,19 @@ public:
 };
 
 class INotPerson: public IEntity {
-	size_t damage;
-	size_t speed;
 
 public:
+
+	ComandList _colide(Hero*) override;
+	ComandList _colide(Wall*) override;
+	ComandList _colide(Zombie*) override;
+	ComandList _colide(Dragon*) override;
+	ComandList _colide(FireBall*) override;
+	ComandList _colide(Arrow*) override;
+	ComandList _colide(Skeleton*) override;
+	ComandList _colide(Apteca*) override;
+	ComandList _colide(Princess*) override;
+
 	INotPerson(Point, const Texture&);
 };
 
@@ -249,19 +258,11 @@ class Princess: public INotPerson {
 class Wall: public INotPerson {
 public:
 
-	ComandList _colide(IEntity*) override;
-	ComandList _colide(Hero*) override;
-	ComandList _colide(Wall*) override;
-	ComandList _colide(Zombie*) override;
-	ComandList _colide(Dragon*) override;
-	ComandList _colide(FireBall*) override;
-	ComandList _colide(Arrow*) override;
-	ComandList _colide(Skeleton*) override;
-	ComandList _colide(Apteca*) override;
-	ComandList _colide(Princess*) override;
-
 	shared_ptr<IBaseAI> getAI() override;
 	Wall(Point);
+
+	// Унаследовано через INotPerson
+	virtual ComandList _colide(IEntity *) override;
 };
 
 class IProjectile:public IEntity,public IHasManaCost,public IHasDmg
@@ -345,13 +346,7 @@ public:
 };
 
 class Apteca: public INotPerson {
-  /*void _colide(I_Entity& in) override;
-  void _colide(Hero&) override;
-  void _colide(Monster&) override;
-  void _colide(Zombie&) override;
-  void _colide(Dragon&) override;
-  void _colide(Princess&) override;
-  void _colide(Wall&) override;*/
+
 };
 
 class Skeleton: public IMonster, public IHasMana {

@@ -64,3 +64,48 @@ bool IHasHp::attack(IHasDmg* enemy)
 	}
 	return false;
 }
+
+ComandList INotPerson::_colide(Hero *)
+{
+	return ComandList();
+}
+
+ComandList INotPerson::_colide(Wall *)
+{
+	return ComandList();
+}
+
+ComandList INotPerson::_colide(Zombie *)
+{
+	return ComandList();
+}
+
+ComandList INotPerson::_colide(Dragon *)
+{
+	return ComandList();
+}
+
+ComandList INotPerson::_colide(FireBall *)
+{
+	return ComandList();
+}
+
+ComandList INotPerson::_colide(Arrow *)
+{
+	return ComandList();
+}
+
+ComandList INotPerson::_colide(Skeleton *)
+{
+	return ComandList();
+}
+
+ComandList INotPerson::_colide(Apteca *)
+{
+	return ComandList();
+}
+
+ComandList INotPerson::_colide(Princess *)
+{
+	return ComandList();
+}
