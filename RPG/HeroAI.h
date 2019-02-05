@@ -38,13 +38,16 @@ public:
 	ComandList getActions(const void *, size_t) override;
 
 	template <class T>
-	EnableIfNothing<T> ColideWith(Hero*, T*) { return {}; };
+	EnableIfNothing<T> ColideWith(Hero*, T*) 
+	{ return {}; };
 
 	template <class T>
-	EnableIfMonster<T> ColideWith(Hero* h, T* t) { return { make_shared<Attack_A_to_B>(h, t) }; }
+	EnableIfMonster<T> ColideWith(Hero* h, T* t)
+	{ return { make_shared<Attack_A_to_B>(h, t) }; }
 
 	template <class T>
-	EnableIfProjectile<T> ColideWith(Hero* h, T* t) { return { make_shared<Attack_Porjectile>(h,t) }; }
+	EnableIfProjectile<T> ColideWith(Hero* h, T* t)
+	{ return { make_shared<Attack_A_to_B>(t,h), make_shared<DeleteEntity>(t) }; }
 
 	ComandList ColideWith(Hero* h, Princess* p);
 

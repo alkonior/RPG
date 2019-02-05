@@ -15,47 +15,14 @@ const Texture& IEntity::getTexture()
   if (in != nullptr) return in->_colide(this);
   return ComandList();
 }
-IPerson::IPerson(Point p, const Texture& t):IEntity(p,t){}
 
-bool IPerson::getDmg(IPerson* enemy) {
-  size_t dmg = enemy->_dmg;
-	if (dmg>_armor)
-	{
-		if (dmg-_armor>_hp)
-			return true;
-		_hp -= (dmg-_armor);
-	}
-		return false;	
-}
-
-bool IPerson::getDmg(IProjectile* enemy) {
-  size_t dmg = enemy->_dmg;
-	if (dmg>_armor)
-	{
-		if (dmg-_armor>_hp)
-			return true;
-		_hp -= (dmg-_armor);
-	}
-		return false;	
-}
-
-bool IPerson::canShoot(size_t i)
-{
-	if (_mana>i)
-	{
-		_mana -= i;
-		return true;
-	}
-	return false;
-}
+IPerson::IPerson(Point p, const Texture& t, size_t hp):IEntity(p,t),IHasHp(hp){}
 
 INotPerson::INotPerson(Point p, const Texture& t) : IEntity(p, t) {}
 
-IMonster::IMonster(Point p, const Texture& t) : IPerson(p, t) {}
+IMonster::IMonster(Point p, const Texture& t,  size_t hp) : IPerson(p, t,hp) {}
 
-IProjectile::IProjectile(Point p, const Texture & t) : IEntity(p, t)
-{
-}
+IProjectile::IProjectile(Point p, const Texture & t) : IEntity(p, t){}
 
 Point IProjectile::getDir() const
 {
@@ -66,7 +33,34 @@ size_t IProjectile::getSpeed() const
 	return _speed;
 }
 
+IEntity::~IEntity(){}
 
-inline IEntity::~IEntity()
+IHasMana::IHasMana(size_t m):_mana(m)
 {
+}
+
+bool IHasMana::canShoot(IHasManaCost* p)
+{
+	size_t i = p->getManaCost();
+	if (_mana>=i)
+	{
+		_mana -= i;
+		return true;
+	}
+	return false;
+}
+
+
+IHasHp::IHasHp(size_t hp):_hp(hp){}
+
+bool IHasHp::attack(IHasDmg* enemy)
+{
+	size_t dmg = enemy->getDmg();
+	if (dmg>getArmor())
+	{
+		if (dmg-getArmor()>_hp)
+			return true;
+		_hp -= (dmg-getArmor());
+	}
+	return false;
 }

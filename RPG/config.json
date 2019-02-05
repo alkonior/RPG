@@ -3,6 +3,8 @@
   "hero": {
     "startHp": 500,
     "startMana": 100,
+    "startManaRegenSpeed": 5,
+    "startManaRegenStrong": 5,
     "startDmg": 10,
     "startSpeed": 2,
     "startArmor": 5
@@ -18,6 +20,8 @@
     "startHp": 100,
     "startMana": 100,
     "startDmg": 10,
+    "startManaRegenSpeed": 10,
+    "startManaRegenStrong":10,
     "startSpeed": 3,
     "startArmor": 0
   },

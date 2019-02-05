@@ -31,15 +31,24 @@ public:
 	ComandList getActions(const void *, size_t) override;
 
 	template <class T>
-	EnableIfNothing<T> ColideWith(Skeleton *, T *) { return {}; }
+	EnableIfNothing<T> ColideWith(Skeleton *, T *)
+	{
+		return {};
+	}
 
 	template <class T>
-	EnableIfImuneProjectile<T> ColideWith(Skeleton *, T * t) { return { make_shared<DeleteEntity>(t) }; }
+	EnableIfImuneProjectile<T> ColideWith(Skeleton*, T* t)
+	{
+		return { make_shared<DeleteEntity>(t) };
+	}
 
 	template <class T>
-	EnableIfProjectile<T> ColideWith(Skeleton *d, T * t) { return { make_shared<Attack_Porjectile>(d,t) }; }
+	EnableIfProjectile<T> ColideWith(Skeleton* s, T*  t)
+	{
+		return { make_shared<Attack_A_to_B>(t,s),make_shared<DeleteEntity>(t) };
+	}
 
 
-	~SkeletonAI()override{};
+	~SkeletonAI()override {};
 };
 

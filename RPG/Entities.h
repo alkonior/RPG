@@ -45,7 +45,7 @@ public:
 	virtual ComandList _colide(Princess*) = 0;
 };
 
-class IEntity:public IColiders{
+class IEntity:public IColiders {
 protected:
 
 	const Texture& _t;
@@ -62,19 +62,49 @@ public:
 	void setCord(Point p) { _cord = p; }
 };
 
-class IPerson: public IEntity {
-protected:
-	size_t _hp;
-	size_t _mana;
-	size_t _dmg;
-	size_t _speed;
-	size_t _armor;
+class IHasManaCost {
 
 public:
-	IPerson(Point, const Texture&);
-	bool getDmg(IPerson*);
-	bool getDmg(IProjectile*);
-	bool canShoot(size_t);
+	virtual size_t getManaCost()const = 0;
+};
+
+class IHasMana {
+protected:
+	size_t _mana;
+public:
+	IHasMana(size_t);
+
+	size_t getMana();
+	bool canShoot(IHasManaCost*);
+	virtual size_t getMaxMana()const = 0;
+	virtual void updateMana() = 0;
+};
+
+
+
+class IHasDmg {
+public:
+	virtual size_t getDmg()const = 0;
+};
+
+class IHasHp {
+protected:
+	size_t _hp;
+public:
+	IHasHp(size_t);
+	size_t getHp()const;
+	virtual size_t getMaxHp()const = 0;
+	virtual size_t getArmor()const = 0;
+	bool attack(IHasDmg*);
+};
+
+
+
+class IPerson: public IEntity, public IHasDmg, public IHasHp {
+protected:
+	size_t _speed;
+public:
+	IPerson(Point p, const Texture& t, size_t hp);
 };
 
 class INotPerson: public IEntity {
@@ -85,14 +115,18 @@ public:
 	INotPerson(Point, const Texture&);
 };
 
-class Hero: public IPerson {
+class Hero: public IPerson, public IHasMana {
 private:
 	using ShotType = Arrow;
+
 	static size_t _startHp;
-	static size_t _startMana;
+	static size_t _startMaxMana;
+	static size_t _startManaRegenSpeed;
+	static size_t _startManaRegenStrong;
 	static size_t _startDmg;
 	static size_t _startSpeed;
 	static size_t _startArmor;
+
 	shared_ptr<HeroAI> _AI;
 public:
 	Hero(Point);
@@ -118,20 +152,31 @@ public:
 
 	// Унаследовано через IPerson
 	shared_ptr<IBaseAI> getAI() override;
+
+	// Унаследовано через IPerson
+
+	virtual size_t getMaxMana()const override;
+	virtual void updateMana() override;
+
+	// Унаследовано через IPerson
+	virtual size_t getDmg() const override;
+	virtual size_t getMaxHp() const override;
+	virtual size_t getArmor() const override;
 };
 
 class IMonster: public IPerson {
 public:
-	IMonster(Point, const Texture&);
+	IMonster(Point, const Texture&,	 size_t hp);
 };
 
 class Zombie: public IMonster {
 private:
+
 	static size_t _startHp;
-	static size_t _startMana;
 	static size_t _startDmg;
 	static size_t _startSpeed;
 	static size_t _startArmor;
+
 	shared_ptr<ZombieAI> _AI;
 public:
 	Zombie(Point);
@@ -151,16 +196,25 @@ public:
 
 	shared_ptr<IBaseAI> getAI() override;
 	friend ZombieAI;
+
+	// Унаследовано через IMonster
+	virtual size_t getDmg() const override;
+	virtual size_t getMaxHp() const override;
+	virtual size_t getArmor() const override;
 };
 
-class Dragon: public IMonster {
+class Dragon: public IMonster, public IHasMana {
 private:
 	using ShotType = FireBall;
+
 	static size_t _startHp;
-	static size_t _startMana;
+	static size_t _startMaxMana;
+	static size_t _startManaRegenSpeed;
+	static size_t _startManaRegenStrong;
 	static size_t _startDmg;
 	static size_t _startSpeed;
 	static size_t _startArmor;
+
 	shared_ptr<DragonAI> _AI;
 public:
 	Dragon(Point);
@@ -179,8 +233,14 @@ public:
 	ComandList _colide(Princess*) override;
 
 	shared_ptr<IBaseAI> getAI() override;
-	friend DragonAI;
 
+	size_t getMaxHp()const override;
+	size_t getMaxMana()const override;
+	void updateMana() override;
+	size_t getDmg() const override;
+	size_t getArmor() const override;
+
+	friend DragonAI;
 };
 
 class Princess: public INotPerson {
@@ -204,27 +264,26 @@ public:
 	Wall(Point);
 };
 
-class IProjectile:public IEntity
+class IProjectile:public IEntity,public IHasManaCost,public IHasDmg
 {
 protected:
 	Point _direction;
 	size_t _speed;
-	size_t _dmg;
-
 public:
 	IProjectile(Point, const Texture&);
 	Point getDir() const;
-	size_t getSpeed()const ;
+	size_t getSpeed()const;
 	friend IPerson;
 };
 
 class FireBall: public IProjectile {
-	
+
 	static size_t _startDmg;
 	static size_t _startSpeed;
+	static size_t _startManaCost;
 	shared_ptr<ProjectileAI<Dragon>> _AI;
 public:
-	static size_t _manaCost;
+	
 	static void Init(json&);
 	FireBall(Point p, Point dir);
 
@@ -243,15 +302,20 @@ public:
 	shared_ptr<IBaseAI> getAI() override;
 
 	friend ProjectileAI<Dragon>;
+
+	// Унаследовано через IProjectile
+	virtual size_t getManaCost() const override;
+	virtual size_t getDmg() const override;
 };
 
 class Arrow: public IProjectile {
 	static size_t _startDmg;
 	static size_t _startSpeed;
-	
+	static size_t _startManaCost;
+
 	shared_ptr<ProjectileAI<Skeleton>> _AI;
 public:
-	static size_t _manaCost;
+
 	static void Init(json&);
 	Arrow(Point p, Point dir);
 
@@ -267,10 +331,16 @@ public:
 	ComandList _colide(Apteca*) override;
 	ComandList _colide(Princess*) override;
 
-	
+
 
 	// Унаследовано через IProjectile
 	virtual shared_ptr<IBaseAI> getAI() override;
+
+
+	// Унаследовано через IProjectile
+	virtual size_t getManaCost() const override;
+
+	virtual size_t getDmg() const override;
 
 };
 
@@ -288,7 +358,7 @@ class Skeleton: public IMonster {
 private:
 	using ShotType = Arrow;
 	static size_t _startHp;
-	static size_t _startMana;
+	static size_t _startMaxMana;
 	static size_t _startDmg;
 	static size_t _startSpeed;
 	static size_t _startArmor;
@@ -310,6 +380,6 @@ public:
 	ComandList _colide(Princess*) override;
 
 	shared_ptr<IBaseAI> getAI() override;
-	
+
 	friend SkeletonAI;
 };

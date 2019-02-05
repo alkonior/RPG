@@ -16,10 +16,10 @@ HeroAI::HeroAI(Hero* h): hero(h) {
 		t('a',{make_shared<MoveMe>(hero, Point(-1, 0))}),
 		t('s',{make_shared<MoveMe>(hero, Point(0, 1))}),
 		t('d',{make_shared<MoveMe>(hero, Point(1, 0))}),
-		t('i',{make_shared<Shoot>(hero, Point(0, -1), shared_ptr<Shoot::finc_t>(new Shoot::finc_t(&generator)),Hero::ShotType::_manaCost)}),
-		t('j',{make_shared<Shoot>(hero, Point(-1, 0), shared_ptr<Shoot::finc_t>(new Shoot::finc_t(&generator)),Hero::ShotType::_manaCost)}),
-		t('k',{make_shared<Shoot>(hero, Point(0, 1), shared_ptr<Shoot::finc_t>(new Shoot::finc_t(&generator)),Hero::ShotType::_manaCost)}),
-		t('l',{make_shared<Shoot>(hero, Point(1, 0), shared_ptr<Shoot::finc_t>(new Shoot::finc_t(&generator)),Hero::ShotType::_manaCost)})
+		t('i',{make_shared<Shoot>(hero, Point(0, -1),hero, shared_ptr<Shoot::func_t>(new Shoot::func_t(&generator)))}),
+		t('j',{make_shared<Shoot>(hero, Point(-1, 0),hero, shared_ptr<Shoot::func_t>(new Shoot::func_t(&generator)))}),
+		t('k',{make_shared<Shoot>(hero, Point(0, 1),hero, shared_ptr<Shoot::func_t>(new Shoot::func_t(&generator)))}),
+		t('l',{make_shared<Shoot>(hero, Point(1, 0),hero, shared_ptr<Shoot::func_t>(new Shoot::func_t(&generator)))})
 	};
 }
 

@@ -3,24 +3,20 @@
 #include "SkeletonAI.h"
 
 size_t Skeleton::_startArmor = 0;
-size_t Skeleton::_startMana = 0;
+size_t Skeleton::_startMaxMana = 0;
 size_t Skeleton::_startDmg = 0;
 size_t Skeleton::_startSpeed = 0;
 size_t Skeleton::_startHp = 0;
 
-Skeleton::Skeleton(Point p):IMonster(p, TEXTURES_ARAAY::T_Skeleton), _AI(make_shared<SkeletonAI>(this))
+Skeleton::Skeleton(Point p):IMonster(p, TEXTURES_ARAAY::T_Skeleton,_startHp), _AI(make_shared<SkeletonAI>(this))
 {
-	_hp = _startHp;
-	_mana = _startMana;
-	_dmg = _startDmg;
 	_speed = _startSpeed;
-	_armor = _startArmor;
 }
 
 void Skeleton::Init(json& description)
 {
 	_startArmor = description["startArmor"];
-	_startMana = description["startMana"];
+	_startMaxMana = description["startMana"];
 	_startDmg = description["startDmg"];
 	_startSpeed = description["startSpeed"];
 	_startHp = description["startHp"];

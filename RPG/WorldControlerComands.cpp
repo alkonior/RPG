@@ -37,10 +37,8 @@ void WorldControler::execute(const PushMe* comand) {
 
 template <>
 void WorldControler::execute(const Attack_A_to_B* comand) {
-	IPerson* a = (comand->A);
-	IPerson* b = (comand->B);
-	if (b->getDmg(a)) {
-		_ComandList.push_back(ComandList{make_shared<DeleteEntity>(b)});
+	if (comand->B->attack(comand->A)) {
+		_ComandList.push_back(ComandList{make_shared<DeleteEntity>(comand->B)});
 	}
 }
 
@@ -51,25 +49,10 @@ void WorldControler::execute(const DeleteEntity* comand) {
 
 template <>
 void WorldControler::execute(const Shoot* comand) {
-	if ((*World)[comand->e->getCord()+comand->dir]==nullptr)
+	if ((*World)[comand->position]==nullptr)
 	{
-		if (comand->e->canShoot(comand->manaCost))
-		World->addProjectile((*(comand->generator))(comand->e->getCord()+comand->dir, comand->dir));
+		auto projectile = (*(comand->generator))(comand->position, comand->dir);
+		if (comand->m->canShoot(projectile.get()))
+		World->addProjectile(projectile);
 	}
-}
-
-template <>
-void WorldControler::execute(const Attack_Porjectile* comand) 
-{
-	IPerson* t = (comand->target);
-	IProjectile* p = (comand->projectile);
-	if (t->getDmg(p)) {
-		_ComandList.push_back(ComandList{ make_shared<DeleteEntity>(t) });
-	}
-	else
-	{
-		_ComandList.push_back(ComandList{ make_shared<DeleteEntity>(p)});
-		_ComandList.push_back(ComandList{ make_shared<MoveMe>(t, t->getCord().betsDir(p->getCord())) });
-	}
-	
 }

@@ -3,24 +3,25 @@
 #include "DragonAI.h"
 
 size_t Dragon::_startArmor = 0;
-size_t Dragon::_startMana = 0;
+size_t Dragon::_startMaxMana = 0;
+size_t Dragon::_startManaRegenSpeed = 0;
+size_t Dragon::_startManaRegenStrong = 0;
 size_t Dragon::_startDmg = 0;
 size_t Dragon::_startSpeed = 0;
 size_t Dragon::_startHp = 0;
 
-Dragon::Dragon(Point p):IMonster(p, TEXTURES_ARAAY::T_Dragon),_AI(make_shared<DragonAI>(this))
+Dragon::Dragon(Point p):IMonster(p, TEXTURES_ARAAY::T_Dragon, _startHp),
+IHasMana(_startMaxMana/2), _AI(make_shared<DragonAI>(this))
 {
-	_hp = _startHp;
-	_mana = _startMana;
-	_dmg = _startDmg;
 	_speed = _startSpeed;
-	_armor = _startArmor;
 }
 
 void Dragon::Init(json& description)
 {
 	_startArmor = description["startArmor"];
-	_startMana = description["startMana"];
+	_startMaxMana = description["startMana"];
+	_startManaRegenSpeed = description["startManaRegenSpeed"];
+	_startManaRegenStrong = description["startManaRegenStrong"];
 	_startDmg = description["startDmg"];
 	_startSpeed = description["startSpeed"];
 	_startHp = description["startHp"];
@@ -79,4 +80,29 @@ ComandList Dragon::_colide(Princess* p)
 shared_ptr<IBaseAI> Dragon::getAI()
 {
 	return _AI;
+}
+
+size_t Dragon::getMaxHp()const 
+{
+	return _startHp;
+}
+
+size_t Dragon::getMaxMana()const
+{
+	return _startMaxMana;
+}
+
+void Dragon::updateMana()
+{
+	_mana = std::min<size_t>(_mana+_startManaRegenStrong, _startMaxMana);
+}
+
+size_t Dragon::getDmg() const
+{
+	return _startDmg;
+}
+
+size_t Dragon::getArmor() const
+{
+	return _startArmor;
 }

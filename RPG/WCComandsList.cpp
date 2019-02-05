@@ -14,11 +14,10 @@ defNewAccept(CForward);
 defNewAccept(MoveMe);
 defNewAccept(PushMe);
 defNewAccept(Attack_A_to_B);
-defNewAccept(Attack_Porjectile);
 defNewAccept(DeleteEntity);
 defNewAccept(Shoot);
 
-Attack_A_to_B::Attack_A_to_B(IPerson* a, IPerson* b):A(a), B(b) {}
+Attack_A_to_B::Attack_A_to_B(IHasDmg* a, IPerson* b):A(a), B(b) {}
 
 DeleteEntity::DeleteEntity(IEntity* p) : e(p) {}
 
@@ -26,11 +25,7 @@ PushMe::PushMe(IEntity * o, Point p) : p(p), object(o) {}
 
 MoveMe::MoveMe(IEntity * o, Point p) : p(p), object(o) {}
 
-Shoot::Shoot(IPerson* e, Point dir, shared_ptr<std::function<shared_ptr<IProjectile>(Point,Point)>> g,size_t m) :
-	e(e), dir(dir), generator(g),manaCost(m) {};
+Shoot::Shoot(IHasMana* m, Point dir, IEntity* e, shared_ptr<Shoot::func_t> g) :
+	m(m), dir(dir),position(e->getCord()), generator(g) {};
 
 CForward::CForward(IEntity* o):object(o) {}
-
-Attack_Porjectile::Attack_Porjectile(IPerson* t, IProjectile* p): projectile(p), target(t){}
-
-Attack_Porjectile::Attack_Porjectile(IProjectile* p, IPerson* t) : projectile(p), target(t){}

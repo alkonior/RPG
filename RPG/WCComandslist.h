@@ -29,9 +29,9 @@ public:
 
 class Attack_A_to_B: public IComand {
 public:
-	IPerson* A;
+	IHasDmg* A;
 	IPerson* B;
-	Attack_A_to_B(IPerson*, IPerson*);
+	Attack_A_to_B(IHasDmg * a, IPerson * b);
 	void accept(IBaseControler&BC) override;
 };
 
@@ -42,22 +42,13 @@ public:
 	void accept(IBaseControler&) override;
 };
 
-class Attack_Porjectile: public IComand {
-public:
-	IPerson* target;
-	IProjectile* projectile;
-	Attack_Porjectile(IPerson*,	IProjectile*);
-	Attack_Porjectile(IProjectile*,	IPerson*);
-	void accept(IBaseControler&) override;
-};
-
 class Shoot: public IComand {
 public:
-	using finc_t = std::function<shared_ptr<IProjectile>(Point, Point)>;
-	IPerson* e;
-	size_t manaCost;
+	using func_t = std::function<shared_ptr<IProjectile>(Point, Point)>;
+	IHasMana* m;
 	Point dir;
-	shared_ptr<finc_t> generator;
-	Shoot(IPerson* e, Point dir, shared_ptr<finc_t> g,size_t);
+	Point position;
+	shared_ptr<func_t> generator;
+	Shoot(IHasMana* m, Point dir, IEntity* e, shared_ptr<func_t> g);
 	void accept(IBaseControler&) override;
 };

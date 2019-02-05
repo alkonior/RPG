@@ -6,24 +6,18 @@
 
 
 size_t Zombie::_startArmor = 0;
-size_t Zombie::_startMana = 0;
 size_t Zombie::_startDmg = 0;
 size_t Zombie::_startSpeed = 0;
 size_t Zombie::_startHp = 0;
 
-Zombie::Zombie(Point p):IMonster(p, TEXTURES_ARAAY::T_Zombie), _AI(make_shared<ZombieAI>(*this))
+Zombie::Zombie(Point p):IMonster(p, TEXTURES_ARAAY::T_Zombie, _startHp), _AI(make_shared<ZombieAI>(*this))
 {
-	_hp = _startHp;
-	_mana = _startMana;
-	_dmg = _startDmg;
 	_speed = _startSpeed;
-	_armor = _startArmor;
 }
 
 void Zombie::Init(json& description)
 {
 	_startArmor = description["startArmor"];
-	_startMana = description["startMana"];
 	_startDmg = description["startDmg"];
 	_startSpeed = description["startSpeed"];
 	_startHp = description["startHp"];
@@ -79,6 +73,21 @@ ComandList Zombie::_colide(Princess * p)
 shared_ptr<IBaseAI> Zombie::getAI()
 {
 	return _AI;
+}
+
+size_t Zombie::getDmg() const
+{
+	return _startDmg;
+}
+
+size_t Zombie::getMaxHp() const
+{
+	return _startHp;
+}
+
+size_t Zombie::getArmor() const
+{
+	return _startArmor;
 }
 
 
