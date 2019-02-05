@@ -52,3 +52,11 @@ public:
 	Shoot(IHasMana* m, Point dir, IEntity* e, shared_ptr<func_t> g);
 	void accept(IBaseControler&) override;
 };
+
+class IncHp: public IComand {
+public:
+	IHasHp* h;
+	ICanIncHp* i;
+	IncHp(IHasHp*, ICanIncHp*);
+	void accept(IBaseControler&) override;
+};

@@ -236,6 +236,9 @@
     <ClCompile Include="IBaseAI.cpp">
       <Filter>Исходные файлы\Entyties\AI</Filter>
     </ClCompile>
+    <ClCompile Include="Apteca.cpp">
+      <Filter>Исходные файлы\Entyties</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="config.json">

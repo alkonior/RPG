@@ -9,8 +9,10 @@ bool WorldViewConstructor::existPoint(const Point in) const
 
 WorldViewConstructor::HeroInfo WorldViewConstructor::getHeroInfo() const
 {
-	return {World->hero.lock()->getHp(),World->hero.lock()->getMp(),
-		World->hero.lock()->getMaxHp(),World->hero.lock()->getMaxMp() };
+	return {World->hero.lock()->getHp(),
+		World->hero.lock()->getMp(),
+		World->hero.lock()->getMaxHp(),
+		World->hero.lock()->getMaxMp() };
 }
 
 WorldViewConstructor::WorldViewConstructor(const shared_ptr<Map> w):World(w),worldShift(0,0){}

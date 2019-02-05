@@ -87,6 +87,11 @@ public:
 	virtual size_t getDmg()const = 0;
 };
 
+class ICanIncHp {
+public:
+	virtual size_t getHpInc()const = 0;
+};
+
 class IHasHp {
 protected:
 	size_t _hp;
@@ -95,9 +100,9 @@ public:
 	size_t getHp()const;
 	virtual size_t getMaxHp()const = 0;
 	virtual size_t getArmor()const = 0;
+	void incHp(ICanIncHp*);
 	bool attack(IHasDmg*);
 };
-
 
 
 class IPerson: public IEntity, public IHasDmg, public IHasHp {
@@ -142,7 +147,9 @@ public:
 	static void Init(json&);
 
 	size_t getHp();
+
 	size_t getMp();
+
 	size_t getMaxMp();
 	size_t getMaxHp();
 
@@ -345,8 +352,16 @@ public:
 
 };
 
-class Apteca: public INotPerson {
-
+class Apteca: public INotPerson,public ICanIncHp {
+	static size_t _startHpInc;
+public:
+	Apteca(Point);
+	// Унаследовано через INotPerson
+	virtual ComandList _colide(IEntity *) override;
+	virtual shared_ptr<IBaseAI> getAI() override;
+	static void Init(json&);
+	// Унаследовано через ICanInchp
+	size_t getHpInc() const override;
 };
 
 class Skeleton: public IMonster, public IHasMana {

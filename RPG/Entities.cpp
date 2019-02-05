@@ -39,6 +39,11 @@ IHasMana::IHasMana(size_t m):_mana(m)
 {
 }
 
+size_t IHasMana::getMana()
+{
+	return _mana;
+}
+
 bool IHasMana::canShoot(IHasManaCost* p)
 {
 	size_t i = p->getManaCost();
@@ -52,6 +57,16 @@ bool IHasMana::canShoot(IHasManaCost* p)
 
 
 IHasHp::IHasHp(size_t hp):_hp(hp){}
+
+size_t IHasHp::getHp() const
+{
+	return _hp;
+}
+
+void IHasHp::incHp(ICanIncHp *i) 
+{
+	_hp = std::min<size_t>(getMaxHp(), _hp+i->getHpInc());
+}
 
 bool IHasHp::attack(IHasDmg* enemy)
 {

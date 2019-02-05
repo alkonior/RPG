@@ -16,6 +16,7 @@ defNewAccept(PushMe);
 defNewAccept(Attack_A_to_B);
 defNewAccept(DeleteEntity);
 defNewAccept(Shoot);
+defNewAccept(IncHp);
 
 Attack_A_to_B::Attack_A_to_B(IHasDmg* a, IPerson* b):A(a), B(b) {}
 
@@ -29,3 +30,7 @@ Shoot::Shoot(IHasMana* m, Point dir, IEntity* e, shared_ptr<Shoot::func_t> g) :
 	m(m), dir(dir),position(e), generator(g) {};
 
 CForward::CForward(IEntity* o):object(o) {}
+
+IncHp::IncHp(IHasHp *h, ICanIncHp *i):h(h),i(i)
+{
+}

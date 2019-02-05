@@ -2,19 +2,19 @@
 #include "Model.h"
 
 
-
-
-Model::Model(json& config):_World(shared_ptr<Map>(new Map((size_t)config["seed"]))),_WC(_World),_WVC(_World)
+vector<std::string> getMap(json& map)
 {
-    Hero::Init(config["hero"]);
-	Zombie::Init(config["zombie"]);
-	Skeleton::Init(config["skeleton"]);
-	Dragon::Init(config["dragon"]);
-	FireBall::Init(config["fireball"]);
-	Arrow::Init(config["arrow"]);
-
-	_World->Init();
+	vector<std::string> out;
+	for (std::string i : map)
+	{
+		out.push_back(i);
+	}
+	return out;
 }
+
+Model::Model(json& config)
+	:_World(shared_ptr<Map>(new Map(getMap(config["map"]), config))),_WC(_World),_WVC(_World)
+{}
 
 size_t Model::getComand(size_t c)
 {

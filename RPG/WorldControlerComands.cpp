@@ -56,3 +56,8 @@ void WorldControler::execute(const Shoot* comand) {
 		World->addProjectile(projectile);
 	}
 }
+
+template <>
+void WorldControler::execute(const IncHp* comand) {
+	comand->h->incHp(comand->i);
+}

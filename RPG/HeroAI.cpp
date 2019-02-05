@@ -33,9 +33,21 @@ ComandList HeroAI::getActions(const void *w, size_t comand)
 	return {};
 }
 
-ComandList HeroAI::ColideWith(Hero * h, Princess * p)
+template<>
+ComandList HeroAI::ColideWith(Hero* h, Princess* p)
 {
 	return ComandList();
+}
+
+template<>
+ComandList HeroAI::ColideWith(Hero* h, Apteca* a)
+{
+	Point cord = a->getCord();
+	return {
+		make_shared<IncHp>(h,a),
+		make_shared<DeleteEntity>(a),
+		make_shared<MoveMe>(h,h->getCord().betsDir(cord))
+	};
 }
 
 

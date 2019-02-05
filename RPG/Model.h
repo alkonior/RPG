@@ -1,5 +1,5 @@
 #pragma once
-#include "pch.h"
+#include <string>
 #include "Entities.h"
 #include "IBaseAI.h"
 #include "WorldViewConstructor.h"

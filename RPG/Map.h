@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "Entities.h"
 
 
@@ -6,12 +7,12 @@
 class Map {
 private:
 
-	size_t _seed;
+
 		vector<vector<shared_ptr<IEntity>>> World;
 public:
 	size_t height;
 	size_t width;
-	Map(size_t);
+	Map(vector<std::string>,json&);
 
 	vector<weak_ptr<IMonster>> Enemies;
 	vector<weak_ptr<IProjectile>> Projectiles;
@@ -21,7 +22,6 @@ public:
 	void addEnemy(shared_ptr<IMonster>);
 	void addProjectile(shared_ptr<IProjectile>);
 	void Delete(Point p);
-	void Init();
 	~Map();
 
 

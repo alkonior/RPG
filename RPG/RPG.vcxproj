@@ -195,6 +195,7 @@
     <ClInclude Include="ZombieAI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Apteca.cpp" />
     <ClCompile Include="BarPanel.cpp" />
     <ClCompile Include="Dragon.cpp" />
     <ClCompile Include="DragonAI.cpp" />
