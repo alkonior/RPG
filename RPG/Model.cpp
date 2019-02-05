@@ -18,8 +18,13 @@ Model::Model(json& config)
 
 size_t Model::getComand(size_t c)
 {
-	_WC.GetComand(c);
+	size_t res = _WC.GetComand(c);
+	if (res == 'n')
 	return 0;
+	if (res == 'w')
+	return 1;
+	if (res == 'l')
+	return 2;
 }
 
 const WVC & Model::getData() const

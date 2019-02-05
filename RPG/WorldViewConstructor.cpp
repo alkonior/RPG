@@ -9,10 +9,17 @@ bool WorldViewConstructor::existPoint(const Point in) const
 
 WorldViewConstructor::HeroInfo WorldViewConstructor::getHeroInfo() const
 {
-	return {World->hero.lock()->getHp(),
-		World->hero.lock()->getMp(),
-		World->hero.lock()->getMaxHp(),
-		World->hero.lock()->getMaxMp() };
+	if (!World->hero.expired())
+	{
+		return { World->hero.lock()->getHp(),
+			World->hero.lock()->getMp(),
+			World->hero.lock()->getMaxHp(),
+			World->hero.lock()->getMaxMp() };
+	}
+	else
+	{
+		return { 0,0,0,0 };
+	}
 }
 
 WorldViewConstructor::WorldViewConstructor(const shared_ptr<Map> w):World(w),worldShift(0,0){}
@@ -20,6 +27,7 @@ WorldViewConstructor::WorldViewConstructor(const shared_ptr<Map> w):World(w),wor
 vector<vector<const Texture*>> WorldViewConstructor::GetMapInfo(size_t w, size_t h) const
 {
 	vector<vector<const Texture*>> out(h, vector<const Texture*>(w));
+	if (!World->hero.expired())
 	worldShift = World->hero.lock()->getCord()-Point(w/2, h/2);
 	for (size_t i = 0; i < h; i++)
 	{

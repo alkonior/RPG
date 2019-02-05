@@ -42,6 +42,11 @@ public:
 	void accept(IBaseControler&) override;
 };
 
+class WinGame: public IComand {
+public:
+	void accept(IBaseControler&) override;
+};
+
 class Shoot: public IComand {
 public:
 	using func_t = std::function<shared_ptr<IProjectile>(Point, Point)>;

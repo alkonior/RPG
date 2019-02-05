@@ -36,7 +36,7 @@ ComandList HeroAI::getActions(const void *w, size_t comand)
 template<>
 ComandList HeroAI::ColideWith(Hero* h, Princess* p)
 {
-	return ComandList();
+	return { make_shared<WinGame>() };
 }
 
 template<>

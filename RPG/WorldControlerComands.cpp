@@ -61,3 +61,9 @@ template <>
 void WorldControler::execute(const IncHp* comand) {
 	comand->h->incHp(comand->i);
 }
+
+template <>
+void WorldControler::execute(const WinGame* comand) {
+	flag = true;
+	(*World)[World->hero.lock()->getCord()] = nullptr;
+}

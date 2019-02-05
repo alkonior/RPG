@@ -44,7 +44,7 @@ Map::Map(vector<std::string> v,json& config):height(v.size()), width(v[0].length
 					break;
 				}
 			case 'p': {
-					//(*this)[Point(j, i)] = make_shared<Princess>(Point(j, i));
+					(*this)[Point(j, i)] = make_shared<Princess>(Point(j, i));
 					break;
 				}
 

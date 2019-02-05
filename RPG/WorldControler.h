@@ -11,10 +11,10 @@ class WorldControler : public IBaseControler {
   shared_ptr<Map> World;
   vector<ComandList> _ComandList;
   void executeAll();
-
+  float flag;
  public:
   WorldControler(shared_ptr<Map>);
-  void GetComand(size_t);
+  size_t GetComand(size_t);
 
   template <class T>
   void execute(const T*);

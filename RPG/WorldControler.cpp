@@ -2,11 +2,10 @@
 #include "WorldControler.h"
 
 
-WorldControler::WorldControler(shared_ptr<Map> m): World(m) {}
+WorldControler::WorldControler(shared_ptr<Map> m): World(m),flag(false) {}
 
-void WorldControler::GetComand(size_t comand) {
+size_t WorldControler::GetComand(size_t comand) {
 	if (!World->hero.expired()) {
-
 		for (size_t i = 0; i<World->Projectiles.size(); i++) {
 			if (!World->Projectiles[i].expired())
 			{
@@ -34,7 +33,18 @@ void WorldControler::GetComand(size_t comand) {
 		_ComandList.push_back(
 			World->hero.lock()->getAI()->getActions(World.get(), comand));
 		executeAll();
-		
+		return 'n';
+	}
+	else
+	{
+		if (flag)
+		{
+			return 'w';
+		}
+		else
+		{
+			return 'l';
+		}
 	}
 }
 

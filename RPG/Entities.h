@@ -260,6 +260,10 @@ public:
 };
 
 class Princess: public INotPerson {
+public:
+	Princess(Point);
+	ComandList _colide(IEntity *) override;
+	shared_ptr<IBaseAI> getAI() override;
 };
 
 class Wall: public INotPerson {

@@ -11,6 +11,7 @@
 #define SKELETON_CS 6
 #define APTECA_CS 7
 #define ARROW_CS 8
+#define PRINCESS_CS 9
 
 
 class Texture
@@ -36,6 +37,7 @@ const Texture T_Skeleton('S', SKELETON_CS);
 const Texture T_FireBall('*', APTECA_CS);
 const Texture T_Apteca('+', APTECA_CS);
 const Texture T_Arrow('*', ARROW_CS);
+const Texture T_Pincess('P', PRINCESS_CS);
 }
 void initCS();
 

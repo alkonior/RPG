@@ -124,3 +124,17 @@ ComandList INotPerson::_colide(Princess *)
 {
 	return ComandList();
 }
+
+
+
+Princess::Princess(Point p):INotPerson(p, TEXTURES_ARAAY::T_Pincess){}
+
+ComandList Princess::_colide(IEntity* in)
+{
+	return in->_colide(this);
+}
+
+shared_ptr<IBaseAI> Princess::getAI()
+{
+	return shared_ptr<IBaseAI>();
+}
