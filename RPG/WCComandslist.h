@@ -47,7 +47,7 @@ public:
 	using func_t = std::function<shared_ptr<IProjectile>(Point, Point)>;
 	IHasMana* m;
 	Point dir;
-	Point position;
+	IEntity* position;
 	shared_ptr<func_t> generator;
 	Shoot(IHasMana* m, Point dir, IEntity* e, shared_ptr<func_t> g);
 	void accept(IBaseControler&) override;

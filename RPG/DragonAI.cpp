@@ -6,10 +6,13 @@
 
 DragonAI::DragonAI(Dragon* d):dragon(d), step(0), searching(false) {}
 
-shared_ptr<IProjectile> DragonAI::generator(Point p, Point dir)
-{
-	return make_shared<Dragon::ShotType>(p, dir);
-}
+
+shared_ptr<Shoot::func_t> DragonAI::func = shared_ptr<Shoot::func_t>(new Shoot::func_t(
+	[](Point p, Point dir)->shared_ptr<IProjectile>
+	{
+		return make_shared<Dragon::ShotType>(p, dir);
+	}
+));
 
 ComandList DragonAI::getActions(const void * w, size_t)
 {
@@ -28,10 +31,8 @@ ComandList DragonAI::getActions(const void * w, size_t)
 		else {
 			searching = false;
 			vector<Point> dir{ Point(-1, 0), Point(0, -1), Point(1, 0), Point(0, 1) };
-			//out.push_back(make_shared<MoveMe>(&dragon, dragon._cord.betsDir(dir[rand()%4])));
 			int i = rand()%4;
-
-			out.push_back(make_shared<Shoot>(dragon, dir[i],dragon, shared_ptr<Shoot::func_t>( new Shoot::func_t(&generator))));
+			out.push_back(make_shared<Shoot>(dragon, dir[i],dragon, func));
 		}
 	}
 

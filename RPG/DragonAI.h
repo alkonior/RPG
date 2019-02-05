@@ -9,7 +9,7 @@
 
 class DragonAI:public IBaseAI
 {
-	static shared_ptr<IProjectile> generator(Point p, Point dir);
+	static shared_ptr<Shoot::func_t> func;
 
 	template <typename T>
 	using EnableIfNothing =

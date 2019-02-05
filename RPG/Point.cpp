@@ -6,7 +6,7 @@ Point::Point() {}
 
 Point::Point(size_t x, size_t y) : x(x), y(y) {}
 
-Point Point::operator-() const { return Point(UINT_MAX - x, UINT_MAX - y); }
+Point Point::operator-() const { return Point(UINT_MAX - x+1, UINT_MAX - y+1); }
 
 Point Point::operator+(const Point& in) { return Point(x + in.x, y + in.y); }
 

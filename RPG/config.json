@@ -25,6 +25,15 @@
     "startSpeed": 3,
     "startArmor": 0
   },
+  "skeleton": {
+    "startHp": 50,
+    "startMana": 200,
+    "startDmg": 0,
+    "startManaRegenSpeed": 5,
+    "startManaRegenStrong":10,
+    "startSpeed": 2,
+    "startArmor": 3
+  },
   "fireball": {
     "startDmg": 20,
     "startSpeed": 3,

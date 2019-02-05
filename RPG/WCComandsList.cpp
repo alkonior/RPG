@@ -26,6 +26,6 @@ PushMe::PushMe(IEntity * o, Point p) : p(p), object(o) {}
 MoveMe::MoveMe(IEntity * o, Point p) : p(p), object(o) {}
 
 Shoot::Shoot(IHasMana* m, Point dir, IEntity* e, shared_ptr<Shoot::func_t> g) :
-	m(m), dir(dir),position(e->getCord()), generator(g) {};
+	m(m), dir(dir),position(e), generator(g) {};
 
 CForward::CForward(IEntity* o):object(o) {}

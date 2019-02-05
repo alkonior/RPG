@@ -8,6 +8,7 @@ Model::Model(json& config):_World(shared_ptr<Map>(new Map((size_t)config["seed"]
 {
     Hero::Init(config["hero"]);
 	Zombie::Init(config["zombie"]);
+	Skeleton::Init(config["skeleton"]);
 	Dragon::Init(config["dragon"]);
 	FireBall::Init(config["fireball"]);
 	Arrow::Init(config["arrow"]);

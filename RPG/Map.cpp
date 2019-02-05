@@ -38,30 +38,26 @@ void Map::Init()
 	case 1:
 		{
 			/// Тут типа нужно замутить генератор карты
-			width =1000;
-			height = 1000;
+			width =60;
+			height = 40;
 			World.resize(height, vector<shared_ptr<IEntity>>(width, shared_ptr<IEntity>()));		
-			auto h = make_shared<Hero>(Point(400, 400));
-			(*this)[Point(400, 400)] = h;
+			auto h = make_shared<Hero>(Point(1, 1));
+			(*this)[Point(1, 1)] = h;
 			hero = h;
-			for (size_t i1 = 0; i1<1000; i1++)
+			for (size_t i1 = 0; i1<60; i1++)
 			{
-				for (size_t i2 = 0; i2<1000; i2++)
+				for (size_t i2 = 0; i2<40; i2++)
 				{
-					if ((i1==0)||(i2==0)||(i1 == 19)||(i2==19)) {
+					if ((i1==0)||(i2==0)||(i1 == 59)||(i2==39)) {
 						Point p(i1,i2);
 						(*this)[p] = make_shared<Wall>(p);
 					}
 				}
 			}
-			
-			for (size_t i = 0; i<350; i++)
-			{
-				addEnemy(make_shared<Zombie>(Point(i+1, i+1)));
-				addEnemy(make_shared<Zombie>(Point(406+i,400)));
-			}
-			addEnemy(make_shared<Zombie>(Point(1, 1)));	
-			addEnemy(make_shared<Dragon>(Point(5,5)));	
+
+			//addEnemy(make_shared<Zombie>(Point(5, 1)));	
+			//addEnemy(make_shared<Dragon>(Point(5,5)));	
+			addEnemy(make_shared<Skeleton>(Point(7,5)));	
 			break;
 		}
 	default:

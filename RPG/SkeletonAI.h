@@ -9,6 +9,9 @@ class SkeletonAI:public IBaseAI
 {
 	static shared_ptr<IProjectile> generator(Point p, Point dir);
 
+	static shared_ptr<Shoot::func_t> func;
+
+
 	template <typename T>
 	using EnableIfNothing =
 		std::enable_if_t<(std::is_base_of_v<IPerson, T>||std::is_base_of_v<INotPerson, T>), ComandList>;
@@ -22,9 +25,7 @@ class SkeletonAI:public IBaseAI
 		std::enable_if_t<(std::is_same_v<Skeleton::ShotType, T>), ComandList>;
 
 	size_t step;
-	Point lastSee;
 	Skeleton* skeleton;
-	bool searching;
 
 public:
 	SkeletonAI(Skeleton*);

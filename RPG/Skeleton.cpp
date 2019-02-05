@@ -4,11 +4,13 @@
 
 size_t Skeleton::_startArmor = 0;
 size_t Skeleton::_startMaxMana = 0;
+size_t Skeleton::_startManaRegenSpeed = 0;
+size_t Skeleton::_startManaRegenStrong = 0;
 size_t Skeleton::_startDmg = 0;
 size_t Skeleton::_startSpeed = 0;
 size_t Skeleton::_startHp = 0;
 
-Skeleton::Skeleton(Point p):IMonster(p, TEXTURES_ARAAY::T_Skeleton,_startHp), _AI(make_shared<SkeletonAI>(this))
+Skeleton::Skeleton(Point p):IMonster(p, TEXTURES_ARAAY::T_Skeleton,_startHp),IHasMana(_startMaxMana), _AI(make_shared<SkeletonAI>(this))
 {
 	_speed = _startSpeed;
 }
@@ -17,6 +19,8 @@ void Skeleton::Init(json& description)
 {
 	_startArmor = description["startArmor"];
 	_startMaxMana = description["startMana"];
+	_startManaRegenSpeed = description["startManaRegenSpeed"];
+	_startManaRegenStrong = description["startManaRegenStrong"];
 	_startDmg = description["startDmg"];
 	_startSpeed = description["startSpeed"];
 	_startHp = description["startHp"];
@@ -75,4 +79,29 @@ ComandList Skeleton::_colide(Princess* p)
 shared_ptr<IBaseAI> Skeleton::getAI()
 {
 	return _AI;
+}
+
+size_t Skeleton::getDmg() const
+{
+	return _startDmg;
+}
+
+size_t Skeleton::getMaxHp() const
+{
+	return _startHp;
+}
+
+size_t Skeleton::getArmor() const
+{
+	return _startArmor;
+}
+
+size_t Skeleton::getMaxMana() const
+{
+	return _startMaxMana;
+}
+
+void Skeleton::updateMana()
+{
+	_mana = std::min<size_t>(_mana+_startManaRegenStrong, _startMaxMana);
 }

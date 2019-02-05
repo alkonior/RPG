@@ -354,13 +354,15 @@ class Apteca: public INotPerson {
   void _colide(Wall&) override;*/
 };
 
-class Skeleton: public IMonster {
+class Skeleton: public IMonster, public IHasMana {
 private:
 	using ShotType = Arrow;
 	static size_t _startHp;
 	static size_t _startMaxMana;
 	static size_t _startDmg;
 	static size_t _startSpeed;
+	static size_t _startManaRegenSpeed;
+	static size_t _startManaRegenStrong;
 	static size_t _startArmor;
 	shared_ptr<SkeletonAI> _AI;
 public:
@@ -382,4 +384,13 @@ public:
 	shared_ptr<IBaseAI> getAI() override;
 
 	friend SkeletonAI;
+
+	// Унаследовано через IMonster
+	virtual size_t getDmg() const override;
+	virtual size_t getMaxHp() const override;
+	virtual size_t getArmor() const override;
+
+	// Унаследовано через IHasMana
+	virtual size_t getMaxMana() const override;
+	virtual void updateMana() override;
 };
